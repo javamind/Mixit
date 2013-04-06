@@ -1,9 +1,7 @@
 package com.ehret.mixit.model;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.Log;
-import com.ehret.mixit.R;
 import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.domain.talk.Conference;
@@ -87,8 +85,9 @@ public class ConferenceFacade {
      * @param context
      * @return
      */
-    public List<Talk> getTalks(Context context) {
-        return Ordering.from(getComparatorDate()).compound(getComparatorConference()).sortedCopy(filtrerTalkFiltreParType(getTalkAndWorkshops(context), TypeFile.talks));
+    public List<Talk> getTalks(Context context, String filtre) {
+        return Ordering.from(getComparatorDate()).compound(getComparatorConference())
+                .sortedCopy(filtrerTalk(getTalkAndWorkshops(context), TypeFile.talks, filtre));
     }
 
     /**
@@ -96,8 +95,19 @@ public class ConferenceFacade {
      * @param context
      * @return
      */
-    public List<Talk> getWorkshops(Context context) {
-        return Ordering.from(getComparatorDate()).compound(getComparatorConference()).sortedCopy(filtrerTalkFiltreParType(getTalkAndWorkshops(context), TypeFile.workshops));
+    public List<Lightningtalk> getLightningTalks(Context context, String filtre) {
+        return Ordering.from(getComparatorDate()).compound(getComparatorConference())
+                .sortedCopy(filtrerTalk(getLightningtalks(context), filtre));
+    }
+
+    /**
+     * Permet de recuperer la liste des talks
+     * @param context
+     * @return
+     */
+    public List<Talk> getWorkshops(Context context, String filtre) {
+        return Ordering.from(getComparatorDate()).compound(getComparatorConference())
+                .sortedCopy(filtrerTalk(getTalkAndWorkshops(context), TypeFile.workshops, filtre));
     }
 
     /**
@@ -264,7 +274,7 @@ public class ConferenceFacade {
      * @param context
      * @return
      */
-    public Map<Long, Lightningtalk> getLightningtalks(Context context) {
+    private Map<Long, Lightningtalk> getLightningtalks(Context context) {
         if(lightningtalks.isEmpty()){
             InputStream is = null;
             List<Lightningtalk> talkListe = null;
@@ -338,18 +348,43 @@ public class ConferenceFacade {
      * @param type
      * @return
      */
-    private List<Talk> filtrerTalkFiltreParType(Map<Long, Talk> talks, final TypeFile type){
+    private List<Talk> filtrerTalk(Map<Long, Talk> talks, final TypeFile type, final String filtre){
         return FluentIterable.from(talks.values()).filter(new Predicate<Talk>() {
             @Override
             public boolean apply(Talk input) {
+                boolean retenu = false;
                 if (type.equals(TypeFile.workshops)) {
-                    return "Workshop".equals(((Talk) input).getFormat());
+                    retenu = "Workshop".equals(((Talk) input).getFormat());
                 }
-                return !"Workshop".equals(((Talk) input).getFormat());
+                else{
+                    retenu = !"Workshop".equals(((Talk) input).getFormat());
+                }
+                if(retenu){
+                    return (filtre==null ||
+                            (input.getTitle()!= null && input.getTitle().toLowerCase().contains(filtre.toLowerCase()))  ||
+                            (input.getSummary()!= null && input.getSummary().toLowerCase().contains(filtre.toLowerCase())));
+                }
+                return false;
             }
         }).toImmutableList();
     }
 
+    /**
+     * Filtre la liste des talks ou des workshops
+     * @param talks
+     * @param filtre
+     * @return
+     */
+    private List<Lightningtalk> filtrerTalk(Map<Long, Lightningtalk> talks, final String filtre){
+        return FluentIterable.from(talks.values()).filter(new Predicate<Lightningtalk>() {
+            @Override
+            public boolean apply(Lightningtalk input) {
+                return (filtre==null ||
+                            (input.getTitle()!= null && input.getTitle().toLowerCase().contains(filtre.toLowerCase()))  ||
+                            (input.getSummary()!= null && input.getSummary().toLowerCase().contains(filtre.toLowerCase())));
+            }
+        }).toImmutableList();
+    }
     /**
      * Renvoie le comparator permettant de trier des conf
      * @return

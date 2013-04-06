@@ -1,6 +1,9 @@
 package com.ehret.mixit.ui.activity;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,7 +33,9 @@ public class ParseListeActivity extends AbstractActivity {
     private LinearLayout layout;
     private TextView descriptif;
     private String typeAppel;
+    private String filterQuery;
     private Activity mActivity;
+    private final static String PREFS_NAME = "pref_recherche";
     /**
      * Called when the activity is first created.
      */
@@ -46,8 +51,18 @@ public class ParseListeActivity extends AbstractActivity {
         this.descriptif = (TextView) findViewById(R.id.liste_descr);
         this.mActivity=this;
 
-        if (getIntent().getExtras() != null) {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
+            filterQuery = getIntent().getStringExtra(SearchManager.QUERY);
+            typeAppel = settings.getString("typeAppel",TypeFile.staff.name());
+        }
+        else if(getIntent().getExtras() != null) {
             typeAppel = (String)getIntent().getExtras().getCharSequence(UIUtils.MESSAGE);
+            //On sauvagarde dans les preferences le type pour le retrouver quand on rcoit l'intent de recherche
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("typeAppel",typeAppel);
+            editor.commit();
         }
     }
 
@@ -55,6 +70,7 @@ public class ParseListeActivity extends AbstractActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("TYPE_APPEL", typeAppel);
+        outState.putString("FILTRE_REQ", filterQuery);
     }
 
     @Override
@@ -63,6 +79,10 @@ public class ParseListeActivity extends AbstractActivity {
         String myType = savedInstanceState.getString("TYPE_APPEL");
         if(myType!=null){
             typeAppel= myType;
+        }
+        String query = savedInstanceState.getString("FILTRE_REQ");
+        if(query!=null){
+            filterQuery= query;
         }
     }
 
@@ -107,6 +127,7 @@ public class ParseListeActivity extends AbstractActivity {
 
     }
 
+
     /**
      * Permet de lier les champs du layout a l'activite
      * @param resMembre
@@ -119,7 +140,10 @@ public class ParseListeActivity extends AbstractActivity {
         layout.setBackgroundResource(resBackground);
     }
 
-
+    /**
+     * Afichage es conferences
+     * @param partial
+     */
     private void afficherMembre(boolean partial) {
         liste.setClickable(true);
         liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -133,9 +157,12 @@ public class ParseListeActivity extends AbstractActivity {
             }
         });
         //On trie la liste retournée
-        liste.setAdapter(new ListMembreAdapter(getBaseContext(), MembreFacade.getInstance().getMembres(getBaseContext(), typeAppel)));
+        liste.setAdapter(new ListMembreAdapter(getBaseContext(), MembreFacade.getInstance().getMembres(getBaseContext(), typeAppel, filterQuery)));
     }
 
+    /**
+     * Affichage des confs
+     */
     private void afficherConference() {
         liste.setClickable(true);
         liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -150,14 +177,13 @@ public class ParseListeActivity extends AbstractActivity {
         });
         switch (TypeFile.getTypeFile(typeAppel)){
             case workshops:
-                liste.setAdapter(new ListTalkAdapter(getBaseContext(),ConferenceFacade.getInstance().getWorkshops(getBaseContext())));
+                liste.setAdapter(new ListTalkAdapter(getBaseContext(),ConferenceFacade.getInstance().getWorkshops(getBaseContext(),filterQuery)));
                 break;
             case talks:
-                liste.setAdapter(new ListTalkAdapter(getBaseContext(),ConferenceFacade.getInstance().getTalks(getBaseContext())));
+                liste.setAdapter(new ListTalkAdapter(getBaseContext(),ConferenceFacade.getInstance().getTalks(getBaseContext(),filterQuery)));
                 break;
             default:
-                List<Lightningtalk> talks = Lists.newArrayList(ConferenceFacade.getInstance().getLightningtalks(getBaseContext()).values());
-                liste.setAdapter(new ListTalkAdapter(getBaseContext(),  talks));
+                liste.setAdapter(new ListTalkAdapter(getBaseContext(),  ConferenceFacade.getInstance().getLightningTalks(getBaseContext(),filterQuery)));
         }
     }
 }

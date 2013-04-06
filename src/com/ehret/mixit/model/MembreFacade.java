@@ -1,13 +1,12 @@
 package com.ehret.mixit.model;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.Log;
-import com.ehret.mixit.R;
 import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.ui.utils.FileUtils;
-import com.google.common.collect.Lists;
+import com.google.common.base.Predicate;
+import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Ordering;
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParser;
@@ -83,26 +82,43 @@ public class MembreFacade {
      * @param typeAppel
      * @return
      */
-    public List<Membre> getMembres(Context context, String typeAppel){
+    public List<Membre> getMembres(Context context, String typeAppel, String filtre){
         if(TypeFile.members.name().equals(typeAppel)){
             getMapMembres(context, typeAppel, membres);
-            return Ordering.from(getComparatorByName()).sortedCopy(Lists.newArrayList(membres.values()));
+            return Ordering.from(getComparatorByName()).sortedCopy(filtrerMembre(membres, filtre));
         }
         else if(TypeFile.staff.name().equals(typeAppel)){
             getMapMembres(context, typeAppel, staff);
-            return Ordering.from(getComparatorByName()).sortedCopy(Lists.newArrayList(staff.values()));
+            return Ordering.from(getComparatorByName()).sortedCopy(filtrerMembre(staff, filtre));
         }
         else if(TypeFile.sponsor.name().equals(typeAppel)){
             getMapMembres(context, typeAppel, sponsors);
-            return Ordering.from(getComparatorByLevel()).reverse().compound(getComparatorByName()).sortedCopy(Lists.newArrayList(sponsors.values()));
+            return Ordering.from(getComparatorByLevel()).reverse().compound(getComparatorByName()).sortedCopy(filtrerMembre(sponsors, filtre));
         }
         else if(TypeFile.speaker.name().equals(typeAppel)){
             getMapMembres(context, typeAppel, speaker);
-            return Ordering.from(getComparatorByName()).sortedCopy(Lists.newArrayList(speaker.values()));
+            return Ordering.from(getComparatorByName()).sortedCopy(filtrerMembre(speaker, filtre));
         }
         return null;
     }
 
+    /**
+     * Filtre la liste des membres
+     * @param talks
+     * @param filtre
+     * @return
+     */
+    private List<Membre> filtrerMembre(Map<Long, Membre> talks, final String filtre){
+        return FluentIterable.from(talks.values()).filter(new Predicate<Membre>() {
+            @Override
+            public boolean apply(Membre input) {
+                return (filtre==null ||
+                        (input.getFirstname()!= null && input.getFirstname().toLowerCase().contains(filtre.toLowerCase()))  ||
+                        (input.getLastname()!= null && input.getLastname().toLowerCase().contains(filtre.toLowerCase()))  ||
+                        (input.getShortdesc()!= null && input.getShortdesc().toLowerCase().contains(filtre.toLowerCase())));
+            }
+        }).toImmutableList();
+    }
     /**
      * Comparaison par nom
      * @return

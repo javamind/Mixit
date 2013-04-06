@@ -6,6 +6,7 @@
     <string name="welcome">Bienvenue sur l\'application mobile Mix-it qui vous donne accès à toute la programmation de cette conférence</string>
     <string name="about">A propos</string>
     <string name="loadplus">Voir plus de membre...</string>
+    <string name="search_hint">...</string>
 
     <!-- Compteur -->
     <string name="whats_on_countdown_title_0">Plus que <xliff:g id="remaining_time">%1$s</xliff:g>\navant Mix-It 2013</string>
@@ -33,6 +34,7 @@
     <string name="description_planning_j1">Jeudi 25 avril</string>
     <string name="description_planning_j2">Vendredi 26 avril</string>
     <string name="description_sync">Raffraîchir les données</string>
+    <string name="description_search">Rechercher</string>
     <string name="description_sessions">Sessions</string>
     <string name="description_talk">Conférences</string>
     <string name="description_workshop">Ateliers</string>

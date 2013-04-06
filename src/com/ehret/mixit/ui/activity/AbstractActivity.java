@@ -18,12 +18,15 @@ package com.ehret.mixit.ui.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 import com.ehret.mixit.R;
 import com.ehret.mixit.domain.JsonFile;
@@ -60,6 +63,16 @@ public abstract class AbstractActivity extends Activity {
         //Le menu refresh est masque pour les activities qui n'en ont pas besoin
         if(!(this instanceof SocialActivity)){
             menu.removeItem(R.id.menu_refresh);
+        }
+        if(!(this instanceof ParseListeActivity)){
+            menu.removeItem(R.id.menu_search);
+        }
+        else{
+            // Get the SearchView and set the searchable configuration
+            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+            SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
         }
         return true;
     }
@@ -100,7 +113,8 @@ public abstract class AbstractActivity extends Activity {
                     progressDialog = new ProgressDialog(this);
                 }
                 progressDialog.setCancelable(true);
-                progressDialog.setMax( MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name()).size() + JsonFile.values().length);
+                int nbMax = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(),null).size() + JsonFile.values().length;
+                progressDialog.setMax(nbMax<100 ? 800 : nbMax);
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 progressDialog.setMessage(getResources().getString(R.string.sync_message));
                 progressDialog.show();
@@ -120,6 +134,7 @@ public abstract class AbstractActivity extends Activity {
      * Template methode pouvant être surchargée par les écrans pour gérer le refresh
      */
     public void refresh(){}
+
 
     private enum SendSocial {twitter, plus}
     /**
@@ -166,7 +181,7 @@ public abstract class AbstractActivity extends Activity {
             ConferenceFacade.getInstance().viderCache();
 
             //On pren les membres s'ils viennent d'etre recharge
-            List<Membre> membres = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name());
+            List<Membre> membres = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(),null);
             for(Membre membre : membres){
                 if(membre.getUrlimage()!=null){
                     Synchronizer.downloadImage(getBaseContext(), membre.getUrlimage(),"membre"+ membre.getId());
