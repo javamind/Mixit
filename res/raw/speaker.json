@@ -1,0 +1,1001 @@
+[
+    {
+        "id": 622,
+        "firstname": "Olivier",
+        "lastname": "AZEAU",
+        "login": "olivier.azeau",
+        "company": "",
+        "shortdesc": "Software Craftsman",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/b62b71e6d8765f0312890d17d3608faf",
+        "nbConsults": 12,
+        "links": [306, 333],
+        "linkers": [183, 67, 27, 93, 29, 275, 136, 70, 209, 171]
+    },
+    {
+        "id": 604,
+        "firstname": "Blandine",
+        "lastname": "Bourgois",
+        "login": "blandine.bourgois",
+        "company": "Sfeir",
+        "shortdesc": "Développeur Java chez Sfeir, membre de [Duchess France](http://www.duchess-france.org/) et du programme Nao developer.",
+        "longdesc": "Après avoir traivaillé sur différentes technologies, je suis aujourd\u0027hui développeuse Java chez Sfeir et membre du JUG [Duchess France](http://www.duchess-france.org/). Ayant adopté un robot Nao l\u0027année dernière, j\u0027ai lancé récemment le Nao User Group parisien afin de rencontrer d\u0027autres développeurs.",
+        "urlimage": "http://www.gravatar.com/avatar/e8950993a9c41349a17276201be78e4c",
+        "nbConsults": 72,
+        "links": [584],
+        "linkers": [8, 283, 23, 13],
+        "sharedLinks": [
+            {
+                "id": 335,
+                "name": "Duchess France",
+                "url": "http://www.duchess-france.org/",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 175,
+        "firstname": "Alexandre",
+        "lastname": "BOUTIN",
+        "login": "agilex",
+        "company": "AGILETOYOU",
+        "shortdesc": "Agiliste depuis plus de 7 ans et membre de plusieurs communautés Française (Fédération Agile des Formateurs, CARA, French SUG ...)",
+        "longdesc": "Diplômé de l’Ensimag en 1989, Alexandre découvre l’Agilité en 2004 et prend en charge la promotion de l’Agilité en Europe, Asie et Inde pour Yahoo International de 2005 à 2009.\nDébut 2009, Alexandre décide de créer la société AGILETOYOU pour former et accompagner de nombreux clients désireux de devenir Agile (Orange, EDF, Total, Samse, BBC, HP, INGENICO  …).\nAlexandre est de plus un orateur régulier des conférences nationales et préside le CARA (Club Agile Rhône Alpes).",
+        "urlimage": "http://www.gravatar.com/avatar/5ca832c4941c23a218c7c73210aafedb",
+        "nbConsults": 66,
+        "links": [4],
+        "linkers": [87, 40, 41, 42, 131, 27, 35, 43, 83, 17, 18, 26, 16, 30, 33, 31]
+    },
+    {
+        "id": 598,
+        "firstname": "Guillaume",
+        "lastname": "Boutin",
+        "login": "guillaume.boutin",
+        "company": "SensCritique.com",
+        "shortdesc": "Chef d\u0027entreprise, senscritique.com",
+        "longdesc": "Co-fondateur de Gamekult.com\nCo-fondateur de la régie publicitaire \"Culture G\"\n\n",
+        "urlimage": "http://www.gravatar.com/avatar/c1d26d86995f609f2dec2ca1e8efc092",
+        "nbConsults": 15,
+        "linkers": [156, 8, 1]
+    },
+    {
+        "id": 574,
+        "firstname": "Simon",
+        "lastname": "Brown",
+        "login": "simonbrown",
+        "company": "",
+        "shortdesc": "Inspiring the world, one software development team at a time ... software architecture, technical leadership and the balance with agility.",
+        "longdesc": "Simon lives in Jersey (Channel Islands) and works as an independent consultant, specialising in software architecture and technical leadership in modern software development teams. Simon regularly speaks at international software development conferences and provides consulting/training to software teams at organisations across Europe, ranging from small startups through to global blue chip companies. He is the author of [Software Architecture for Developers](http://leanpub.com/software-architecture-for-developers), an e-book that is being published incrementally through Leanpub. He still likes to write code too, primarily in .NET and Java.",
+        "urlimage": "http://www.gravatar.com/avatar/9a8b47a6acdc3ecd219077951f7a09f0",
+        "nbConsults": 46,
+        "links": [5],
+        "linkers": [230, 67, 93, 2, 13, 41, 42, 183, 27, 77, 199, 186, 18, 26, 16, 238, 171, 33, 45],
+        "sharedLinks": [
+            {
+                "id": 311,
+                "name": "Simon Brown",
+                "url": "http://www.simonbrown.je",
+                "ordernum": 0
+            },
+            {
+                "id": 312,
+                "name": "Coding the Architecture",
+                "url": "http://www.codingthearchitecture.com",
+                "ordernum": 1
+            }
+        ]
+    },
+    {
+        "id": 584,
+        "firstname": "Tasha",
+        "lastname": "CARL",
+        "login": "Imifos",
+        "company": "",
+        "shortdesc": "Java, C++, Python, JavaScript, AngularJS, Brussels JUG, RHoK.be, Devoxx \u0026 Devoxx4kids, NAO Robot, Mindstorm, Sagan.be, Arduino, Beagleboard ",
+        "longdesc": "Tasha est développeuse, architecte d\u0027application et architecte de systèmes d\u0027information, actuellement spécialisée dans le domaine Java EE. Elle travaille comme freelance depuis 1997 et elle est également fondatrice du Brussels Java User Group, membre de l\u0027équipe du Random Hack Of Kindness Belgique et elle fait partie du DEVOXX et Devoxx4Kids \"Steering Committee\". A part ça, elle a développé le simulateur robot pour enfant \"Sagan-1\" (http://sagan.be) et fait régulièrement des cours de robotique pour enfants, notamment dans le cadre de la Devoxx4Kids. \n\nBlog: http://www.lucubratory.eu/, Twitter: https://twitter.com/#!/imifos.\n\n\n\n",
+        "urlimage": "http://www.gravatar.com/avatar/7f492d4169b09d034892961fc974c184",
+        "nbConsults": 67,
+        "links": [3, 8, 604],
+        "linkers": [252, 13, 156, 107, 90, 283, 141, 241, 135, 11, 180, 137, 122, 246, 250, 282, 168, 2, 284, 94, 92, 183, 36, 199, 15, 259],
+        "sharedLinks": [
+            {
+                "id": 314,
+                "name": "Blog",
+                "url": "http://lucubratory.eu",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 624,
+        "firstname": "mathieu",
+        "lastname": "chataigner",
+        "login": "luckymoot",
+        "company": "",
+        "shortdesc": "Software developper, i know some java and scala and a bit of haskell",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/7628a212c4d3f6e483b921b7d80758ee",
+        "nbConsults": 17,
+        "links": [589, 292, 649, 628, 3, 595, 389, 594, 277, 607, 82],
+        "linkers": [275, 304, 96, 252, 158, 188, 156, 27, 29, 121, 195, 208, 66, 180, 4, 305, 246, 250, 277, 191, 284, 237, 212, 303, 23, 173]
+    },
+    {
+        "id": 599,
+        "firstname": "Thierry",
+        "lastname": "Cros",
+        "login": "thierrycros",
+        "company": "SCOP Maison  de l\u0027Initiative",
+        "shortdesc": "Développeur depuis 30 ans, Agiliste depuis 12 ans.",
+        "longdesc": "1982 mais premiers pas en programmation\n2000 création extreme programming france (devenue Agile France)\n2012 parution \"Spécifiez agile\" sur LeanPub",
+        "urlimage": "http://www.gravatar.com/avatar/53a108bd77daa806cc8828e2fd38e7ce",
+        "nbConsults": 9,
+        "linkers": [156],
+        "sharedLinks": [
+            {
+                "id": 329,
+                "name": "Site Web",
+                "url": "http://thierrycros.net",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 641,
+        "firstname": "Éric",
+        "lastname": "Daspet",
+        "login": "edas",
+        "company": "TEA, the e-book alternative",
+        "shortdesc": "Directeur technique de TEA, militant d\u0027un web ouvert et de qualité",
+        "longdesc": "Co-fondateur et directeur technique de [TEA, the ebook alternative], [Éric] y aide des libraires à passer au livre numérique avec une solution ouverte et complète, de l\u0027entrepôt jusqu\u0027aux solutions de lecture.\n\nDans son passé Éric a écrit le bestseller [PHP 5 avancé]. Après un tour à Yahoo! il a développé une expertise sur la performance des sites web et a commencé un [projet de livre] qu\u0027il a partagé à la communauté. Convaincu par la nécessité d\u0027un web ouvert et de qualité il a co-fondé les conférences [Paris-Web].\n\nIl sera ravi de parler avec vous de performance web, de livre numérique, de recrutement, de start-up, de vie privée, d\u0027identité numérique, d\u0027architectures décentralisées, et de tout ce qu\u0027il ne connait pas encore.\n\n [Éric]: http://eric.daspet.name/\n [TEA, the ebook alternative]: http://www.tea-ebook.com/\n [PHP 5 avancé]: http://www.eyrolles.com/Accueil/Auteur/eric-daspet-48750\n [Paris-Web]: http://www.paris-web.fr/\n [projet de livre]: https://github.com/edas/webperf-book",
+        "urlimage": "http://www.gravatar.com/avatar/a83a70aa42afa4c45563213e6ffc03ce",
+        "nbConsults": 14,
+        "links": [668, 576, 234, 655, 534, 216, 490, 645, 63],
+        "linkers": [5, 69, 252, 196, 42, 13, 131, 27, 107, 63, 74, 353, 22, 149, 45, 345, 41, 78, 153, 350, 77, 183, 237, 174, 199, 240, 17, 251, 333],
+        "sharedLinks": [
+            {
+                "id": 386,
+                "name": "Site perso",
+                "url": "http://eric.daspet.name/",
+                "ordernum": 0
+            },
+            {
+                "id": 387,
+                "name": "Blog divers",
+                "url": "http://n.survol.fr/",
+                "ordernum": 1
+            },
+            {
+                "id": 388,
+                "name": "TEA the ebook alternative",
+                "url": "http://www.tea-ebook.com/",
+                "ordernum": 2
+            },
+            {
+                "id": 389,
+                "name": "PHP 5 avancé",
+                "url": "http://www.eyrolles.com/Accueil/Auteur/eric-daspet-48750",
+                "ordernum": 3
+            },
+            {
+                "id": 390,
+                "name": "Livre ouvert webperf",
+                "url": "https://github.com/edas/webperf-book",
+                "ordernum": 4
+            }
+        ]
+    },
+    {
+        "id": 160,
+        "firstname": "Vincent",
+        "lastname": "Daviet",
+        "login": "vincent.daviet",
+        "company": "",
+        "shortdesc": "Scrum Master, coach agile",
+        "longdesc": "Membre actif du Club Agile Rhône-Alpes, il a été 3 ans Product Owner et ScrumMaster en agence web.\nPuis depuis 2 ans Consultant Web et Agilité en SSII chez Osiatis Ingénierie, principalement pour le compte d\u0027Orange France Télécom. \n\nSa spécialité : les jeux agiles, d’innovation, et de collaboration. ",
+        "urlimage": "http://www.gravatar.com/avatar/5320948275e14a08565d1a23e0f84d3f",
+        "nbConsults": 23,
+        "links": [6, 5],
+        "linkers": [5, 24, 13, 27, 107, 43, 29, 121, 74, 22, 3, 18, 26, 110, 33, 105, 31, 45, 32, 114, 14, 8, 80, 91, 70, 10, 64, 39, 44, 41, 34, 97, 78, 35, 12, 113, 17, 21, 15, 61, 16, 23, 30],
+        "sharedLinks": [
+            {
+                "id": 427,
+                "name": "babagile",
+                "url": "http://babagile.tumblr.com",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 189,
+        "firstname": "nicolas",
+        "lastname": "De loof",
+        "login": "ndeloof",
+        "company": "CloudBees",
+        "shortdesc": "Jug-leader Rennais et évangéliste Jenkins + Cloud",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/2983ff4b1cfdd190e9a42e1e6c6e7327",
+        "nbConsults": 59,
+        "links": [3, 8, 1, 2],
+        "linkers": [145, 87, 55, 144, 70, 196, 191, 12, 199, 186, 163, 88, 16, 130, 14],
+        "sharedLinks": [
+            {
+                "id": 284,
+                "name": "geek",
+                "url": "http://blog.loof.fr",
+                "ordernum": 0
+            },
+            {
+                "id": 285,
+                "name": "work",
+                "url": "http://cloudbees.com",
+                "ordernum": 1
+            },
+            {
+                "id": 286,
+                "name": "socialize",
+                "url": "http://www.breizhjug.org",
+                "ordernum": 2
+            },
+            {
+                "id": 287,
+                "name": "organize",
+                "url": "http://www.breizhcamp.org",
+                "ordernum": 3
+            }
+        ]
+    },
+    {
+        "id": 666,
+        "firstname": "Sébastien",
+        "lastname": "Deleuze",
+        "login": "sdeleuze",
+        "company": "Atos Worldline",
+        "shortdesc": "Développeur web et architecte logiciel, j\u0027ai créé les projets Open Source OpenScales, RESThub et Jyuro",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/04bf197ddd198f4ff3a50e93ebd37272",
+        "nbConsults": 22,
+        "links": [3, 81, 6, 8, 1, 2],
+        "linkers": [105, 8, 451]
+    },
+    {
+        "id": 601,
+        "firstname": "Géry",
+        "lastname": "Derbier",
+        "login": "gery.derbier",
+        "company": "",
+        "shortdesc": "Considère le développement de logiciel comme un jeu coopératif d\u0027invention et de communication économiquement contraint. ",
+        "longdesc": "Géry Derbier travaille dans l\u0027industrie du logiciel depuis la fin des années 80. Il a développé une expertise sur le développement agile depuis l\u0027apparition de ce mouvement. Il a travaillé pour l\u0027industrie, l\u0027édition de logiciel et le service. Il considère le développement de logiciel comme un jeu coopératif d\u0027invention et de communication économiquement contraint.",
+        "urlimage": "http://www.gravatar.com/avatar/b1889ba8ce9fa0254e1bc68c01a32258",
+        "nbConsults": 14,
+        "linkers": [156, 4, 288]
+    },
+    {
+        "id": 567,
+        "firstname": "Loïc",
+        "lastname": "Frering",
+        "login": "loicfrering",
+        "company": "",
+        "shortdesc": "Polyglot Code Crawler \u0026 Writer.",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/c536079d77146d0902bdef0fcd1cbc25",
+        "nbConsults": 19,
+        "links": [81, 564],
+        "linkers": [156, 81, 823, 568, 451],
+        "sharedLinks": [
+            {
+                "id": 305,
+                "name": "GitHub",
+                "url": "https://github.com/loicfrering",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 575,
+        "firstname": "Ivana",
+        "lastname": "Gancheva",
+        "login": "ivana.gancheva",
+        "company": "",
+        "shortdesc": "Ivana is an agile developer, project manager and business influence. She is a passionate leader and community contributor.",
+        "longdesc": "Ivana is an agile developer, project manager and business influencer. She establishes links between developers and business. She is a passionate leader and community contributor. She is a relentless critical thinker who focuses on listening between the lines. She strives for continuous improvement, inspires and links people. She lives in Trondheim, and adores rollerblading.",
+        "urlimage": "http://www.gravatar.com/avatar/c7b8f3db78826bc9228f566285d68258",
+        "nbConsults": 81,
+        "linkers": [184, 252, 236, 42, 79, 131, 221, 192, 29, 256, 18, 26, 241, 177, 238, 33, 105, 31, 45, 230, 215, 70, 234, 39, 44, 41, 35, 183, 6, 83, 199, 174, 206, 147, 212, 251, 263, 262, 258, 119, 171]
+    },
+    {
+        "id": 664,
+        "firstname": "Ursula",
+        "lastname": "GASTFALL",
+        "login": "ursula",
+        "company": "",
+        "shortdesc": "membre du /tmp/lab, hackerspace créé en 2007 et d\u0027Usinette.org, hackerspace spécifiquement dédié à la construction numérique.",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/baa4cf2e91dc7918bda717816cc74078",
+        "nbConsults": 16,
+        "linkers": [156, 561]
+    },
+    {
+        "id": 698,
+        "firstname": "Didier",
+        "lastname": "Girard",
+        "login": "didier.girard",
+        "company": "SFEIR",
+        "shortdesc": "Directeur des Opérations et de l\u0027Innovation",
+        "longdesc": "Directeur des Operations et de L\u0027innovation chez SFEIR, Didier Girard est Docteur en Informatique de l\u0027ENS Lyon. Il aime acquérir des connaissances et les partager. Toujours à la recherche de technologies qui va s\u0027imposer sur le marché dans les années à venir. Il travaille sur des projets mettant en oeuvre le Cloud Computing depuis 2008.",
+        "urlimage": "http://www.gravatar.com/avatar/ece9780c444d2306259572b997aca0ef",
+        "nbConsults": 15,
+        "linkers": [156, 8, 368]
+    },
+    {
+        "id": 564,
+        "firstname": "Zach",
+        "lastname": "Holman",
+        "login": "holman",
+        "company": "GitHub",
+        "shortdesc": "door-to-door git repository salesman for github inc.",
+        "longdesc": "Zach works at GitHub. When he\u0027s not doing that, he\u0027s blogging, hacking on open source, and giving talks about building products, growing startups, and using Ruby. He lives in San Francisco.",
+        "urlimage": "http://www.gravatar.com/avatar/78b475797a14c84799063c7cd073962f",
+        "nbConsults": 69,
+        "linkers": [63, 74, 69, 14],
+        "sharedLinks": [
+            {
+                "id": 299,
+                "name": "blog",
+                "url": "http://zachholman.com",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 591,
+        "firstname": "Svetlana",
+        "lastname": "Isakova",
+        "login": "sveta.isakova",
+        "company": "JetBrains",
+        "shortdesc": "Developer of Kotlin language.",
+        "longdesc": "Svetlana is a developer of the Kotlin language at JetBrains.\nShe is interested in different programming languages.\nAlso she teaches Scala course at St. Petersburg Academic University.",
+        "urlimage": "http://www.gravatar.com/avatar/c49d50cfdedcf450cd704ad3340f0609",
+        "nbConsults": 133,
+        "linkers": [206, 186, 19, 2, 66],
+        "sharedLinks": [
+            {
+                "id": 322,
+                "name": "Kotlin",
+                "url": "http://kotlin.jetbrains.org/",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 135,
+        "firstname": "Jean-françois",
+        "lastname": "Jagodzinski",
+        "login": "jfjago",
+        "company": "Agilessence",
+        "shortdesc": "J\u0027ai glissé dans l\u0027agilité, ça me colle aux baskets",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/4ad028a17a0153b32ce6c690dcf59079",
+        "nbConsults": 70,
+        "linkers": [27],
+        "sharedLinks": [
+            {
+                "id": 306,
+                "name": "Blog",
+                "url": "http://my.opera.com/jfjago/blog/",
+                "ordernum": 0
+            },
+            {
+                "id": 307,
+                "name": "Site",
+                "url": "http://www.agilessence.fr",
+                "ordernum": 1
+            }
+        ]
+    },
+    {
+        "id": 597,
+        "firstname": "de Morlhon",
+        "lastname": "Jean-Laurent",
+        "login": "morlhon",
+        "company": "Xebia",
+        "shortdesc": "Exploring Software Craftsmanship. CTO @ Xebia France. Founder @ http://serpodile.com. Happy father of 4 kids.",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/649d3668d3ba68e75a3441dec9eac26e",
+        "nbConsults": 16,
+        "linkers": [180, 8, 184, 122, 5, 134, 103, 2, 273, 72, 156, 76, 183, 27, 77, 6, 29, 237, 141, 22, 256, 15, 135, 105]
+    },
+    {
+        "id": 662,
+        "firstname": "Nicolas",
+        "lastname": "JOZWIAK",
+        "login": "njozwiak",
+        "company": "Xebia",
+        "shortdesc": "Développeur et agiliste passionné",
+        "longdesc": "Nicolas est un ingénieur d’études confirmé disposant de 7 ans d’expérience en conception et\ndéveloppement sur les technologies Java/JEE. Son parcours chez un éditeur avant son entrée chez Xebia\nlui a notamment permis de développer de solides compétences dans le domaine de la qualité et de\nl’industrialisation (tests, intégration continue, gestion de configuration, contrôle qualité).\nBénéficiant d’une expérience très solide de mise en place des méthodes agiles et d’accompagnement\nd’équipes sur le terrain, il s’attache à mettre à profit quotidiennement son expérience qui est reconnue pour\nson approche pragmatique, proactive et pédagogique.",
+        "urlimage": "http://www.gravatar.com/avatar/add8ecbfb00acbe80991dd1570f57002",
+        "nbConsults": 8,
+        "linkers": [180, 27, 29, 275, 240, 144, 64, 66, 171, 33]
+    },
+    {
+        "id": 672,
+        "firstname": "Josh",
+        "lastname": "Kalderimis",
+        "login": "j2h",
+        "company": "Travis CI",
+        "shortdesc": "Shipping technical debt daily!\nOh, and I work for Travis.",
+        "longdesc": "I program in Ruby and Java and Go.\n\nI love popcorn and running and craft beer and hunting for crayfish.\n\nIf I was a fish I would be a salmon.",
+        "urlimage": "http://www.gravatar.com/avatar/f45c05ad2fca21e73fe4010a35b61f87",
+        "nbConsults": 8,
+        "linkers": [89, 275, 69, 252, 274, 196, 221, 76, 156, 63, 74, 353, 22, 208, 101, 180, 145, 343, 296, 144, 7, 134, 70, 139, 355, 41, 381, 143, 271, 199, 336, 212, 262, 23, 171, 173],
+        "sharedLinks": [
+            {
+                "id": 392,
+                "name": "Travis CI",
+                "url": "http://travis-ci.org",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 615,
+        "firstname": "Benoit",
+        "lastname": "Lafontaine",
+        "login": "joel1di1",
+        "company": "OCTO",
+        "shortdesc": "Consultant OCTO, Responsable technique OCTO On Line. Aime le code de qualité et les projets qui aboutissent.",
+        "longdesc": "Architecte senior chez OCTO, Benoît a pour leitmotiv la productivité des développements.\nSpécialisé dans les technologies Java depuis 2001, il a travaillé pour une grande variété de clients, parmi lesquels on trouve EDF, La Société Générale, Carrefour, Amadeus ou Total. Il a animé la communauté Java chez OCTO pendant 3 ans et il a coécrit le livre blanc OCTO sur la productivité des développements : \u0027Java Productivit Primer\u0027. En 2012, il co-écrit l\u0027ouvrage \"les Géants du Web\" [http://www.geantsduweb.com/].\nDepuis 2011, il travaille au sein de l\u0027équipe OCTO Online, dont le premier projet est Appaloosa [www.appaloosa-store.com], un store d\u0027entreprise privé et multiplateformes. Cette fois-ci, la technologie utilisée est Rails et la solution est entièrement basée sur des services cloud comme Heroku ou amazon S3.",
+        "urlimage": "http://www.gravatar.com/avatar/71f6a57e343263e6c38bb1ccb091c379",
+        "nbConsults": 16,
+        "linkers": [275, 69, 252, 274, 27, 63, 146, 163, 22, 3, 130, 149, 14, 4, 180, 145, 239, 80, 144, 277, 70, 134, 64, 150, 183, 35, 12, 83, 240, 212, 251, 262, 16, 30, 171]
+    },
+    {
+        "id": 27,
+        "firstname": "Guillaume",
+        "lastname": "Laforge",
+        "login": "glaforge",
+        "company": "WMware",
+        "shortdesc": "Groovy project manager",
+        "longdesc": "As Head of [Groovy](http://groovy.codehaus.org/) Development for **SpringSource, a division of VMware**, Guillaume Laforge is the official **Groovy Project Manager**, and the spec lead of JSR-241, the Java Specification Request that standardizes the Groovy dynamic language.\u003cbr /\u003e\nHe initiated the creation of the [Grails](http://grails.org/) web application framework, and founded the [Gaelyk project](http://gaelyk.appspot.com/), a lightweight toolkit for developing applications in Groovy for **Google App Engine**.\u003cbr /\u003e\nHe is also a **frequent conference speaker** presenting Groovy, Grails, Gaelyk, Domain-Specific Languages at JavaOne, GR8Conf, SpringOne2GX, QCon, and Devoxx, among others.\u003cbr /\u003e\nGuillaume also **co-authored** [Groovy in Action](http://www.manning.com/koenig/) along with Dierk König and Paul King, two famous Groovy committers.\u003cbr /\u003e\nBefore founding G2One, which was acquired by SpringSource in late 2008, and taking the role of VP Technology, Guillaume worked for [OCTO Technology](http://www.octo.com/), a consultancy focusing on architecture and agile methodologies. While at OCTO, Guillaume developed new offerings around Groovy and Grails for its customers.\u003cbr /\u003e\nGuillaume is also one of the founding members of [the French Java/OSS/IT podcast LesCastCodeurs](http://lescastcodeurs.com/).",
+        "urlimage": "http://www.gravatar.com/avatar/137d3908243acfc30e126615d59d4e6d",
+        "nbConsults": 88,
+        "linkers": [55],
+        "sharedLinks": [
+            {
+                "id": 95,
+                "name": "Blog",
+                "url": "http://glaforge.appspot.com",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 645,
+        "firstname": "David",
+        "lastname": "Larlet",
+        "login": "david",
+        "company": "scopyleft",
+        "shortdesc": "Artisan, geek \u0026 citoyen.",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/daac2028dd52a4cda7c9133b5c22a0db",
+        "nbConsults": 25,
+        "links": [3],
+        "linkers": [214, 294, 196, 211, 27, 175, 146, 317, 142, 177, 241, 149, 31, 8, 180, 137, 313, 215, 39, 34, 143, 261, 183, 257, 136, 237, 247, 206, 240, 259, 258, 48, 287, 173],
+        "sharedLinks": [
+            {
+                "id": 368,
+                "name": "Identité",
+                "url": "https://larlet.fr/david/",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 582,
+        "firstname": "Samuel",
+        "lastname": "Le Berrigaud",
+        "login": "sleberrig",
+        "company": "Atlassian",
+        "shortdesc": "Software dude @ Atlassian.",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/b3c38a67cf5ba23f28b3629940afe1b7",
+        "nbConsults": 13,
+        "linkers": [267, 196, 13, 269, 27, 121, 46, 186, 3, 18, 26, 266, 265, 66, 130, 14, 11, 181, 104, 122, 111, 239, 134, 2, 166, 133, 193, 268, 257, 147, 15, 262, 264]
+    },
+    {
+        "id": 82,
+        "firstname": "Mathilde",
+        "lastname": "Lemee",
+        "login": "MathildeLemee",
+        "company": "",
+        "shortdesc": "Freelance sur Paris",
+        "longdesc": "Java - Test - Agilité",
+        "urlimage": "http://www.gravatar.com/avatar/c27a1294054155811ec499d013e113a4",
+        "nbConsults": 161,
+        "links": [6, 75, 5, 227, 33, 98, 3, 66, 48, 27, 168, 76, 36, 86, 10, 203, 8, 226, 7, 133, 30, 103, 292, 11, 58, 4, 1, 169, 2],
+        "linkers": [6, 405, 372, 98, 33, 3, 248, 66, 156, 500, 48, 387, 624, 86, 640, 649, 436, 13, 331, 100, 8, 203, 226, 133, 103, 58, 154, 1, 729, 260, 333, 368],
+        "sharedLinks": [
+            {
+                "id": 83,
+                "name": "Blog",
+                "url": "http://www.java-freelance.fr",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 304,
+        "firstname": "thomas",
+        "lastname": "lissajoux",
+        "login": "thomaslissajoux",
+        "company": "",
+        "shortdesc": "Coach pour responsables IT",
+        "longdesc": "**\"Making products is about making people”**\n\nFort de cette conviction, j\u0027aide les personnes métiers, les développeurs et les utilisateurs à communiquer, créer et changer. Pour cela, j\u0027utilise des principes et outils agile, lean et systémiques.\n\n- J\u0027accompagne des managers IT : [thomaslissajoux.com](http://www.thomaslissajoux.com)\n- et les interviews pour partager leurs expériences : [LesManagersIT.com](http://LesManagersIT.com)",
+        "urlimage": "http://www.gravatar.com/avatar/4b8cccad263c78814bf64482f5f182bb",
+        "nbConsults": 27,
+        "links": [271, 6, 18, 5, 180, 199, 23, 139, 162, 218, 175, 123, 150, 163, 177, 22, 17, 229, 50, 234, 208, 133, 299, 103, 20, 238, 25, 368],
+        "linkers": [346, 39, 44, 34, 41, 42, 350, 27, 35, 136, 113, 18, 26, 30, 33, 31, 45],
+        "sharedLinks": [
+            {
+                "id": 380,
+                "name": "ThomasLissajoux.com",
+                "url": "http://thomaslissajoux.com",
+                "ordernum": 0
+            },
+            {
+                "id": 381,
+                "name": "LesManagersIT.com",
+                "url": "http://LesManagersIT.com",
+                "ordernum": 1
+            }
+        ]
+    },
+    {
+        "id": 105,
+        "firstname": "Matthieu",
+        "lastname": "Lux",
+        "login": "Swiip",
+        "company": "Zenika",
+        "shortdesc": "Architecte Java EE et Web chez Zenika Lyon",
+        "longdesc": "Matthieu Lux est Architecte Java EE et Web au sein de l\u0027agence lyonnaise de Zenika. (@Swiip \u0026 http://swiip.github.com/) Il intervient en conseil et en réalisation Java et JavaScript. Sa contribution technique à de nombreux projets Web, dont le plus visible http://www.meteofrance.com, lui a permis d\u0027être expert à la fois dans les architectures Java EE (Spring, Hibernate, JPA ...), dans le Web (HTML5, AngularJS, GWT, jQuery, Backbone JS, Twitter Bootstrap ...) et dans le domaine de la mobilité (Android, PhoneGap ...). Passionné de JavaScript, il participe également à l\u0027animation du Lyon JS.",
+        "urlimage": "http://www.gravatar.com/avatar/27bd774790e70807a5489b31f668a71e",
+        "nbConsults": 41,
+        "links": [138, 51, 109, 10, 666, 1, 2],
+        "linkers": [89, 5, 84, 13, 72, 20, 27, 46, 74, 22, 54, 14, 11, 8, 38, 7, 70, 2, 64, 77, 12, 6, 17, 21, 15, 86, 23, 48],
+        "sharedLinks": [
+            {
+                "id": 437,
+                "name": "Site",
+                "url": "http://swiip.github.com",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 154,
+        "firstname": "Johan",
+        "lastname": "Martinsson",
+        "login": "johan.martinsson",
+        "company": "Independant",
+        "shortdesc": "Accompagnateur d\u0027eXtreme Programming",
+        "longdesc": "I help software teams  \n- Concentrate on the users point of view\n- Invert the technical debt trend, by improving coding skills and developing good tests.\n- Embrace systems thinking, i.e. optimizing flow from idea to working product\n\nAs a result you\u0027ll \n- get happier teams\n- that deliver useful software sooner\n- with drastically less bugs\n- and with a very low maintenance ratio\n\nI\u0027m not a consultant that gives advice and then runs away. I come to work with you as a developer that is part of the team. Thus I have time help you make the first changes that are necessary in your context and to communicate the mindset that keeps improvements going when I\u0027ve left.",
+        "urlimage": "http://www.gravatar.com/avatar/3771a70b46d12cb049e7be561ae69116",
+        "nbConsults": 42,
+        "links": [13, 6, 134, 379, 49, 23, 103, 82, 139, 184, 161, 78, 4, 238, 1],
+        "linkers": [106, 89, 122, 2, 78, 27, 35, 63, 17, 3, 21, 22, 101, 33, 105, 14],
+        "sharedLinks": [
+            {
+                "id": 142,
+                "name": "Blog",
+                "url": "http://martinsson-johan.blogspot.com/",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 680,
+        "firstname": "Maciej",
+        "lastname": "Małecki",
+        "login": "maciejmalecki",
+        "company": "Nodejitsu",
+        "shortdesc": "node.js engineer, working for nodejitsu.",
+        "longdesc": "Maciej is an auto-didact programmer and open-source advocate from Poland. He has studied many programming languages including Python, C, C# and client-side JavaScript before falling in love with Node.js.",
+        "urlimage": "http://www.gravatar.com/avatar/307999df7c27deafc2818fdcad76c8b4",
+        "nbConsults": 14,
+        "linkers": [296, 22, 134, 117, 114]
+    },
+    {
+        "id": 585,
+        "firstname": "laurent",
+        "lastname": "morisseau",
+        "login": "laurent.morisseau",
+        "company": "Morisseau Consulting",
+        "shortdesc": "Morisseau Consulting accompagne vos équipes et votre organisation à la transition aux méthodes agiles et Kanban depuis 2008. ",
+        "longdesc": "Laurent Morisseau est fondateur de Morisseau Consulting, \n* Coach / formateur Scrum et Kanban\n* Seul français certifié Scrum Coach par la Scrum Alliance\n* Seul français coach et formateur Kanban accrédité par la Lean Kanban University\n* Auteur du livre Kanban pour l’IT\n* Co auteur du livre Rupture Douce\n* Co-fondateur de la fédération Agile\n* Acteur impliqué des communautés agiles/lean locales, régionales et nationales",
+        "urlimage": "http://www.gravatar.com/avatar/41352db82d3ff9fe77f16c1473595d92",
+        "nbConsults": 8,
+        "linkers": [35, 27, 17, 18, 251, 26, 34],
+        "sharedLinks": [
+            {
+                "id": 316,
+                "name": "Site",
+                "url": "http://www.morisseauconsulting.com/",
+                "ordernum": 0
+            },
+            {
+                "id": 317,
+                "name": "Linked In",
+                "url": "http://www.linkedin.com/in/laurentmorisseau/",
+                "ordernum": 1
+            },
+            {
+                "id": 318,
+                "name": "Viadeo",
+                "url": "http://www.viadeo.com/fr/profile/laurent.morisseau",
+                "ordernum": 2
+            },
+            {
+                "id": 319,
+                "name": "Mes slides",
+                "url": "http://www.slideshare.net/morisseau",
+                "ordernum": 3
+            },
+            {
+                "id": 320,
+                "name": "Mes vidéos",
+                "url": "http://www.youtube.com/user/morisseauconsulting",
+                "ordernum": 4
+            }
+        ]
+    },
+    {
+        "id": 540,
+        "firstname": "Cyril",
+        "lastname": "Mottier",
+        "login": "cyrilmottier",
+        "company": "",
+        "shortdesc": "Android Google Developer Expert 2013. Passionate about Android, iOS, design, UI/UX, iconography, typography, etc.",
+        "longdesc": "Cyril Mottier is a Google Developer Expert dedicated to Android (see [this page][0] for more information about Google Developer Experts). Passionate about technology and design, Cyril is an avid lover of Android and a multi-skilled engineer. He is actively involved in the Android community and shares his passion writing blog posts, creating open source librairies and giving talks.\n\n[0]: https://developers.google.com/experts/",
+        "urlimage": "http://www.gravatar.com/avatar/e9bf8f6d5480ea2a2623df7dccfd1f70",
+        "nbConsults": 23,
+        "links": [639, 643, 7, 277, 144, 47, 98],
+        "linkers": [122, 24, 70, 2, 191, 13, 192, 161, 199, 74, 186, 185, 163, 21, 22, 23, 130, 32, 181, 14],
+        "sharedLinks": [
+            {
+                "id": 283,
+                "name": "Blog",
+                "url": "http://android.cyrilmottier.com",
+                "ordernum": 0
+            },
+            {
+                "id": 279,
+                "name": "GitHub",
+                "url": "https://github.com/cyrilmottier",
+                "ordernum": 1
+            },
+            {
+                "id": 281,
+                "name": "Twitter",
+                "url": "https://twitter.com/cyrilmottier",
+                "ordernum": 2
+            },
+            {
+                "id": 282,
+                "name": "LinkedIn",
+                "url": "http://www.linkedin.com/in/cyrilmottier",
+                "ordernum": 3
+            }
+        ]
+    },
+    {
+        "id": 639,
+        "firstname": "Alexis",
+        "lastname": "Moussine-Pouchkine",
+        "login": "alexis.mp",
+        "company": "Google",
+        "shortdesc": "Developer Relations",
+        "longdesc": "10 year Java/Sun veteran, now dreaming of cloud, modern web and mobile at Google.",
+        "urlimage": "http://www.gravatar.com/avatar/aafd9d928b31528176eeb940f671bf96",
+        "nbConsults": 18,
+        "linkers": [304, 5, 274, 292, 65, 273, 13, 20, 300, 74, 163, 22, 130, 99, 135, 149, 181, 14, 11, 4, 246, 122, 296, 111, 239, 80, 144, 70, 64, 2, 170, 153, 133, 143, 12, 199, 174, 240, 160, 21, 15, 251, 102, 23, 119],
+        "sharedLinks": [
+            {
+                "id": 364,
+                "name": "Bistro 2.0",
+                "url": "http://alexismp.wordpress.com",
+                "ordernum": 0
+            },
+            {
+                "id": 395,
+                "name": "Google Developers",
+                "url": "http://developers.google.com",
+                "ordernum": 1
+            }
+        ]
+    },
+    {
+        "id": 669,
+        "firstname": "Jean-Baptiste",
+        "lastname": "Nizet",
+        "login": "jbnizet",
+        "company": "Ninja Squad",
+        "shortdesc": "Développeur et fier de l\u0027être depuis 1997. Contributeur passionné à StackOverflow.com.",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/dbdda0ab21995afb3a5888310b8d166b",
+        "nbConsults": 11,
+        "linkers": [200, 766, 8, 644],
+        "sharedLinks": [
+            {
+                "id": 391,
+                "name": "Ninja Squad",
+                "url": "http://www.ninja-squad.fr",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 368,
+        "firstname": "Xavier",
+        "lastname": "NOPRE",
+        "login": "xnopre",
+        "company": "Logixen",
+        "shortdesc": "Coach en ingénierie agile, développeur Java \u0026 WEB",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/3e5f9fc32125eec26e09b0eff9cb9e24",
+        "nbConsults": 29,
+        "links": [18, 5, 142, 49, 209, 23, 16, 139, 431, 161, 248, 175, 3, 66, 123, 156, 150, 27, 671, 135, 314, 22, 17, 50, 13, 24, 698, 379, 8, 226, 30, 84, 103, 82, 184, 20, 292, 40, 154, 78, 207, 4, 306, 238, 25, 337, 333, 41],
+        "linkers": [275, 5, 279, 13, 27, 46, 163, 3, 141, 130, 33, 135, 31, 14, 181, 70, 64, 2, 153, 232, 12, 257, 136, 247, 17, 147, 15],
+        "sharedLinks": [
+            {
+                "id": 227,
+                "name": "Blog",
+                "url": "http://xnopre.blogspot.com/",
+                "ordernum": 0
+            },
+            {
+                "id": 333,
+                "name": "Viadéo",
+                "url": "http://fr.viadeo.com/fr/profile/xavier.nopre",
+                "ordernum": 1
+            },
+            {
+                "id": 334,
+                "name": "LinkedIn",
+                "url": "http://www.linkedin.com/in/xnopre",
+                "ordernum": 2
+            }
+        ]
+    },
+    {
+        "id": 579,
+        "firstname": "Nick",
+        "lastname": "Oostvogels",
+        "login": "nick.oostvogels",
+        "company": "SkyCoach",
+        "shortdesc": "Agile coach, Lean enthusiast, book addict, mountainbike amateur, blogger, author of Kanban for skeptics",
+        "longdesc": "Nick is an independent consultant who helps organizations to deliver successful projects in whatever role necessary, often as a project manager or coach. Nick has 5 years of hands-on experience in agile and lean and 12 years experience in software development. He is a proud father of a daughter and twin boys, and enjoys outdoor sports such as mountain bike, running, soccer and drinking a Duvel afterwards. Nick is a regular blogger at skycoach.be and enjoys speaking and learning at conferences.\n\n\n\n\n",
+        "urlimage": "http://www.gravatar.com/avatar/6d83de98d3061f1dec07f53f5e7d6d5a",
+        "nbConsults": 11,
+        "linkers": [35, 27, 202, 184, 147, 17, 18, 236, 26, 41, 31, 45],
+        "sharedLinks": [
+            {
+                "id": 313,
+                "name": "Blog",
+                "url": "http://www.skycoach.be",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 651,
+        "firstname": "Nicolas",
+        "lastname": "Perriault",
+        "login": "n1k0",
+        "company": "scopyleft",
+        "shortdesc": "Amateur éclairé.",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/c0240424425f5ca75071b478c0dc29b9",
+        "nbConsults": 15,
+        "linkers": [8, 137, 5, 336, 245, 313, 334, 335, 249],
+        "sharedLinks": [
+            {
+                "id": 370,
+                "name": "Blog",
+                "url": "https://nicolas.perriault.net/",
+                "ordernum": 0
+            },
+            {
+                "id": 371,
+                "name": "Société",
+                "url": "http://scopyleft.fr/",
+                "ordernum": 1
+            }
+        ]
+    },
+    {
+        "id": 607,
+        "firstname": "David",
+        "lastname": "Pilato",
+        "login": "dadoonet",
+        "company": "Elasticsearch ",
+        "shortdesc": "Technical advocate at [Elasticsearch.com](http://www.elasticsearch.com/)",
+        "longdesc": "David Pilato est \"technical advocate\" chez Elasticsearch.com, après avoir passé les deux dernières années à promouvoir le projet open-source Elasticsearch, dont il anime la communauté française. Fidèle des JUG, il a donné une conférence sur le sujet lors de la première édition de Devoxx France en avril 2012 et sillonne désormais les routes de France pour partager sa passion.\nIl a implémenté un certain nombre de plugins pour l\u0027écosystème Elasticsearch (Rivers RSS, FileSystem et DropBox, Factories Spring).\n\nIl a également implémenté Elasticsearch pour plusieurs projets, dont une importante administration française. Il est le co-auteur du projet open-source [Scrutmydocs.org](http://www.scrutmydocs.org/) basé sur Elasticsearch qui permet de disposer d\u0027un moteur de recherche \"à la google\" des documents de vos disques durs.\n\n@dadoonet et @ElasticsearchFR sur Twitter\n\n[dadoonet](https://github.com/dadoonet) sur GitHub",
+        "urlimage": "http://www.gravatar.com/avatar/20049a614b7f6838dc87b4bc39c42079",
+        "nbConsults": 18,
+        "linkers": [589, 649, 156, 8, 624, 623],
+        "sharedLinks": [
+            {
+                "id": 421,
+                "name": "blog",
+                "url": "http://dev.david.pilato.fr/",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 649,
+        "firstname": "Ludwine",
+        "lastname": "Probst",
+        "login": "nivdul",
+        "company": "",
+        "shortdesc": "Développeuse Java. Membre des DuchessFr et du GDG Paris.",
+        "longdesc": "Après un master en Mathématiques Recherche, je me suis retrouvée un peu par hasard dans le monde de l\u0027informatique. Je suis aujourd\u0027hui consultante Java chez voyages-sncf.com. En parallèle, je me m\u0027investi dans l\u0027organisation d\u0027évènements techniques pour les DuchessFr et le GDG Paris, deux groupes dont je suis membre. Je participe aussi très régulièrement aux évènements tels que Hackergarten, PSUG, JavaCamp...C\u0027est une façon pour moi d\u0027améliorer plus rapidement mes connaissances informatiques et de rester ouverte à de nouvelles technologies. \n\nCes derniers mois, je m\u0027intéresse surtout à la programmation fonctionnelle, Scala et les problématiques autour de Big Data.",
+        "urlimage": "http://www.gravatar.com/avatar/12fb119c7420fc9ee5b3896c2cceb892",
+        "nbConsults": 27,
+        "links": [640, 589, 628, 596, 595, 659, 277, 594, 47, 82, 292, 3, 389, 278, 237, 624, 607, 260],
+        "linkers": [4, 304, 277, 252, 2, 150, 284, 151, 35, 175, 121, 300, 46, 3, 317, 306, 66, 105, 31, 11, 14],
+        "sharedLinks": [
+            {
+                "id": 402,
+                "name": "linkedin",
+                "url": "http://fr.linkedin.com/in/ludwineprobst/",
+                "ordernum": 0
+            }
+        ]
+    },
+    {
+        "id": 248,
+        "firstname": "Jean-Louis",
+        "lastname": "Rigau",
+        "login": "jlrigau",
+        "company": "Xebia IT Architects",
+        "shortdesc": "Consultant Java EE / Scrum Master, Xebia IT Architects",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/9693df010bfd74e1074d6959d0e016b6",
+        "nbConsults": 19,
+        "links": [24, 23, 30, 82, 98, 292, 58, 3, 173, 150, 27, 88, 76, 124, 151, 1, 237, 313, 260, 2],
+        "linkers": [184, 5, 13, 79, 27, 43, 74, 163, 22, 3, 18, 26, 33, 31, 14, 70, 2, 34, 133, 183, 35, 12, 136, 199, 17, 147, 21, 171]
+    },
+    {
+        "id": 546,
+        "firstname": "Camille",
+        "lastname": "Roux",
+        "login": "camilleroux",
+        "company": "Human Coders",
+        "shortdesc": "Cofondateur de [Human coders](http://humancoders.com)",
+        "longdesc": "Cofondateur de [Human coders](http://humancoders.com)",
+        "urlimage": "http://www.gravatar.com/avatar/99516bb8f8ee4ba53a616f5e1b68c7d1",
+        "nbConsults": 57,
+        "links": [417, 422, 6, 5, 227, 574, 575, 61, 3, 673, 156, 48, 690, 168, 135, 663, 566, 10, 189, 8, 280, 226, 565, 7, 21, 11, 4, 564, 651, 365, 1, 2],
+        "linkers": [69, 196, 131, 192, 162, 193, 35, 183, 63, 247, 174, 17, 22, 18, 26, 32, 14],
+        "sharedLinks": [
+            {
+                "id": 295,
+                "name": "Blog",
+                "url": "http://www.camilleroux.com",
+                "ordernum": 0
+            },
+            {
+                "id": 296,
+                "name": "Human Coders",
+                "url": "http://humancoders.com",
+                "ordernum": 1
+            },
+            {
+                "id": 297,
+                "name": "Human Coders Jobs",
+                "url": "http://jobs.humancoders.com",
+                "ordernum": 2
+            },
+            {
+                "id": 298,
+                "name": "Human Coders Formations",
+                "url": "http://formations.humancoders.com",
+                "ordernum": 3
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "firstname": "guillaume",
+        "lastname": "saint etienne",
+        "login": "guillaume_agile",
+        "company": "varian",
+        "shortdesc": "dev senior et artisan logiciel",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/a7afaff8d03caf99e278bdaa1580d062",
+        "nbConsults": 38,
+        "linkers": [67, 5, 84, 13, 27, 29, 63, 3, 15, 61, 48, 66, 31, 32]
+    },
+    {
+        "id": 184,
+        "firstname": "Rémy",
+        "lastname": "Sanlaville",
+        "login": "remy.sanlaville",
+        "company": "",
+        "shortdesc": "L\u0027ingénierie logicielle est ma passion et je défends le métier de développeur. TDD/Coding Dojo addict, ATDD, amélioration continue... ",
+        "longdesc": "Après une thèse en architecture logicielle, Rémy a rejoint Orange comme développeur java avancé. Passionné par le génie logiciel, il travaille depuis 6 ans sur la mise en place de pratiques et d\u0027outils d\u0027ingénierie logicielle ainsi que des méthodes agiles. Il a mis en place le Coding-Dojo à Grenoble en 2009, organisé le premier Code Retreat en France en 2011, le premier Legacy Code Retreat au monde en 2011 présenté par J.B. Rainsberger. Il a co-initié la communauté BDD sur Grenoble via le premier atelier BDD en France en 2012.",
+        "urlimage": "http://www.gravatar.com/avatar/4f5f6316a600aff6ff28c847575ac47f",
+        "nbConsults": 31,
+        "links": [13, 5, 379, 142, 16, 236, 84, 103, 139, 431, 161, 66, 154, 671, 135, 238, 368],
+        "linkers": [13, 142, 379, 236, 103, 139, 431, 161, 637, 154, 156, 671, 238, 1, 729, 368]
+    },
+    {
+        "id": 350,
+        "firstname": "Jonathan",
+        "lastname": "Scher",
+        "login": "jonathan.scher",
+        "company": "",
+        "shortdesc": "Consultant Agile chez Octo Technology",
+        "longdesc": "A la recherche d\u0027une meilleure collaboration entre nos équipes, j\u0027ai découvert les méthodes agiles. J\u0027interviens désormais en tant que consultant, coach ou tech lead Java pour adapter Scrum, le Lean et l\u0027eXtreme Programing à votre contexte.",
+        "urlimage": "http://www.gravatar.com/avatar/d03199028f7f40027c1ad60e32b6ea0e",
+        "nbConsults": 21,
+        "linkers": [156, 306, 177, 133, 1, 372]
+    },
+    {
+        "id": 623,
+        "firstname": "Grall",
+        "lastname": "Tugdual",
+        "login": "tgrall",
+        "company": "Couchbase",
+        "shortdesc": "Technical Evangelist at Couchbase. NantesJUG Founder. Slow triathlete author of www.resultri.com",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/aab9ac774f61c5d9bf143b5a1bfe901b",
+        "nbConsults": 14,
+        "links": [58, 3, 8, 594, 30, 607],
+        "linkers": [243, 118, 55, 294, 274, 273, 220, 79, 76, 63, 146, 186, 22, 54, 101, 66, 155, 181, 8, 282, 122, 137, 296, 203, 168, 244, 7, 70, 2, 39, 284, 191, 117, 170, 78, 153, 193, 299, 6, 271, 212, 160, 251, 262, 258, 119, 242, 287, 290, 89, 5, 279, 69, 289, 252, 65, 201, 42, 13, 72, 293, 29, 121, 46, 33, 149, 45, 14, 4, 145, 250, 246, 38, 278, 144, 297, 277, 159, 161, 143, 12, 237, 174, 164, 36, 240, 113, 15, 61, 16, 291, 173]
+    },
+    {
+        "id": 32,
+        "firstname": "Franck",
+        "lastname": "Verrot",
+        "login": "franckverrot",
+        "company": "evome",
+        "shortdesc": "Entrepreneur - evome.fr",
+        "longdesc": "",
+        "urlimage": "http://www.gravatar.com/avatar/0256f4863b3a08d20a382766f842e63c",
+        "nbConsults": 34,
+        "linkers": [13, 6, 62, 8, 226, 568, 748, 3, 156, 534, 605, 1, 152, 229]
+    },
+    {
+        "id": 566,
+        "firstname": "Chrissy",
+        "lastname": "Welsh",
+        "login": "chrissywelsh",
+        "company": "Backbase",
+        "shortdesc": "Senior UX/UI Design Consultant. I can also be found placing pixels, playing geetar, kitchen dancing, doodling \u0026 other creative misadventures",
+        "longdesc": "Chrissy Welsh is a Senior UX/UI Consultant for Backbase, based in Amsterdam.She is interested in the potential of ‘bleeding edge’ technologies in user experience design to help make products easy and pleasurable to use. She has over 10 years design experience and has worked with a variety of industries including software development, healthcare and education. Before Backbase, Chrissy was a senior UX/UI designer for Cloud9 IDE where she designed user experiences for online coding apps. She has also designed cloud based IDE\u0027s, cloud based monitoring systems, data migration software, client-facing web sites, end-investor tools and internal applications. She started her career in design as an opinionated web developer.  Chrissy has an honours degree in Applied Graphics with Multimedia Technology from Caledonian University, Glasgow, Scotland. When not writing grandiose bios she can be found drinking tea and drawing animals in hats.",
+        "urlimage": "http://www.gravatar.com/avatar/c0a1dacc1ea6ffc72d1b7ebf7bb4525b",
+        "nbConsults": 77,
+        "linkers": [8, 96, 252, 236, 39, 13, 131, 153, 35, 12, 175, 247, 74, 185, 147, 21, 22, 26, 258, 238],
+        "sharedLinks": [
+            {
+                "id": 302,
+                "name": "Drawing",
+                "url": "http://www.chrissywelsh.com",
+                "ordernum": 0
+            },
+            {
+                "id": 303,
+                "name": "About.me",
+                "url": "http://about.me/chrissywelsh",
+                "ordernum": 1
+            },
+            {
+                "id": 304,
+                "name": "Flavours.me",
+                "url": "http://flavours.me/chrissywelsh",
+                "ordernum": 2
+            }
+        ]
+    }
+]

@@ -1,0 +1,33 @@
+<resources>
+    <!-- UI elements -->
+    <dimen name="whats_on_height">58dp</dimen>
+    <dimen name="whats_on_item_padding">5dp</dimen>
+    <dimen name="whats_on_button_right_padding">20dp</dimen>
+    <dimen name="tab_height">48dp</dimen>
+    <dimen name="track_icon_width">32dp</dimen>
+    <dimen name="track_icon_padding">2dp</dimen>
+    <dimen name="page_margin_width">16dp</dimen>
+    <dimen name="list_extra_button_width">48dp</dimen>
+    <dimen name="action_button_min_width">56dp</dimen>
+    <dimen name="schedule_block_time_width">72dp</dimen>
+    <dimen name="map_multipane_right_padding">48dp</dimen>
+    <dimen name="announcements_margin_width">8dp</dimen>
+
+    <!-- body content -->
+    <dimen name="element_spacing_normal">8dp</dimen>
+    <dimen name="content_padding_normal">16dp</dimen>
+    <dimen name="text_size_small">10sp</dimen>
+    <dimen name="text_size_medium">12sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_xlarge">16sp</dimen>
+    <dimen name="speaker_image_size">48dp</dimen>
+    <dimen name="about_image_size">60dp</dimen>
+    <dimen name="speaker_image_padding">8dp</dimen>
+    <dimen name="vendor_image_size">100dp</dimen>
+
+    <integer name="text_size_cal">10</integer>
+    <integer name="text_size_cal_title">12</integer>
+
+    <!-- Widget -->
+    <dimen name="widget_margin">8dp</dimen>
+</resources>

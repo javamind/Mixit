@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@drawable/grey_background_pattern"
+              android:padding="8dp"
+              android:scrollbars="vertical"
+        >
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:paddingLeft="5px"
+            style="@style/myCalendarTitle"
+            android:text="@string/description_venir_mixit"/>
+
+</LinearLayout>
+

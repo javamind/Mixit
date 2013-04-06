@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources  xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name"> </string>
+    <string name="blank"> </string>
+    <string name="onload">Téléchargement en cours...</string>
+    <string name="welcome">Bienvenue sur l\'application mobile Mix-it qui vous donne accès à toute la programmation de cette conférence</string>
+    <string name="about">A propos</string>
+    <string name="loadplus">Voir plus de membre...</string>
+
+    <!-- Compteur -->
+    <string name="whats_on_countdown_title_0">Plus que <xliff:g id="remaining_time">%1$s</xliff:g>\navant Mix-It 2013</string>
+    <plurals name="whats_on_countdown_title">
+        <item quantity="one"><xliff:g id="number_of_days">%1$s</xliff:g> jours, <xliff:g id="remaining_time">%2$s</xliff:g>\navant de nous retrouver à Mix-it</item>
+        <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> jours, <xliff:g id="remaining_time">%2$s</xliff:g>\navant de nous retrouver à Mix-it</item>
+    </plurals>
+    <string name="whats_on_thank_you_title">A l\'année prochaine!</string>
+
+
+    <!-- Tweets -->
+    <string name="tweetimage">Photo de profil twitter</string>
+    <string name="tweetnoreseau">Pas de connexion web... \nRéessayez plus tard pour visualiser les derniers tweets sur Mix-it</string>
+    <string name="tweetpres">Liste des derniers tweets sur Mix-it</string>
+    <string name="twitter">On parle de mix-it</string>
+    <string name="tweetincitation">Parlez de Mix-it sur Twitter ou Google+ en utilisant les raccourcis proposés dans la barre de bouton. Pour apparaître dans la liste rien de plus simple : Ecrivez un message en utilisant le hashtag #MixIT_lyon </string>
+
+    <!-- Menu -->
+    <string name="description_refresh">Rafraîchir</string>
+    <string name="description_compose_twitter">Tweet</string>
+    <string name="description_compose_google">Message Google+</string>
+    <string name="description_no_twitter">Installez au préalable l\'application Twitter</string>
+    <string name="description_no_google">Installez au préalable l\'application Google+</string>
+    <string name="description_planning">Planning</string>
+    <string name="description_planning_j1">Jeudi 25 avril</string>
+    <string name="description_planning_j2">Vendredi 26 avril</string>
+    <string name="description_sync">Raffraîchir les données</string>
+    <string name="description_sessions">Sessions</string>
+    <string name="description_talk">Conférences</string>
+    <string name="description_workshop">Ateliers</string>
+    <string name="description_ligtningtalk">Lightning Talk</string>
+    <string name="description_people">People</string>
+    <string name="description_speakers">Speakers</string>
+    <string name="description_staff">Staffs</string>
+    <string name="description_membres">Membres</string>
+    <string name="description_sponsor">Sponsors</string>
+    <string name="description_map">Google Map</string>
+    <string name="description_venir">Comment venir</string>
+    <string name="description_venir_mixit">Comment venir à Mix-IT</string>
+    <string name="description_plusinfo">Plus dinformations...</string>
+    <string name="description_liens">Liens</string>
+
+    <!-- Calendrier -->
+    <string name="calendrier_detail">Voir le détail...</string>
+    <string name="calendrier_confs">Conférences</string>
+    <string name="calendrier_ateliers">Ateliers</string>
+    <string name="calendrier_conf">Conférence</string>
+    <string name="calendrier_atelier">Atelier</string>
+    <string name="calendrier_ligthning">Ligthning Talks</string>
+    <string name="calendrier_keynote">Keynote</string>
+    <string name="calendrier_pause">Pause</string>
+    <string name="calendrier_repas">Repas</string>
+    <string name="calendrier_title25">Programme jeudi 25 avril</string>
+    <string name="calendrier_title26">Programme vendredi 26 avril</string>
+    <string name="calendrier_explication">Cliquez sur une plage horaire pour voir comment seront réparties les différentes conférences ou ateliers par salle</string>
+    <string name="calendrier_legende">(T) conférence, (W) atelier, (K) keynote, (L) lightning talk</string>
+    <string name="calendrier_salle_liste">Liste des salles</string>
+    <string name="calendrier_avril">Avril</string>
+    <string name="calendrier_jeudi">Jeu</string>
+    <string name="calendrier_vendredi">Ven</string>
+    <string name="calendrier_24">24</string>
+    <string name="calendrier_25">25\n8H30-19H00\ndétail... </string>
+    <string name="calendrier_26">26\n8H30-18H00\ndétail... </string>
+    <string name="calendrier_27">27</string>
+    <!-- Dates -->
+    <string name="jour">jour</string>
+    <string name="jours">jours</string>
+    <string name="mois">mois</string>
+    <string name="minutes">minutes</string>
+    <string name="minute">minute</string>
+    <string name="heures">heures</string>
+    <string name="heure">heure</string>
+    <string name="periode">%1$s de %2$s à %3$s</string>
+    <string name="pasdate">Pas d\'heure définie pour l\'instant</string>
+    <string name="Salle">Salle %s</string>
+
+    <!-- Différentes listes -->
+    <string name="focus_orga">Les membres du staff</string>
+    <string name="focus_orga_desc">Mix-IT est l’aboutissement de la collaboration entre le Lyon Java User Group et le Club Agile Rhône-Alpes</string>
+    <string name="focus_membre">Inscrits sur le site Mix-IT</string>
+    <string name="focus_membre_desc">Ces deux jours de conférence sont l\'occasion de croiser une des personnes ci dessous</string>
+    <string name="focus_speaker">Les speakers</string>
+    <string name="focus_speaker_desc">Descriptif des différents intervenants animant les conférences ou les ateliers</string>
+    <string name="focus_sponsor">Les sponsors</string>
+    <string name="focus_sponsor_desc">Mix-IT reste à un prix abordable par rapport aux autres grandes conférences techniques grâce aux différents sponsors</string>
+    <string name="focus_talk">Les talks</string>
+    <string name="focus_talk_desc">Les conférences s\'orientent autour de deux thématiques : la technique et l\'agilité. Le niveau vous indique le niveau d\'expertise conseillé</string>
+    <string name="focus_workshop">Les ateliers</string>
+    <string name="focus_workshop_desc">Nouveauté 1013,  les ateliers vous permettent de mettre en pratique certains concepts</string>
+    <string name="focus_lightningtalk">Les ligthning talks</string>
+    <string name="focus_lightningtalk_desc">Micro format pour aborder rapidement un sujet, une probématique, une technique...</string>
+
+    <!-- Page membre -->
+    <string name="membre_image_content">Image</string>
+    <string name="membre_speaker">Speaker</string>
+    <string name="membre_membre">Membre</string>
+    <string name="membre_staff">Staff</string>
+    <string name="membre_sponsor">Sponsor</string>
+
+    <!-- About -->
+    <string name="about_titre">A propos...</string>
+    <string name="about_h1">Mix-IT 2013 Client</string>
+    <string name="about_cree">Created by Guillaume EHRET</string>
+    <string name="about_createur">https://twitter.com/guillaumeehret</string>
+    <string name="about_blog">Blog</string>
+    <string name="about_blogurl">http://javamind-fr.blogspot.fr/</string>
+    <string name="about_help">Si vous rencontrez des problèmes pour afficher les informations cliquez sur le bouton RAZ pour supprimer les fichiers téléchargés et revenir dans la configuration d\'origine</string>
+
+    <!-- Synchronize -->
+    <string name="sync_erreur">Impossible de charger les données su site Mix-it : le stockage est inaccessible</string>
+    <string name="sync_erreur_reseau">Impossible de charger les données su site Mix-it : réseau inaccessible</string>
+    <string name="sync_message">Lancement de la récupération des données Mix-it</string>
+    <string name="sync_images">Lancement de la récupération des images de Mix-it</string>
+
+    <!--Dialogue-->
+    <string name="dial_OK">OK</string>
+    <string name="dial_cancel">Annuler</string>
+    <string name="dial_raz">Remise à zéro</string>
+</resources>

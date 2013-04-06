@@ -1,0 +1,47 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+    <ImageView 
+   		android:id="@+id/tweet_profile_image"
+   		android:layout_width="wrap_content"
+   		android:layout_height="wrap_content"
+		android:padding="10dp"
+		android:contentDescription="@string/tweetimage"/>
+    
+	<TextView android:id="@+id/tweet_user"
+		android:textSize="14sp"
+		android:textStyle="bold"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+        style="@style/myTextView"
+		android:layout_toRightOf="@id/tweet_profile_image"/>
+
+    <TextView android:id="@+id/tweet_username"
+              android:textSize="14sp"
+              android:textColor="@android:color/darker_gray"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingLeft="10px"
+              style="@style/myTextView"
+              android:layout_toRightOf="@id/tweet_user"/>
+
+    <TextView android:id="@+id/tweet_since"
+              android:textSize="13sp"
+              android:textColor="@android:color/black"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingLeft="10px"
+              style="@style/myTextView"
+              android:layout_toRightOf="@id/tweet_username"/>
+
+	<TextView android:id="@+id/tweet_content"
+		android:textSize="12sp"
+		android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/tweet_profile_image"
+		android:layout_height="wrap_content"
+        style="@style/myTextView"
+		android:layout_below="@id/tweet_user"/>
+
+</RelativeLayout>

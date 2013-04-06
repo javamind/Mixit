@@ -1,0 +1,163 @@
+package com.ehret.mixit.domain.people;
+
+import java.util.List;
+
+/**
+ * Classe représentant un Membre
+ */
+
+public class Membre {
+
+    private long id;
+    private String firstname;
+    private String lastname;
+    private String login;
+    private String company;
+    private String shortdesc;
+    private String longdesc;
+    private String urlimage;
+    private String nbConsults;
+
+    private List<Long> linkers;
+    private List<Link> sharedLinks;
+    private List<Long> links;
+    private List<Long> interests;
+    private String logo;
+    private String level;
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public List<Long> getInterests() {
+        return interests;
+    }
+
+    public void setInterests(List<Long> interests) {
+        this.interests = interests;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public List<Long> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Long> links) {
+        this.links = links;
+    }
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getShortdesc() {
+        return shortdesc;
+    }
+
+    public void setShortdesc(String shortdesc) {
+        this.shortdesc = shortdesc;
+    }
+
+    public String getLongdesc() {
+        return longdesc;
+    }
+
+    public void setLongdesc(String longdesc) {
+        this.longdesc = longdesc;
+    }
+
+    public String getUrlimage() {
+        return urlimage;
+    }
+
+    public void setUrlimage(String urlimage) {
+        this.urlimage = urlimage;
+    }
+
+    public String getNbConsults() {
+        return nbConsults;
+    }
+
+    public void setNbConsults(String nbConsults) {
+        this.nbConsults = nbConsults;
+    }
+
+    public List<Long> getLinkers() {
+        return linkers;
+    }
+
+    public void setLinkers(List<Long> linkers) {
+        this.linkers = linkers;
+    }
+
+    public List<Link> getSharedLinks() {
+        return sharedLinks;
+    }
+
+    public void setSharedLinks(List<Link> sharedLinks) {
+        this.sharedLinks = sharedLinks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Membre speaker = (Membre) o;
+
+        if (id != speaker.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
+    }
+}

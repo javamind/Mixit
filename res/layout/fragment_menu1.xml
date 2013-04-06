@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:baselineAligned="false"
+    android:padding="5dp"
+    android:scrollbars="vertical"   >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:paddingLeft="5px"
+        style="@style/myCalendarTitle"
+        android:id="@+id/menuFragmentTitle1"/>
+
+    <TableLayout android:id="@+id/menuFragmentTableLayout1"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content">
+    </TableLayout>
+
+
+</LinearLayout>

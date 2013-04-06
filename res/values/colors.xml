@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources  xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+   <color name="blue">#00ADEE</color>
+    <color name="grey_dark">#888888</color>
+    <color name="grey">#AAAAAA</color>
+    <color name="grey_light">#CCCCCC</color>
+    <color name="yellow1">#FFB800</color>
+    <color name="yellow3">#FFE328</color>
+    <color name="pink1">#FF86F5</color>
+    <color name="green1">#00C12B</color>
+    <color name="violet1">#AC72B9</color>
+    <color name="red1">#FF1800</color>
+    <color name="green2">#00771A</color>
+    <color name="yellow2">#A67800</color>
+    <color name="violet2">#35046B</color>
+    <color name="red2">#9E0F00</color>
+    <color name="black">#000000</color>
+    <color name="orange">#FFA132</color>
+    <color name="white">#FFFFFF</color>
+</resources>

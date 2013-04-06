@@ -1,0 +1,119 @@
+[
+    {
+        "id": 206,
+        "title": "Votre API n\u0027est pas RESTful",
+        "summary": "à moins que vous sachiez ce que signifie HATEOAS :-)",
+        "description": "5 minutes pour expliquer comment transformer une API HTTP en API RESTful, challenge accepté !",
+        "interests": [74, 245, 240, 134, 287, 207],
+        "speakers": [645],
+        "nbVotes": 48
+    },
+    {
+        "id": 208,
+        "title": "CasperJS, a ghost in the shell",
+        "summary": "CasperJS permet de scripter et tester vos scénarios de navigation sur navigateur Web ne nécessitant pas d’interface graphique.",
+        "description": "[CasperJS](http://casperjs.org/) est un outil permettant de scripter en Javascript un scénario de navigation sur un véritable navigateur Web, basé sur Webkit et ne nécessitant pas d’interface graphique. CasperJS peut servir à produire des tests fonctionnels poussés bénéficiant d’un environnement DOM et Javascript complet, mais aussi à analyser des documents Web, faire des tests de performance ou même extraire des données.\r\n\r\nL’intérêt majeur de CasperJS est qu’il permet relativement simplement de tester et valider fonctionnellement des sites et applications Web complexes, reposant sur l’exploitation intensives de Javascript, de comportements asynchrones et d’AJAX par exemple.",
+        "interests": [5, 336, 334, 335, 285],
+        "speakers": [651],
+        "nbVotes": 32
+    },
+    {
+        "id": 222,
+        "title": "Unix as an IDE",
+        "summary": "Pourquoi s\u0027encombrer d\u0027un IDE quand on utilise Unix ?",
+        "description": "Les développeurs entretiennent une relation très particulière avec leurs outils, une relation souvent passionnelle. Pourtant, certains persistent à utiliser leur bon vieil éditeur de texte (Emacs, Vim, etc...) et les outils en ligne de commande Unix traditionnels. Nous allons voir comment Unix peut être considéré comme un IDE et mieux encore un **excellent** IDE !",
+        "interests": [183, 195, 65, 351],
+        "speakers": [152],
+        "nbVotes": 22
+    },
+    {
+        "id": 223,
+        "title": "Staff : SOAP et REST en C++",
+        "summary": "Il n\u0027aura jamais été aussi simple de créer des services web pour des applications natives en C++!",
+        "description": "Staff est une bibliothèque permettant de développer rapidement des services et des clients SOAP ou REST en C++ sans avoir à entrer dans la tuyauterie et donc en se concentrant sur le code métier.\r\nNous verrons comment il est possible de créer des services web en moins de 5 minutes à partir d\u0027une simple fichier de description décrivant les services et un peu de magie russe :)",
+        "interests": [343, 342, 199, 74, 240, 134, 135, 341, 94],
+        "speakers": [605],
+        "nbVotes": 7
+    },
+    {
+        "id": 224,
+        "title": "Pourquoi passer en SaaS?",
+        "summary": "Probablement le lightning le moins technique ;)",
+        "description": "Quels bouleversements amènent le SaaS?\r\nPasser en SaaS, oui!\r\nMais pour quelles raisons?\r\nEt comment adapter son entreprise à ce nouveau moyen de distribution?",
+        "interests": [145, 12, 245, 144, 252, 251, 221, 197],
+        "speakers": [588],
+        "nbVotes": 18
+    },
+    {
+        "id": 237,
+        "title": "Intro à Jenkins",
+        "summary": "Du dev au déploiement grâce à Jenkins",
+        "description": "Comment se simplifier la vie lors des développements grâce à Jenkins ? Comment lui déléguer un maximum de choses ? Nous verrons comment Jenkins peut vous aider à réduire la charge de travail côté dev et à automatiser tout un ensemble de tâches rébarbatives : bien entendu les tests, mais aussi les commits vers votre SCM préféré GIT, et pourquoi pas le déploiement de votre appli vers votre infra ou du cloud.",
+        "interests": [296, 199, 336, 245, 163, 22, 70, 65, 285, 14],
+        "speakers": [608],
+        "nbVotes": 23
+    },
+    {
+        "id": 239,
+        "title": "Scrumiens scrumiennes : prenez garde !",
+        "summary": "Satisfaction du client : attention aux pièges des releases et de l\u0027amélioration continue de l\u0027équipe",
+        "description": "Le manager fait confiance à son équipe, soutient son auto-organisation, et lui donne les moyens de faire. L\u0027équipe fait de l\u0027itératif, et s\u0027améliore continuellement. Objectif atteint : le client est satisfait (1er principe agile).\r\n\r\nOui, mais... si on n\u0027y prend pas garde, le rythme des releases et l\u0027amélioration de l\u0027équipe peuvent représenter 2 sources d\u0027insatisfaction du client, ce qui peut engendrer un cercle vicieux : perte de confiance du manager, et frustration de l\u0027équipe.\r\n\r\nJe vous propose de voir comment cela peut arriver, et d\u0027énoncer quelques pistes possibles d\u0027amélioration.",
+        "interests": [27, 353, 17, 18, 26, 44],
+        "speakers": [13],
+        "nbVotes": 37
+    },
+    {
+        "id": 243,
+        "title": "En finir avec les méthodes agiles",
+        "summary": "Depuis bien longtemps, j’avoue avoir une petite irritation lorsque j’entends parler de « méthodes agiles ». Je vais vous expliquer pourquoi.",
+        "description": "Depuis bien longtemps, j’avoue avoir une petite irritation lorsque j’entends parler de « méthodes agiles ». Je vais vous expliquer pourquoi.\r\nJe vous rassure tout de suite, mon intention n’est pas de dire que l’agilité ne sert à rien ! Bien au contraire, je reste, malgré ce titre peut-être un peu provocateur, un fervent supporter de l’adoption des principes qui guident l’agilité pour permettre d’atteindre le but ultime : produire de la valeur. \r\nNon, là n’est pas mon intention. Ce qui m’irrite, donc, c’est d’entendre ces deux mots si plein de sens ensemble : Comment peut-on parler de « méthode » lorsque l’on parle d’agilité ?\r\nIl faut dépasser le cadre des méthodes, et comprendre le sens des choses. Je terminerai par une ouverture vers un modèle de maturité appelé Agile Fluency.",
+        "interests": [27, 419, 366, 367, 364, 365],
+        "speakers": [306],
+        "nbVotes": 25
+    },
+    {
+        "id": 244,
+        "title": "Open Space Software Development",
+        "summary": "J\u0027ai vécu une expérience extraordinaire, en tout cas pour moi. J\u0027aimerais vous faire un retour de tout ce que j\u0027y ai appris !",
+        "description": "Cet été, à Barcelone, j\u0027ai participé à ALE 2012, une non-conférence du réseau Agile Lean Europe. 3j extraordinaires durant lesquels j\u0027ai vécu une des expériences les plus enrichissantes qu\u0027il m\u0027ait été donné de vivre : un open space de développement. \r\nPendant 3j, nous avions pour objectif de développer une application et ainsi observer comment une équipe d\u0027agilistes convaincus qui ne se connaissaient pas était capable de se comporter en environnement réel. Je vais donc tenter de vous faire un retour sur cette incroyable expérimentation.\r\nQu\u0027avons-nous réussir à faire ? Où avons-nous échouer ? Quels ont été les enseignements de cette expérience ? Voilà tout ce que j\u0027aimerais partager avec vous !",
+        "interests": [183, 27, 29, 296, 369, 368, 17, 3, 70, 31],
+        "speakers": [306],
+        "nbVotes": 17
+    },
+    {
+        "id": 245,
+        "title": "Pas d\u0027Agile sans Qualité",
+        "summary": "\"Si tu ne te préoccupes pas de la Qualité, la Qualité s\u0027occupera de toi !\". Et c\u0027est d\u0027autant plus vrai quand on veut être agile !",
+        "description": "L\u0027agile c\u0027est pas que des post-its au mur et des réunions debout, c\u0027est aussi la qualité. Il est même impossible d\u0027être réellement agile sans passer par la qualité. L\u0027Agile, c\u0027est la charrue, et la qualité c\u0027est les boeufs ! Et non pas l\u0027inverse !\r\nJe vous propose donc à travers ce LT de vous expliquer pourquoi il faut élever son niveau de qualité, avant de penser à une quelconque transition agile. Malheureusement, la plupart de ces transitions échouent justement par oubli de ce principe fondamental.",
+        "interests": [27, 275, 336, 245, 3, 34],
+        "speakers": [306],
+        "nbVotes": 22
+    },
+    {
+        "id": 269,
+        "title": "Eclipse : effective configuration \u0026 plugins",
+        "summary": "Sharing my tips \u0026 tricks on Eclipse setup to have a better productivity",
+        "description": "Eclipse, eclipse...\r\n\r\nDo you really use the configuration provided by default in Eclipse IDE ?\r\nHow many times have you configured it as you wish ?\r\nHow much time have you spend configuring it ?\r\n\r\nIf you want to see how Eclipse should be configured to speedup your devs, discover some really useful plugins and learn some good advice on how to use Eclipse,\r\n\r\nVote for this lightning talk !",
+        "interests": [187, 336, 245, 182, 3, 64, 2, 65, 311, 285, 11],
+        "speakers": [636],
+        "nbVotes": 16
+    },
+    {
+        "id": 306,
+        "title": "Alors ? Simple ou Facile ?",
+        "summary": "Encore aujourd\u0027hui des équipes parlent de solutions simples et faciles à un problème. Pourtant facilité et simplicité ne sont pas synonymes.",
+        "description": "Encore aujourd\u0027hui j\u0027entends des équipes parler de solutions simples et faciles à un problème. Pourtant la facilité et la simplicité ne sont pas synonymes dans notre monde.\r\nCe que je souhaite montrer à travers ce Lightning talk, c\u0027est cette différence, à mon sens fondamentale, entre ces 2 notions.\r\n",
+        "interests": [410, 407, 409, 408],
+        "speakers": [306],
+        "nbVotes": 14
+    },
+    {
+        "id": 307,
+        "title": "deejay issam",
+        "summary": "djissam malta",
+        "description": "top music maroc",
+        "interests": [67],
+        "speakers": [479],
+        "nbVotes": 0
+    }
+]
