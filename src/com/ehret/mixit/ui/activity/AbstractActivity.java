@@ -17,9 +17,11 @@
 package com.ehret.mixit.ui.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -74,6 +76,9 @@ public abstract class AbstractActivity extends Activity {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         }
+        if(!(this instanceof TalkActivity)){
+            menu.removeItem(R.id.menu_favorites);
+        }
         return true;
     }
 
@@ -109,25 +114,56 @@ public abstract class AbstractActivity extends Activity {
     private void chargementDonnees() {
         if(UIUtils.isNetworkAvailable(getBaseContext())){
             if(FileUtils.isExternalStorageWritable()){
-                if(progressDialog==null){
-                    progressDialog = new ProgressDialog(this);
-                }
-                progressDialog.setCancelable(true);
-                int nbMax = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(),null).size() + JsonFile.values().length;
-                progressDialog.setMax(nbMax<100 ? 800 : nbMax);
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                progressDialog.setMessage(getResources().getString(R.string.sync_message));
-                progressDialog.show();
-                SynchronizeMixitAsync synchronizeMixitAsync = new SynchronizeMixitAsync();
-                synchronizeMixitAsync.execute();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(getString(R.string.dial_message))
+                        .setPositiveButton(R.string.dial_oui, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                appelerSynchronizer(true);
+                            }
+                        })
+                        .setNeutralButton(R.string.dial_cancel, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //On ne fait rien
+                            }
+                        })
+                        .setNegativeButton(R.string.dial_non, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                appelerSynchronizer(false);
+                            }
+                        });
+                builder.create();
+                builder.show();
             }
             else{
-                Toast.makeText(getBaseContext(), getText(R.string.sync_erreur), Toast.LENGTH_LONG);
+                Toast.makeText(getBaseContext(), getText(R.string.sync_erreur), Toast.LENGTH_LONG).show();
             }
         }
         else{
-            Toast.makeText(getBaseContext(), getText(R.string.sync_erreur_reseau), Toast.LENGTH_LONG);
+            Toast.makeText(getBaseContext(), getText(R.string.sync_erreur_reseau), Toast.LENGTH_LONG).show();
         }
+    }
+
+    /**
+     *
+      * @param chargerImage
+     */
+    private void appelerSynchronizer(boolean chargerImage) {
+        if(progressDialog==null){
+            progressDialog = new ProgressDialog(this);
+        }
+        progressDialog.setCancelable(true);
+        int nbMax = JsonFile.values().length;
+        if(chargerImage){
+            nbMax+= MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(),null).size();
+            if(nbMax<100)
+                nbMax=800;
+        }
+        progressDialog.setMax(nbMax);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setMessage(getResources().getString(R.string.sync_message));
+        progressDialog.show();
+        SynchronizeMixitAsync synchronizeMixitAsync = new SynchronizeMixitAsync();
+        synchronizeMixitAsync.execute(Boolean.valueOf(chargerImage));
     }
 
     /**
@@ -155,7 +191,7 @@ public abstract class AbstractActivity extends Activity {
     /**
      * Lance en asynchrone la recuperation des fichiers
      */
-    private class SynchronizeMixitAsync extends AsyncTask<Void, Integer, Void>{
+    private class SynchronizeMixitAsync extends AsyncTask<Boolean, Integer, Void>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -163,7 +199,8 @@ public abstract class AbstractActivity extends Activity {
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected Void doInBackground(Boolean... params) {
+            Boolean chargerImage = params[0];
             for(JsonFile json : JsonFile.values()){
                 try{
                     if(!Synchronizer.downloadJsonFile(getBaseContext(), json.getUrl(), json.getType())){
@@ -179,16 +216,16 @@ public abstract class AbstractActivity extends Activity {
             //Une fois finie on supprime le cache
             MembreFacade.getInstance().viderCache();
             ConferenceFacade.getInstance().viderCache();
-
-            //On pren les membres s'ils viennent d'etre recharge
-            List<Membre> membres = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(),null);
-            for(Membre membre : membres){
-                if(membre.getUrlimage()!=null){
-                    Synchronizer.downloadImage(getBaseContext(), membre.getUrlimage(),"membre"+ membre.getId());
-                    publishProgress(progressStatus++);
+            if(chargerImage){
+                //On pren les membres s'ils viennent d'etre recharge
+                List<Membre> membres = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(),null);
+                for(Membre membre : membres){
+                    if(membre.getUrlimage()!=null){
+                        Synchronizer.downloadImage(getBaseContext(), membre.getUrlimage(),"membre"+ membre.getId());
+                        publishProgress(progressStatus++);
+                    }
                 }
             }
-
             return null;
         }
 

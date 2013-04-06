@@ -15,6 +15,7 @@ import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.domain.talk.Conference;
 import com.ehret.mixit.domain.talk.Lightningtalk;
+import com.ehret.mixit.domain.talk.Talk;
 import com.ehret.mixit.model.ConferenceFacade;
 import com.ehret.mixit.model.MembreFacade;
 import com.ehret.mixit.ui.adapter.ListMembreAdapter;
@@ -35,7 +36,7 @@ public class ParseListeActivity extends AbstractActivity {
     private String typeAppel;
     private String filterQuery;
     private Activity mActivity;
-    private final static String PREFS_NAME = "pref_recherche";
+
     /**
      * Called when the activity is first created.
      */
@@ -51,7 +52,7 @@ public class ParseListeActivity extends AbstractActivity {
         this.descriptif = (TextView) findViewById(R.id.liste_descr);
         this.mActivity=this;
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences(UIUtils.PREFS_TEMP_NAME, 0);
 
         if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
             filterQuery = getIntent().getStringExtra(SearchManager.QUERY);
@@ -118,6 +119,10 @@ public class ParseListeActivity extends AbstractActivity {
                 handleFields(R.string.focus_lightningtalk,R.string.focus_lightningtalk_desc,R.color.red1);
                 afficherConference();
                 break;
+            case favorites:
+                handleFields(R.string.focus_favorite,R.string.focus_favorite_desc,R.color.blue);
+                afficherConference();
+                break;
             default:
                 //Par defaut on affiche les speakers
                 handleFields(R.string.focus_speaker,R.string.focus_speaker_desc,R.color.green1);
@@ -171,7 +176,15 @@ public class ParseListeActivity extends AbstractActivity {
                 Conference conf = (Conference) liste.getItemAtPosition(position);
                 Map<String, Object> parameters = new HashMap<String, Object>(2);
                 parameters.put(UIUtils.MESSAGE, conf.getId());
-                parameters.put(UIUtils.TYPE, typeAppel);
+                if(conf instanceof Lightningtalk){
+                    parameters.put(UIUtils.TYPE, TypeFile.lightningtalks.name());
+                }
+                else if(conf instanceof Talk && ((Talk) conf).getFormat().equals("Workshop")){
+                    parameters.put(UIUtils.TYPE, TypeFile.workshops.name());
+                }
+                else{
+                    parameters.put(UIUtils.TYPE, TypeFile.talks.name());
+                }
                 UIUtils.startActivity(TalkActivity.class, mActivity, parameters);
             }
         });
@@ -182,8 +195,12 @@ public class ParseListeActivity extends AbstractActivity {
             case talks:
                 liste.setAdapter(new ListTalkAdapter(getBaseContext(),ConferenceFacade.getInstance().getTalks(getBaseContext(),filterQuery)));
                 break;
-            default:
+            case lightningtalks:
                 liste.setAdapter(new ListTalkAdapter(getBaseContext(),  ConferenceFacade.getInstance().getLightningTalks(getBaseContext(),filterQuery)));
+                break;
+            default:
+                liste.setAdapter(new ListTalkAdapter(getBaseContext(),ConferenceFacade.getInstance().getFavorites(getBaseContext(),filterQuery)));
+
         }
     }
 }

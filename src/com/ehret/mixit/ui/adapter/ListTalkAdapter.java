@@ -1,6 +1,7 @@
 package com.ehret.mixit.ui.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.ehret.mixit.domain.Salle;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.domain.talk.Conference;
 import com.ehret.mixit.domain.talk.Talk;
+import com.ehret.mixit.ui.utils.UIUtils;
 
 import java.text.DateFormat;
 import java.text.FieldPosition;
@@ -50,6 +52,7 @@ public class ListTalkAdapter<T extends Conference> extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.talk_item, null);
             holder = new ViewHolder();
             holder.image = (ImageView) convertView.findViewById(R.id.talk_image);
+            holder.imageFavorite = (ImageView) convertView.findViewById(R.id.talk_image_favorite);
             holder.name = (TextView) convertView.findViewById(R.id.talk_name);
             holder.descriptif = (TextView) convertView.findViewById(R.id.talk_shortdesciptif);
             holder.level = (TextView) convertView.findViewById(R.id.talk_level);
@@ -101,6 +104,19 @@ public class ListTalkAdapter<T extends Conference> extends BaseAdapter {
             holder.image.setImageDrawable(context.getResources().getDrawable(R.drawable.lightning));
         }
 
+        //On regarde si la conf fait partie des favoris
+        SharedPreferences settings = context.getSharedPreferences(UIUtils.PREFS_FAVORITES_NAME, 0);
+        boolean trouve=false;
+        for(String key : settings.getAll().keySet()){
+            if(key.equals(String.valueOf(conf.getId()))){
+                trouve=true;
+                holder.imageFavorite.setImageDrawable(context.getResources().getDrawable(R.drawable.favorite));
+                break;
+            }
+        }
+        if(!trouve){
+            holder.imageFavorite.setImageDrawable(context.getResources().getDrawable(R.drawable.favorite1));
+        }
         return convertView;
     }
 
@@ -112,6 +128,8 @@ public class ListTalkAdapter<T extends Conference> extends BaseAdapter {
         TextView horaire;
         TextView talkImageText;
         TextView talkSalle;
+        ImageView imageFavorite;
+
     }
 
 }

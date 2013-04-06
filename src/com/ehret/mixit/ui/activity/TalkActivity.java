@@ -1,10 +1,14 @@
 package com.ehret.mixit.ui.activity;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.ehret.mixit.R;
 import com.ehret.mixit.domain.Salle;
 import com.ehret.mixit.domain.TypeFile;
@@ -28,6 +32,7 @@ public class TalkActivity extends AbstractActivity {
     private TextView salle;
     private Long id;
     private String type;
+    private ImageView imageFavorite;
 
     /**
      * Called when the activity is first created.
@@ -39,6 +44,7 @@ public class TalkActivity extends AbstractActivity {
 
         this.title = (TextView) findViewById(R.id.talk_title);
         this.image = (ImageView) findViewById(R.id.talk_image);
+        this.imageFavorite = (ImageView) findViewById(R.id.talk_image_favorite);
         this.horaire = (TextView) findViewById(R.id.talk_horaire);
         this.level = (TextView) findViewById(R.id.talk_level);
         this.name = (TextView) findViewById(R.id.talk_name);
@@ -49,6 +55,13 @@ public class TalkActivity extends AbstractActivity {
         if (getIntent().getExtras() != null) {
             long id = getIntent().getExtras().getLong(UIUtils.MESSAGE);
             type = getIntent().getExtras().getString(UIUtils.TYPE);
+
+            //On stocke l'ID dans la preference pour qu'on puisse le retrouvé quand l'utilisateur car dans ses operations
+            //la vue ne passe pas dans les fonctions de sauvegarde/restauration de l'état
+            SharedPreferences settings = getSharedPreferences(UIUtils.PREFS_TEMP_NAME, 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putLong("idTalk",id);
+            editor.commit();
 
             Conference conference = null;
             if(TypeFile.lightningtalks.name().equals(type)){
@@ -135,5 +148,77 @@ public class TalkActivity extends AbstractActivity {
         if(myType!=null){
             type= myType;
         }
+    }
+
+    /**
+     * Adaptation du menu
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean retour = super.onCreateOptionsMenu(menu);
+        MenuItem item =  menu.findItem(R.id.menu_favorites);
+        //Dans le cadre de cet écran on doit savoir si l'activité fait partie des favoris
+        //de l'utilisateur
+        updateMenuItem(item, isTalkFavorite());
+        return retour;
+    }
+
+    private void updateMenuItem(MenuItem item, boolean trouve) {
+        if(trouve){
+            //On affiche bouton pour l'enlever
+            item.setTitle(R.string.description_favorite_del);
+            item.setIcon(getResources().getDrawable(R.drawable.ic_action_remove_schedule));
+            imageFavorite.setImageDrawable(getResources().getDrawable(R.drawable.favorite));
+        }
+        else{
+            //On affiche bouton pour l'ajouter
+            item.setTitle(R.string.description_favorite_add);
+            item.setIcon(getResources().getDrawable(R.drawable.ic_action_add_schedule));
+            imageFavorite.setImageDrawable(getResources().getDrawable(R.drawable.favorite1));
+        }
+    }
+
+    /**
+     * Verifie si l'activité st dans les favoris
+     * @return
+     */
+    private boolean isTalkFavorite() {
+        boolean trouve = false;
+        SharedPreferences settings = getSharedPreferences(UIUtils.PREFS_FAVORITES_NAME, 0);
+        for(String key : settings.getAll().keySet()){
+            if(key.equals(String.valueOf(id))){
+                trouve = true;
+                break;
+            }
+        }
+        return trouve;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.menu_favorites){
+            //On recupere id
+            SharedPreferences settings = getSharedPreferences(UIUtils.PREFS_TEMP_NAME, 0);
+            id = settings.getLong("idTalk",0L);
+            if(id!=null && id>0){
+                //On sauvegarde le choix de l'utilsateur
+                settings = getSharedPreferences(UIUtils.PREFS_FAVORITES_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                if(isTalkFavorite()){
+                    //S'il l'est et on qu'on a cliquer sur le bouton on supprime
+                    editor.remove(String.valueOf(id));
+                    updateMenuItem(item, false);
+
+                }
+                else{
+                    editor.putBoolean(String.valueOf(id), Boolean.TRUE);
+                    updateMenuItem(item, true);
+                }
+                editor.commit();
+            }
+        }
+        return super.onOptionsItemSelected(item);    //To change body of overridden methods use File | Settings | File Templates.
     }
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@drawable/grey_background_pattern"
+              android:padding="5px"
+              android:scrollbars="vertical"
+        >
+
+    <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logomixit"/>
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            style="@style/myTextView"
+            />
+
+    <fragment android:name="com.ehret.mixit.ui.fragment.WhatsOnFragment"
+              android:id="@+id/fragment_whats_on"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/whats_on_height"/>
+
+    <!-- Un layout qui va nous permettre de répartir horizontalement les données -->
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="horizontal"
+                  android:baselineAligned="false"
+                  android:padding="5dp"
+                  android:scrollbars="vertical">
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:background="@drawable/grey_background_pattern"
+                      android:padding="5px"
+                      android:layout_weight="0.5"
+                >
+        <fragment android:name="com.ehret.mixit.ui.fragment.MenuPlanningFragment"
+                      android:id="@+id/fragment_menu_planning"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                    />
+        <fragment android:name="com.ehret.mixit.ui.fragment.MenuMapFragment"
+                      android:id="@+id/fragment_menu_map"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                    />
+
+
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:background="@drawable/grey_background_pattern"
+                      android:padding="5px"
+                      android:layout_weight="0.5"
+                >
+        <fragment android:name="com.ehret.mixit.ui.fragment.MenuTalksFragment"
+                      android:id="@+id/fragment_menu_talk"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                    />
+        <fragment android:name="com.ehret.mixit.ui.fragment.MenuPeopleFragment"
+                  android:id="@+id/fragment_menu_people"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+

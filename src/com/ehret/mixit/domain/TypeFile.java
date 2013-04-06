@@ -16,6 +16,7 @@ public enum TypeFile {
     members,
     lightningtalks,
     sponsor,
+    favorites,
     interests;
 
     public static TypeFile getTypeFile(String value){

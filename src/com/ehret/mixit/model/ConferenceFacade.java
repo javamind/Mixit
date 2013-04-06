@@ -81,6 +81,35 @@ public class ConferenceFacade {
     }
 
     /**
+     * Permet de recuperer la liste des confs mises en favoris
+     * @param context
+     * @return
+     */
+    public List<Conference> getFavorites(Context context, String filtre) {
+        List<Conference> conferences = new ArrayList<Conference>();
+
+        //La premiere étape consiste a reconstitue la liste
+        Set<String> keys = context.getSharedPreferences(UIUtils.PREFS_FAVORITES_NAME, 0).getAll().keySet();
+        for(String key : keys){
+            if(key!=null){
+                //On regarde d'abord dans les confs
+                Conference conf = getTalk(context, Long.valueOf(key));
+                if(conf!=null){
+                    conferences.add(conf);
+                }
+                else{
+                    //On regarde dans les ligthning talks
+                    conf = getLightningtalk(context, Long.valueOf(key));
+                    if(conf!=null){
+                        conferences.add(conf);
+                    }
+                }
+            }
+        }
+        return Ordering.from(getComparatorDate()).sortedCopy(filtrerConference(conferences, filtre));
+    }
+
+    /**
      * Permet de recuperer la liste des talks
      * @param context
      * @return
@@ -97,7 +126,7 @@ public class ConferenceFacade {
      */
     public List<Lightningtalk> getLightningTalks(Context context, String filtre) {
         return Ordering.from(getComparatorDate()).compound(getComparatorConference())
-                .sortedCopy(filtrerTalk(getLightningtalks(context), filtre));
+                .sortedCopy(filtrerLightningTalk(getLightningtalks(context), filtre));
     }
 
     /**
@@ -375,13 +404,30 @@ public class ConferenceFacade {
      * @param filtre
      * @return
      */
-    private List<Lightningtalk> filtrerTalk(Map<Long, Lightningtalk> talks, final String filtre){
+    private List<Lightningtalk> filtrerLightningTalk(Map<Long, Lightningtalk> talks, final String filtre){
         return FluentIterable.from(talks.values()).filter(new Predicate<Lightningtalk>() {
             @Override
             public boolean apply(Lightningtalk input) {
                 return (filtre==null ||
                             (input.getTitle()!= null && input.getTitle().toLowerCase().contains(filtre.toLowerCase()))  ||
                             (input.getSummary()!= null && input.getSummary().toLowerCase().contains(filtre.toLowerCase())));
+            }
+        }).toImmutableList();
+    }
+
+    /**
+     * Filtre la liste des talks ou des workshops
+     * @param talks
+     * @param filtre
+     * @return
+     */
+    private List<Conference> filtrerConference(List<Conference> talks, final String filtre){
+        return FluentIterable.from(talks).filter(new Predicate<Conference>() {
+            @Override
+            public boolean apply(Conference input) {
+                return (filtre==null ||
+                        (input.getTitle()!= null && input.getTitle().toLowerCase().contains(filtre.toLowerCase()))  ||
+                        (input.getSummary()!= null && input.getSummary().toLowerCase().contains(filtre.toLowerCase())));
             }
         }).toImmutableList();
     }

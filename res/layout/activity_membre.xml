@@ -104,6 +104,13 @@
                     >
             </fragment>
 
+            <fragment android:name="com.ehret.mixit.ui.fragment.PersonInteretFragment"
+                      android:id="@+id/personInteretFragment"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:paddingLeft="5px"
+                    >
+            </fragment>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

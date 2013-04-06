@@ -3,6 +3,7 @@ package com.ehret.mixit.model;
 import android.content.Context;
 import android.util.Log;
 import com.ehret.mixit.domain.TypeFile;
+import com.ehret.mixit.domain.people.Interet;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.ui.utils.FileUtils;
 import com.google.common.base.Predicate;
@@ -46,6 +47,7 @@ public class MembreFacade {
     private static Map<Long, Membre> speaker= new HashMap<Long, Membre>();;
     private static Map<Long, Membre> staff= new HashMap<Long, Membre>();;
     private static Map<Long, Membre> sponsors= new HashMap<Long, Membre>();;
+    private static Map<Long, Interet> interets= new HashMap<Long, Interet>();;
 
     /**
      * Permet de vider le cache de données
@@ -55,6 +57,7 @@ public class MembreFacade {
         speaker.clear();
         staff.clear();
         sponsors.clear();
+        interets.clear();
     }
     /**
      * Constructeur prive car singleton
@@ -216,5 +219,43 @@ public class MembreFacade {
         return null;
     }
 
-
+    public Interet getInteret(Context context, Long id){
+        if(interets.isEmpty()){
+            InputStream is = null;
+            List<Interet> interetListe = null;
+            JsonParser jp = null;
+            try{
+                //On regarde si fichier telecharge
+                File myFile = FileUtils.getFileJson(context,TypeFile.getTypeFile(TypeFile.interests.name()));
+                if(myFile==null){
+                    //On prend celui inclut dans l'archive
+                    is = FileUtils.getRawFileJson(context, TypeFile.getTypeFile(TypeFile.interests.name()));
+                }
+                else{
+                    is = new FileInputStream(myFile);
+                }
+                jp = this.jsonFactory.createJsonParser(is);
+                interetListe = this.objectMapper.readValue(jp, new TypeReference<List<Interet>>() {});
+            }
+            catch (IOException e) {
+                Log.e(TAG, "Erreur lors de la recuperation des interets", e);
+            }
+            finally {
+                if(is!=null){
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+                        Log.e(TAG, "Impossible de fermer le fichier ", e);
+                    }
+                }
+            }
+            //On transforme la liste en Map
+            if(interetListe!=null){
+                for(Interet m : interetListe){
+                    interets.put(m.getId(), m);
+                }
+            }
+        }
+        return interets.get(id);
+    }
 }

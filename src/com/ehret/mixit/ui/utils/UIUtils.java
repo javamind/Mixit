@@ -28,7 +28,8 @@ public class UIUtils {
     public static final long CONFERENCE_END_MILLIS = parseTime("2013-04-26T18:30:00.000-07:00");
     public static final String MESSAGE = "message";
     public static final String TYPE = "type";
-
+    public static final String PREFS_FAVORITES_NAME = "PrefFavorites";
+    public static final String PREFS_TEMP_NAME = "PrefTemp";
     /**
      * Parse the given string as a RFC 3339 timestamp, returning the value as
      * milliseconds since the epoch.

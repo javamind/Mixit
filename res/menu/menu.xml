@@ -20,7 +20,6 @@
           android:showAsAction="ifRoom|collapseActionView"
           android:actionViewClass="android.widget.SearchView" />
     <item android:id="@+id/menu_favorites"
-          android:title="@string/description_favorite_add"
           android:icon="@drawable/ic_action_add_schedule"
           android:showAsAction="ifRoom|collapseActionView" />
     <item android:id="@+id/menu_compose_twitter"

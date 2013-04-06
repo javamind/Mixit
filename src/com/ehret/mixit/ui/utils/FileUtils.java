@@ -3,6 +3,7 @@ package com.ehret.mixit.ui.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -64,6 +65,12 @@ public class FileUtils {
                 myFile.delete();
             }
         }
+        //TODO a commente
+//        SharedPreferences settings = context.getSharedPreferences(UIUtils.PREFS_FAVORITES_NAME, 0);
+//        SharedPreferences.Editor editor = settings.edit();
+//        editor.clear();
+//        editor.commit();
+
     }
 
     /**

@@ -40,6 +40,13 @@ public class MenuTalksFragment extends AbstractMenuFragment {
         Context context = getActivity().getBaseContext();
         final Map<String, Object> parameters  = new HashMap<String, Object>(6);
 
+        createMenu(R.color.blue, context.getString(R.string.description_favorite), false, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parameters.put(UIUtils.MESSAGE, TypeFile.favorites.name());
+                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
+            }
+        });
         createMenu(R.color.yellow1, context.getString(R.string.description_talk), false, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
