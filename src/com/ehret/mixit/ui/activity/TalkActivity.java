@@ -1,5 +1,6 @@
 package com.ehret.mixit.ui.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -92,13 +93,14 @@ public class TalkActivity extends AbstractActivity {
             if(conference instanceof Talk){
                 room = Salle.getSalle(((Talk) conference).getRoom());
             }
+            final Activity talkActivity = this;
             if(Salle.INCONNU != room){
                 salle.setText(String.format(getString(R.string.Salle),room.getNom()));
                 salle.setBackgroundColor(getBaseContext().getResources().getColor(room.getColor()));
                 salle.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        UIUtils.startActivity(SalleActivity.class, getParent());
+                        UIUtils.startActivity(SalleActivity.class, talkActivity);
                     }
                 });
             }
