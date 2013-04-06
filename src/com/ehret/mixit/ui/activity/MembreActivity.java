@@ -1,11 +1,14 @@
 package com.ehret.mixit.ui.activity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.ehret.mixit.R;
 import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.model.MembreFacade;
+import com.ehret.mixit.ui.utils.FileUtils;
 import com.ehret.mixit.ui.utils.UIUtils;
 
 public class MembreActivity extends AbstractActivity {
@@ -14,6 +17,7 @@ public class MembreActivity extends AbstractActivity {
     private Long id;
     private String type;
     private TextView membreTitle;
+    private ImageView profileImage;
     private TextView membreUserName;
     private TextView personDesciptif;
     private TextView personShortDesciptif;
@@ -31,6 +35,7 @@ public class MembreActivity extends AbstractActivity {
         this.personDesciptif = (TextView) findViewById(R.id.membre_desciptif);
         this.personShortDesciptif = (TextView) findViewById(R.id.membre_shortdesciptif);
         this.membreEntreprise = (TextView) findViewById(R.id.membre_entreprise);
+        this.profileImage = (ImageView)findViewById(R.id.membre_image);
 
         if (getIntent().getExtras() != null) {
             id = getIntent().getExtras().getLong(UIUtils.MESSAGE);
@@ -71,6 +76,15 @@ public class MembreActivity extends AbstractActivity {
         this.personDesciptif.setText(membre.getLongdesc().trim());
         this.personShortDesciptif.setText(membre.getShortdesc().trim());
 
+        //Recuperation de l'mage liee au profil
+        Bitmap image = FileUtils.getImage(getBaseContext(), membre);
+        if(image==null){
+            profileImage.setImageDrawable(getResources().getDrawable(R.drawable.person_image_empty));
+        }
+        else{
+            //On regarde dans les images embarquees
+            profileImage.setImageBitmap(image);
+        }
     }
 
 
