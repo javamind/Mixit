@@ -2,6 +2,7 @@ package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,11 +69,13 @@ public class SalleFragment extends Fragment {
                 .addBorders(true, false, dernierligne, true)
                 .addPadding(4, 0, 4)
                 .addBackground(getResources().getColor(color))
+                .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
                 .getView());
         tableRow.addView(new TextViewBuilder()
                 .buildTextView(getActivity())
                 .addAlignement(Gravity.CENTER)
                 .addText(nom)
+                .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
                 .addBorders(true, true, dernierligne, true)
                 .addPadding(4, 0, 4)
                 .addBackground(getResources().getColor(android.R.color.white))

@@ -55,6 +55,7 @@
             android:layout_toRightOf="@+id/about_cree"
             android:layout_below="@+id/about_h1"
             style="@style/myTextView"
+            android:lines="1"
             android:text="@string/about_createur"
             android:autoLink="web"
             android:id="@+id/about_createur"/>

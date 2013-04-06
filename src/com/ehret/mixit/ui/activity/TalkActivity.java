@@ -84,7 +84,7 @@ public class TalkActivity extends AbstractActivity {
 
             }
             if(conference instanceof Talk){
-                level.setText(((Talk) conference).getLevel());
+                level.setText("[" + ((Talk) conference).getLevel() + "]");
             }
             name.setText(conference.getTitle());
             summary.setText(conference.getSummary());

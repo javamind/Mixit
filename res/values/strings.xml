@@ -35,6 +35,8 @@
     <string name="description_planning_j2">Vendredi 26 avril</string>
     <string name="description_sync">Raffraîchir les données</string>
     <string name="description_search">Rechercher</string>
+    <string name="description_favorite_add">Mettre en favori</string>
+    <string name="description_favorite_del">Enlever des favoris</string>
     <string name="description_sessions">Sessions</string>
     <string name="description_talk">Conférences</string>
     <string name="description_workshop">Ateliers</string>
@@ -51,18 +53,22 @@
     <string name="description_liens">Liens</string>
 
     <!-- Calendrier -->
-    <string name="calendrier_detail">Voir le détail...</string>
-    <string name="calendrier_confs">Conférences</string>
+    <string name="calendrier_planning">De %1$s à %2$s</string>
+    <string name="calendrier_detail">détail...</string>
+    <string name="calendrier_confs">Talks</string>
     <string name="calendrier_ateliers">Ateliers</string>
     <string name="calendrier_conf">Conférence</string>
+    <string name="calendrier_conf_small">Talk</string>
     <string name="calendrier_atelier">Atelier</string>
     <string name="calendrier_ligthning">Ligthning Talks</string>
+    <string name="calendrier_ligthning_small">Ligh.Talk</string>
     <string name="calendrier_keynote">Keynote</string>
     <string name="calendrier_pause">Pause</string>
     <string name="calendrier_repas">Repas</string>
     <string name="calendrier_title25">Programme jeudi 25 avril</string>
     <string name="calendrier_title26">Programme vendredi 26 avril</string>
-    <string name="calendrier_explication">Cliquez sur une plage horaire pour voir comment seront réparties les différentes conférences ou ateliers par salle</string>
+
+    <string name="calendrier_explication">Cliquez sur une plage horaire pour voir la répartition par salle par salle</string>
     <string name="calendrier_legende">(T) conférence, (W) atelier, (K) keynote, (L) lightning talk</string>
     <string name="calendrier_salle_liste">Liste des salles</string>
     <string name="calendrier_avril">Avril</string>
@@ -86,20 +92,19 @@
 
     <!-- Différentes listes -->
     <string name="focus_orga">Les membres du staff</string>
-    <string name="focus_orga_desc">Mix-IT est l’aboutissement de la collaboration entre le Lyon Java User Group et le Club Agile Rhône-Alpes</string>
     <string name="focus_membre">Inscrits sur le site Mix-IT</string>
-    <string name="focus_membre_desc">Ces deux jours de conférence sont l\'occasion de croiser une des personnes ci dessous</string>
     <string name="focus_speaker">Les speakers</string>
-    <string name="focus_speaker_desc">Descriptif des différents intervenants animant les conférences ou les ateliers</string>
     <string name="focus_sponsor">Les sponsors</string>
-    <string name="focus_sponsor_desc">Mix-IT reste à un prix abordable par rapport aux autres grandes conférences techniques grâce aux différents sponsors</string>
     <string name="focus_talk">Les talks</string>
-    <string name="focus_talk_desc">Les conférences s\'orientent autour de deux thématiques : la technique et l\'agilité. Le niveau vous indique le niveau d\'expertise conseillé</string>
     <string name="focus_workshop">Les ateliers</string>
-    <string name="focus_workshop_desc">Nouveauté 1013,  les ateliers vous permettent de mettre en pratique certains concepts</string>
     <string name="focus_lightningtalk">Les ligthning talks</string>
-    <string name="focus_lightningtalk_desc">Micro format pour aborder rapidement un sujet, une probématique, une technique...</string>
-
+    <string name="focus_orga_desc"></string>
+    <string name="focus_membre_desc"></string>
+    <string name="focus_speaker_desc"></string>
+    <string name="focus_sponsor_desc"></string>
+    <string name="focus_talk_desc"></string>
+    <string name="focus_workshop_desc"></string>
+    <string name="focus_lightningtalk_desc"></string>
     <!-- Page membre -->
     <string name="membre_image_content">Image</string>
     <string name="membre_speaker">Speaker</string>

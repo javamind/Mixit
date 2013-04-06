@@ -103,7 +103,7 @@ public class CalendarFragmentJ2 extends AbstractCalendarFragment {
 
         //Lightning  + Atelier  13H->13H30
         tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(25, 13, false));
-        addEvent(tableRow, getString(R.string.calendrier_ligthning));
+        addEvent(tableRow, getString(R.string.calendrier_ligthning_small));
         addAtelierDebut(tableRow);
         ;
 

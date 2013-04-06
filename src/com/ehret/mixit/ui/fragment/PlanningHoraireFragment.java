@@ -76,8 +76,9 @@ public class PlanningHoraireFragment extends Fragment {
         TableRow tableRow = createTableRow();
         tableRow.addView(new TextViewBuilder()
                 .buildTextView(getActivity())
-                .addText("Planning de " + DateFormat.getTimeInstance(DateFormat.SHORT).format(heure) + " à " +
-                        DateFormat.getTimeInstance(DateFormat.SHORT).format(heureFin))
+                .addText(String.format(getString(R.string.calendrier_planning),
+                        DateFormat.getTimeInstance(DateFormat.SHORT).format(heure),
+                        DateFormat.getTimeInstance(DateFormat.SHORT).format(heureFin)))
                 .addAlignement(Gravity.CENTER)
                 .addBorders(true, true, false, true)
                 .addPadding(4, 0, 4)
@@ -86,7 +87,8 @@ public class PlanningHoraireFragment extends Fragment {
                 .addNbLines(2)
                 .addBold(true)
                 .addTextColor(R.color.black)
-                .addBackgroundDrawable(getResources().getDrawable(R.drawable.planning_horaire_background))
+                .addBackground(getResources().getColor(R.color.blue))
+                //.addBackgroundDrawable(getResources().getDrawable(R.drawable.planning_horaire_background))
                 .getView());
         planningHoraireTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());
 

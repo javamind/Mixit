@@ -33,7 +33,7 @@ public abstract class AbstractCalendarFragment extends Fragment {
     protected abstract void dessinerCalendrier();
 
     protected void addConferenceDebut(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.blue, getResources().getColor(android.R.color.black), getResources().getString(R.string.calendrier_conf), true, false, false, true, 1);
+        createElementCalendarTableLayout(tableRow, R.color.blue, getResources().getColor(android.R.color.black), getResources().getString(R.string.calendrier_conf_small), true, false, false, true, 1);
 
     }
 

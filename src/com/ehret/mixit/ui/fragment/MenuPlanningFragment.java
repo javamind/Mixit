@@ -81,7 +81,7 @@ public class MenuPlanningFragment extends Fragment{
         }, 3);
         createMenu(R.color.grey,android.R.color.white,
                 context.getString(R.string.blank),
-                context.getString(R.string.calendrier_27), false,false, null,1);
+                context.getString(R.string.calendrier_27), true,false, null,1);
 
     }
 

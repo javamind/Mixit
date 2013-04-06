@@ -47,24 +47,14 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignWithParentIfMissing="true"
                         android:layout_toRightOf="@id/talk_image"
-                        android:maxLines="1"
+                        android:maxLines="2"
                         android:paddingBottom="4dp"
                         android:paddingTop="4dp"
                         style="@style/myTextView"
                         android:textStyle="bold"
                         android:textSize="@dimen/text_size_medium"/>
 
-                <TextView
-                        android:id="@+id/talk_level"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignWithParentIfMissing="true"
-                        android:layout_toRightOf="@id/talk_name"
-                        android:paddingBottom="4dp"
-                        android:paddingLeft="8dp"
-                        android:paddingTop="4dp"
-                        style="@style/myTextView"
-                        android:textSize="@dimen/text_size_small"/>
+
 
                 <TextView
                         android:id="@+id/talk_horaire"
@@ -111,6 +101,16 @@
                         android:paddingTop="4dp"
                         style="@style/myTextView"
                         android:textSize="@dimen/text_size_medium"/>
+                <TextView
+                        android:id="@+id/talk_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignWithParentIfMissing="true"
+                        android:paddingBottom="4dp"
+                        android:layout_below="@id/talk_desciptif"
+                        android:paddingLeft="8dp"
+                        style="@style/myTextView"
+                        android:textSize="@dimen/text_size_small"/>
             </RelativeLayout>
 
             <TextView
