@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
@@ -12,13 +27,10 @@ import com.ehret.mixit.domain.Salle;
 import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.domain.talk.Conference;
-import com.ehret.mixit.domain.talk.Lightningtalk;
 import com.ehret.mixit.domain.talk.Talk;
 import com.ehret.mixit.model.ConferenceFacade;
 import com.ehret.mixit.model.MembreFacade;
-import com.ehret.mixit.ui.activity.MembreActivity;
 import com.ehret.mixit.ui.activity.TalkActivity;
-import com.ehret.mixit.ui.adapter.ListTalkAdapter;
 import com.ehret.mixit.ui.utils.TextViewBuilder;
 import com.ehret.mixit.ui.utils.UIUtils;
 
@@ -62,21 +74,21 @@ public class PersonSessionsFragment extends Fragment {
         if (getActivity().getIntent().getExtras() != null) {
             idPerson = getActivity().getIntent().getExtras().getLong(UIUtils.MESSAGE);
             typePersonne = getActivity().getIntent().getExtras().getString(UIUtils.TYPE);
-        }
-        else{
+        } else {
             //On gere le cas ou on tourne l'écran en restorant les états de la vue
-            idPerson= savedInstanceState.getLong("ID_PERSON_LINKED");;
-            typePersonne= savedInstanceState.getString("TYPE_PERSON_LINKED");
+            idPerson = savedInstanceState.getLong("ID_PERSON_LINKED");
+            ;
+            typePersonne = savedInstanceState.getString("TYPE_PERSON_LINKED");
         }
 
         //On recupere la personne concernee
         Membre membre = MembreFacade.getInstance().getMembre(getActivity(), typePersonne, idPerson);
 
         //On recupere aussi la liste des sessions de l'utilisateur
-        List<Conference> conferences = ConferenceFacade.getInstance().getSessionMembre(membre,getActivity());
+        List<Conference> conferences = ConferenceFacade.getInstance().getSessionMembre(membre, getActivity());
 
         //On affiche les liens que si on a recuperer des choses
-        if(conferences!=null && !conferences.isEmpty()){
+        if (conferences != null && !conferences.isEmpty()) {
             //On utilisait auparavant une liste pour afficher ces éléments dans la page mais cette liste
             //empêche d'avoir un ScrollView englobant pour toute la page. Nous utilisons donc un tableau
             linearLayoutRoot = (LinearLayout) mInflater.inflate(R.layout.fragment_linear, mRootView, false);
@@ -98,8 +110,8 @@ public class PersonSessionsFragment extends Fragment {
             TableLayout tableLayout = new TableLayout(getActivity().getBaseContext());
             tableLayout.setLayoutParams(tableParams);
 
-            for(final Conference conf : conferences){
-                LinearLayout row = (LinearLayout ) mInflater.inflate(R.layout.talk_item, null);
+            for (final Conference conf : conferences) {
+                LinearLayout row = (LinearLayout) mInflater.inflate(R.layout.talk_item, null);
                 //Dans lequel nous allons ajouter le contenu que nous faisons mappé dans
                 image = (ImageView) row.findViewById(R.id.talk_image);
                 name = (TextView) row.findViewById(R.id.talk_name);
@@ -112,38 +124,35 @@ public class PersonSessionsFragment extends Fragment {
                 name.setText(conf.getTitle());
                 descriptif.setText(conf.getSummary().trim());
                 SimpleDateFormat sdf = new SimpleDateFormat("EEE");
-                if(conf.getStart()!=null && conf.getEnd()!=null){
+                if (conf.getStart() != null && conf.getEnd() != null) {
                     horaire.setText(String.format(getResources().getString(R.string.periode),
                             sdf.format(conf.getStart()),
                             DateFormat.getTimeInstance(DateFormat.SHORT).format(conf.getStart()),
                             DateFormat.getTimeInstance(DateFormat.SHORT).format(conf.getEnd())
                     ));
-                }
-                else{
+                } else {
                     horaire.setText(getResources().getString(R.string.pasdate));
 
                 }
                 Salle salle = Salle.INCONNU;
-                if(conf instanceof Talk && Salle.INCONNU != Salle.getSalle(((Talk) conf).getRoom())){
+                if (conf instanceof Talk && Salle.INCONNU != Salle.getSalle(((Talk) conf).getRoom())) {
                     salle = Salle.getSalle(((Talk) conf).getRoom());
                 }
-                talkSalle.setText(String.format(getResources().getString(R.string.Salle),salle.getNom()));
+                talkSalle.setText(String.format(getResources().getString(R.string.Salle), salle.getNom()));
                 talkSalle.setBackgroundColor(getResources().getColor(salle.getColor()));
 
 
-                if(conf instanceof Talk){
+                if (conf instanceof Talk) {
                     level.setText("[" + ((Talk) conf).getLevel() + "]");
 
-                    if("Workshop".equals(((Talk) conf).getFormat())){
+                    if ("Workshop".equals(((Talk) conf).getFormat())) {
                         talkImageText.setText("Workshop");
                         image.setImageDrawable(getResources().getDrawable(R.drawable.workshop));
-                    }
-                    else{
+                    } else {
                         talkImageText.setText("Talk");
                         image.setImageDrawable(getResources().getDrawable(R.drawable.talk));
                     }
-                }
-                else{
+                } else {
                     talkImageText.setText("L.Talk");
                     image.setImageDrawable(getResources().getDrawable(R.drawable.lightning));
                 }
@@ -154,18 +163,16 @@ public class PersonSessionsFragment extends Fragment {
                         Map<String, Object> parameters = new HashMap<String, Object>(2);
                         parameters.put(UIUtils.MESSAGE, conf.getId());
                         TypeFile typeFile = null;
-                        if(conf instanceof Talk){
-                            if("Workshop".equals(((Talk) conf).getFormat())){
+                        if (conf instanceof Talk) {
+                            if ("Workshop".equals(((Talk) conf).getFormat())) {
                                 typeFile = TypeFile.workshops;
-                            }
-                            else{
+                            } else {
                                 typeFile = TypeFile.talks;
                             }
-                        }
-                        else{
+                        } else {
                             typeFile = TypeFile.lightningtalks;
                         }
-                            parameters.put(UIUtils.TYPE, typeFile);
+                        parameters.put(UIUtils.TYPE, typeFile);
                         UIUtils.startActivity(TalkActivity.class, getActivity(), parameters);
                     }
                 });

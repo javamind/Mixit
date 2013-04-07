@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
@@ -32,7 +47,7 @@ public class PersonLinkFragment extends Fragment {
     private LayoutInflater mInflater;
     private String typePersonne;
     private Long idPerson;
-    private  TextView link_text;
+    private TextView link_text;
     private LinearLayout linearLayoutRoot;
 
     @Override
@@ -49,17 +64,16 @@ public class PersonLinkFragment extends Fragment {
         if (getActivity().getIntent().getExtras() != null) {
             idPerson = getActivity().getIntent().getExtras().getLong(UIUtils.MESSAGE);
             typePersonne = getActivity().getIntent().getExtras().getString(UIUtils.TYPE);
-        }
-        else{
+        } else {
             //On gere le cas ou on tourne l'écran en restorant les états de la vue
-            idPerson= savedInstanceState.getLong("ID_PERSON_LINK");
-            typePersonne= savedInstanceState.getString("TYPE_PERSON_LINK");
+            idPerson = savedInstanceState.getLong("ID_PERSON_LINK");
+            typePersonne = savedInstanceState.getString("TYPE_PERSON_LINK");
         }
         //On recupere la personne concernee
         Membre membre = MembreFacade.getInstance().getMembre(getActivity(), typePersonne, idPerson);
 
         //On affiche les liens que si on a recuperer des choses
-        if(membre.getSharedLinks()!=null && !membre.getSharedLinks().isEmpty()){
+        if (membre.getSharedLinks() != null && !membre.getSharedLinks().isEmpty()) {
             linearLayoutRoot = (LinearLayout) mInflater.inflate(R.layout.fragment_linear, mRootView, false);
             //On vide les éléments
             linearLayoutRoot.removeAllViews();
@@ -79,16 +93,16 @@ public class PersonLinkFragment extends Fragment {
             TableLayout tableLayout = new TableLayout(getActivity().getBaseContext());
             tableLayout.setLayoutParams(tableParams);
 
-            for(final Link link : membre.getSharedLinks()){
-                RelativeLayout  row = (RelativeLayout ) mInflater.inflate(R.layout.link_item, null);
+            for (final Link link : membre.getSharedLinks()) {
+                RelativeLayout row = (RelativeLayout) mInflater.inflate(R.layout.link_item, null);
                 //Dans lequel nous allons ajouter le contenu que nous faisons mappé dans
                 link_text = (TextView) row.findViewById(R.id.link_text);
-                link_text.setText(Html.fromHtml(String.format("%s : <a href=\"%s\">%s</a>", link.getName(), link.getUrl(),  link.getUrl())));
+                link_text.setText(Html.fromHtml(String.format("%s : <a href=\"%s\">%s</a>", link.getName(), link.getUrl(), link.getUrl())));
                 link_text.setBackgroundColor(Color.TRANSPARENT);
                 link_text.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent in= new Intent(Intent.ACTION_VIEW, Uri.parse(link.getUrl()));
+                        Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse(link.getUrl()));
                         getActivity().startActivity(in);
                     }
 

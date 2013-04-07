@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
@@ -47,10 +62,9 @@ public class PlanningHoraireFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //Par defaut on affiche la premiere session de la journee de 9H
-        if(getActivity() instanceof PlanningJ2Activity){
+        if (getActivity() instanceof PlanningJ2Activity) {
             refreshPlanningHoraire(UIUtils.createPlageHoraire(25, 9, false));
-        }
-        else{
+        } else {
             refreshPlanningHoraire(UIUtils.createPlageHoraire(26, 9, false));
         }
     }
@@ -58,9 +72,10 @@ public class PlanningHoraireFragment extends Fragment {
 
     /**
      * Permet d'afficher le planning lie a la plage selectionnee
+     *
      * @param heure
      */
-    public void refreshPlanningHoraire(Date heure){
+    public void refreshPlanningHoraire(Date heure) {
         //deux tableaux juxtaposer
         //Un d'une colonne pour gérer l'heure
         planningHoraireTableLayout = (TableLayout) getActivity().findViewById(R.id.planningHoraireTableLayout);
@@ -88,42 +103,42 @@ public class PlanningHoraireFragment extends Fragment {
                 .addBold(true)
                 .addTextColor(R.color.black)
                 .addBackground(getResources().getColor(R.color.blue))
-                //.addBackgroundDrawable(getResources().getDrawable(R.drawable.planning_horaire_background))
+                .addBackgroundDrawable(R.drawable.planning_horaire_background)
                 .getView());
         planningHoraireTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());
 
-        List<Conference>  confs = ConferenceFacade.getInstance().getConferenceSurPlageHoraire(heure,getActivity());
+        List<Conference> confs = ConferenceFacade.getInstance().getConferenceSurPlageHoraire(heure, getActivity());
 
         int size = confs.size();
-        createPlage(confs,size, 1,getActivity().getResources());
-        createPlage(confs,size, 2,getActivity().getResources());
-        createPlage(confs,size, 3,getActivity().getResources());
-        createPlage(confs,size, 4,getActivity().getResources());
-        createPlage(confs,size, 5,getActivity().getResources());
+        createPlage(confs, size, 1, getActivity().getResources());
+        createPlage(confs, size, 2, getActivity().getResources());
+        createPlage(confs, size, 3, getActivity().getResources());
+        createPlage(confs, size, 4, getActivity().getResources());
+        createPlage(confs, size, 5, getActivity().getResources());
 
     }
 
-    private final static String CODECONF="TKWL";
+    private final static String CODECONF = "TKWL";
 
 
-    private void createPlage(List<Conference> confs,int size, int index, Resources resource){
-        if(size>=index){
+    private void createPlage(List<Conference> confs, int size, int index, Resources resource) {
+        if (size >= index) {
             Conference c = confs.get(index - 1);
 
             Salle salle = Salle.INCONNU;
-            if(c instanceof Talk){
+            if (c instanceof Talk) {
                 salle = Salle.getSalle(((Talk) c).getRoom());
             }
-            char code = ((Talk)c).getFormat().charAt(0);
+            char code = ((Talk) c).getFormat().charAt(0);
             boolean colored = CODECONF.contains(String.valueOf(code));
-            createPlanningSalle("(" + code  + ") " + c.getTitle(), colored ? salle.getColor() : android.R.color.white, c);
+            createPlanningSalle("(" + code + ") " + c.getTitle(), colored ? salle.getColor() : android.R.color.white, c);
 
             StringBuffer buf = new StringBuffer();
-            if(c.getSpeakers()!=null){
-                for(Long id : c.getSpeakers()){
+            if (c.getSpeakers() != null) {
+                for (Long id : c.getSpeakers()) {
                     Membre m = MembreFacade.getInstance().getMembre(getActivity(), TypeFile.speaker.name(), id);
-                    if(m.getFirstname()!=null && m.getLastname()!=null){
-                        if(!buf.toString().equals("")){
+                    if (m.getFirstname() != null && m.getLastname() != null) {
+                        if (!buf.toString().equals("")) {
                             buf.append(", ");
                         }
                         buf.append(m.getFirstname() + " " + m.getLastname());
@@ -136,18 +151,19 @@ public class PlanningHoraireFragment extends Fragment {
         }
 
     }
-    private String getHeureStr(float heure){
-        float difference =  heure - ((int) heure);
-        if(difference == 0){
+
+    private String getHeureStr(float heure) {
+        float difference = heure - ((int) heure);
+        if (difference == 0) {
             return (int) heure + "H";
-        }
-        else{
-            return (int) heure + "H" + ((int)(difference*10) * 6);
+        } else {
+            return (int) heure + "H" + ((int) (difference * 10) * 6);
         }
     }
 
     /**
      * Creation d'une ligne
+     *
      * @return
      */
     private TableRow createTableRow() {
@@ -158,10 +174,11 @@ public class PlanningHoraireFragment extends Fragment {
 
     /**
      * Creation du planning salle
+     *
      * @param nom
      * @param color
      */
-    private void createPlanningSalle(String nom, int color,final Conference conf) {
+    private void createPlanningSalle(String nom, int color, final Conference conf) {
         TableRow tableRow = createTableRow();
         addEventOnTableRow(conf, tableRow);
         TextView textView = new TextViewBuilder()
@@ -195,14 +212,15 @@ public class PlanningHoraireFragment extends Fragment {
 
     /**
      * Ajoute un event pour zoomer sur le detail d'une plage horaire
+     *
      * @param conf
      * @param tableRow
      */
     private void addEventOnTableRow(final Conference conf, TableRow tableRow) {
-        final Map<String, Object> parameters  = new HashMap<String, Object>(6);
+        final Map<String, Object> parameters = new HashMap<String, Object>(6);
 
         //En fonction du type de talk nous ne faisons pas la même chose
-        if(conf instanceof Lightningtalk){
+        if (conf instanceof Lightningtalk) {
             //Pour la les lightning on affiche la liste complete
             tableRow.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -211,17 +229,16 @@ public class PlanningHoraireFragment extends Fragment {
                     UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
                 }
             });
-        }
-        else{
+        } else {
             //Pour les talks on ne retient que les talks et workshop
             char code = ((Talk) conf).getFormat().charAt(0);
-            if(code=='T' || code =='W'){
+            if (code == 'T' || code == 'W') {
                 tableRow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Map<String, Object> parameters = new HashMap<String, Object>(2);
                         parameters.put(UIUtils.MESSAGE, conf.getId());
-                        parameters.put(UIUtils.TYPE, ((Talk) conf).getFormat().charAt(0)=='W' ? TypeFile.workshops.name() :
+                        parameters.put(UIUtils.TYPE, ((Talk) conf).getFormat().charAt(0) == 'W' ? TypeFile.workshops.name() :
                                 TypeFile.talks.name());
                         UIUtils.startActivity(TalkActivity.class, getActivity(), parameters);
                     }
@@ -232,13 +249,14 @@ public class PlanningHoraireFragment extends Fragment {
 
     /**
      * Ajout presentateur
+     *
      * @param dernierligne
      * @param nom
      * @param color
      */
-    private void createPresentateurSalle(boolean dernierligne,String nom, int color,final Conference conf) {
+    private void createPresentateurSalle(boolean dernierligne, String nom, int color, final Conference conf) {
         TableRow tableRow = createTableRow();
-        addEventOnTableRow(conf,  tableRow);
+        addEventOnTableRow(conf, tableRow);
         tableRow.addView(new TextViewBuilder()
                 .buildTextView(getActivity())
                 .addText(" ")

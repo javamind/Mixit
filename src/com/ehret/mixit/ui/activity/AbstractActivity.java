@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Google Inc.
+ * Copyright 2013 Guillaume EHRET
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.ehret.mixit.ui.activity;
 
 import android.app.Activity;
@@ -44,11 +43,11 @@ import com.ehret.mixit.ui.utils.UIUtils;
 import java.util.List;
 
 /**
- * Top activity with all the commons declarations
+ * Classe mère de toutes nos activités
  */
 public abstract class AbstractActivity extends Activity {
     private int progressStatus = 0;
-    private ProgressDialog progressDialog ;
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -63,20 +62,19 @@ public abstract class AbstractActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         //Le menu refresh est masque pour les activities qui n'en ont pas besoin
-        if(!(this instanceof SocialActivity)){
+        if (!(this instanceof SocialActivity)) {
             menu.removeItem(R.id.menu_refresh);
         }
-        if(!(this instanceof ParseListeActivity)){
+        if (!(this instanceof ParseListeActivity)) {
             menu.removeItem(R.id.menu_search);
-        }
-        else{
+        } else {
             // Get the SearchView and set the searchable configuration
             SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
             SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         }
-        if(!(this instanceof TalkActivity)){
+        if (!(this instanceof TalkActivity)) {
             menu.removeItem(R.id.menu_favorites);
         }
         return true;
@@ -112,10 +110,11 @@ public abstract class AbstractActivity extends Activity {
     }
 
     private void chargementDonnees() {
-        if(UIUtils.isNetworkAvailable(getBaseContext())){
-            if(FileUtils.isExternalStorageWritable()){
+        if (UIUtils.isNetworkAvailable(getBaseContext())) {
+            if (FileUtils.isExternalStorageWritable()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(getString(R.string.dial_message))
+                builder.setTitle(getString(R.string.sync_message_title))
+                        .setMessage(getString(R.string.dial_message))
                         .setPositiveButton(R.string.dial_oui, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 appelerSynchronizer(true);
@@ -133,30 +132,27 @@ public abstract class AbstractActivity extends Activity {
                         });
                 builder.create();
                 builder.show();
-            }
-            else{
+            } else {
                 Toast.makeText(getBaseContext(), getText(R.string.sync_erreur), Toast.LENGTH_LONG).show();
             }
-        }
-        else{
+        } else {
             Toast.makeText(getBaseContext(), getText(R.string.sync_erreur_reseau), Toast.LENGTH_LONG).show();
         }
     }
 
     /**
-     *
-      * @param chargerImage
+     * @param chargerImage
      */
     private void appelerSynchronizer(boolean chargerImage) {
-        if(progressDialog==null){
+        if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
         }
         progressDialog.setCancelable(true);
         int nbMax = JsonFile.values().length;
-        if(chargerImage){
-            nbMax+= MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(),null).size();
-            if(nbMax<100)
-                nbMax=800;
+        if (chargerImage) {
+            nbMax += MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(), null).size();
+            if (nbMax < 100)
+                nbMax = 800;
         }
         progressDialog.setMax(nbMax);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -169,20 +165,23 @@ public abstract class AbstractActivity extends Activity {
     /**
      * Template methode pouvant être surchargée par les écrans pour gérer le refresh
      */
-    public void refresh(){}
+    public void refresh() {
+    }
 
 
     private enum SendSocial {twitter, plus}
+
     /**
      * Permet d'envoyer un message en filtrant les intents
+     *
      * @param type
      */
-    private void sendMessage(SendSocial type){
+    private void sendMessage(SendSocial type) {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("text/plain");
-        i.putExtra(Intent.EXTRA_TEXT,"#MixIT_lyon");
-        if(!UIUtils.filterIntent(this, type.name(), i)){
-            Toast.makeText(getBaseContext(), SendSocial.plus.equals(type) ? R.string.description_no_google : R.string.description_no_twitter, Toast.LENGTH_SHORT);
+        i.putExtra(Intent.EXTRA_TEXT, "#MixIT_lyon");
+        if (!UIUtils.filterIntent(this, type.name(), i)) {
+            Toast.makeText(getBaseContext(), SendSocial.plus.equals(type) ? R.string.description_no_google : R.string.description_no_twitter, Toast.LENGTH_SHORT).show();
         }
         startActivity(Intent.createChooser(i, "Share URL"));
     }
@@ -191,7 +190,7 @@ public abstract class AbstractActivity extends Activity {
     /**
      * Lance en asynchrone la recuperation des fichiers
      */
-    private class SynchronizeMixitAsync extends AsyncTask<Boolean, Integer, Void>{
+    private class SynchronizeMixitAsync extends AsyncTask<Boolean, Integer, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -201,27 +200,26 @@ public abstract class AbstractActivity extends Activity {
         @Override
         protected Void doInBackground(Boolean... params) {
             Boolean chargerImage = params[0];
-            for(JsonFile json : JsonFile.values()){
-                try{
-                    if(!Synchronizer.downloadJsonFile(getBaseContext(), json.getUrl(), json.getType())){
+            for (JsonFile json : JsonFile.values()) {
+                try {
+                    if (!Synchronizer.downloadJsonFile(getBaseContext(), json.getUrl(), json.getType())) {
                         //Si une erreur de chargement on sort
                         break;
                     }
                     publishProgress(progressStatus++);
-                }
-                catch (RuntimeException e){
+                } catch (RuntimeException e) {
                     Log.w("DialogSynchronizeFragment", "Impossible de synchroniser", e);
                 }
             }
             //Une fois finie on supprime le cache
             MembreFacade.getInstance().viderCache();
             ConferenceFacade.getInstance().viderCache();
-            if(chargerImage){
+            if (chargerImage) {
                 //On pren les membres s'ils viennent d'etre recharge
-                List<Membre> membres = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(),null);
-                for(Membre membre : membres){
-                    if(membre.getUrlimage()!=null){
-                        Synchronizer.downloadImage(getBaseContext(), membre.getUrlimage(),"membre"+ membre.getId());
+                List<Membre> membres = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.members.name(), null);
+                for (Membre membre : membres) {
+                    if (membre.getUrlimage() != null) {
+                        Synchronizer.downloadImage(getBaseContext(), membre.getUrlimage(), "membre" + membre.getId());
                         publishProgress(progressStatus++);
                     }
                 }
@@ -229,16 +227,20 @@ public abstract class AbstractActivity extends Activity {
             return null;
         }
 
-        /** This callback method is invoked when publishProgress()
-         * method is called */
+        /**
+         * This callback method is invoked when publishProgress()
+         * method is called
+         */
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             progressDialog.setProgress(progressStatus);
         }
 
-        /** This callback method is invoked when the background function
-         * doInBackground() is executed completely */
+        /**
+         * This callback method is invoked when the background function
+         * doInBackground() is executed completely
+         */
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);

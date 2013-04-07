@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
@@ -35,7 +50,7 @@ public class SalleFragment extends Fragment {
         dessinerSalle();
     }
 
-    protected void dessinerSalle(){
+    protected void dessinerSalle() {
         //deux tableaux juxtaposer
         //Un d'une colonne pour gérer l'heure
         salleTableLayout = (TableLayout) getActivity().findViewById(R.id.salleTableLayout);
@@ -44,16 +59,16 @@ public class SalleFragment extends Fragment {
         salleTableLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UIUtils.startActivity(SalleActivity.class,getActivity());
+                UIUtils.startActivity(SalleActivity.class, getActivity());
             }
         });
         createSalle(Salle.SALLE1.getColor(), Salle.SALLE1.getNom(), Salle.SALLE2.getColor(), Salle.SALLE2.getNom(), false);
-        createSalle( Salle.SALLE3.getColor(),  Salle.SALLE3.getNom(), Salle.SALLE4.getColor(),  Salle.SALLE4.getNom(),  false);
-        createSalle( Salle.SALLE5.getColor(),  Salle.SALLE5.getNom(), Salle.INCONNU.getColor(),  Salle.INCONNU.getNom(),true);
+        createSalle(Salle.SALLE3.getColor(), Salle.SALLE3.getNom(), Salle.SALLE4.getColor(), Salle.SALLE4.getNom(), false);
+        createSalle(Salle.SALLE5.getColor(), Salle.SALLE5.getNom(), Salle.INCONNU.getColor(), Salle.INCONNU.getNom(), true);
 
     }
 
-    private void createSalle(int color1, String nom1,int color2, String nom2, boolean dernierligne) {
+    private void createSalle(int color1, String nom1, int color2, String nom2, boolean dernierligne) {
         TableRow tableRow = new TableRowBuilder().buildTableRow(getActivity())
                 .addNbColonne(2)
                 .addBackground(getResources().getColor(R.color.grey)).getView();

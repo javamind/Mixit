@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.domain.twitter;
 
 import android.content.Context;
@@ -6,6 +21,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 import com.ehret.mixit.R;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,8 +35,9 @@ import java.util.Map;
 /**
  * Classe modelisant un tweet
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Tweet {
-    private String created_at  = "Thu, 21 Mar 2013 20:16:34 +0000";
+    private String created_at = "Thu, 21 Mar 2013 20:16:34 +0000";
 
     private String from_user;
     private long from_user_id;
@@ -30,7 +47,7 @@ public class Tweet {
     private long id;
     private String id_str;
     private String iso_language_code;
-    private Map<String,String> metadata;
+    private Map<String, String> metadata;
     private String profile_image_url;
     private String profile_image_url_https;
     private String source;
@@ -57,11 +74,11 @@ public class Tweet {
         return created_at;
     }
 
-    public String getCreatedSince(Context context){
+    public String getCreatedSince(Context context) {
         String date = created_at;
-        if(date!=null){
+        if (date != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat(
-                        "EEE, dd MMM yyyy HH:mm:ss ZZZZZ", Locale.ENGLISH);
+                    "EEE, dd MMM yyyy HH:mm:ss ZZZZZ", Locale.ENGLISH);
             dateFormat.setLenient(false);
             try {
                 Date mydate = dateFormat.parse(date);
@@ -76,16 +93,16 @@ public class Tweet {
                 x /= 24;
                 long days = x;
 
-                if(days>1)
+                if (days > 1)
                     return days + " " + context.getResources().getString(R.string.jours);
-                if(days==1)
+                if (days == 1)
                     return days + " " + context.getResources().getString(R.string.jour);
-                if(hours>1)
+                if (hours > 1)
                     return hours + " " + context.getResources().getString(R.string.heures);
-                if(hours==1)
-                    return hours + " "+ context.getResources().getString(R.string.heure);
-                if(minutes>1)
-                    return minutes + " "+ context.getResources().getString(R.string.minutes);
+                if (hours == 1)
+                    return hours + " " + context.getResources().getString(R.string.heure);
+                if (minutes > 1)
+                    return minutes + " " + context.getResources().getString(R.string.minutes);
                 return "1 " + context.getResources().getString(R.string.minute);
 
             } catch (ParseException e) {
@@ -177,7 +194,7 @@ public class Tweet {
 
     public void setProfile_image_url(String profile_image_url) {
         this.profile_image_url = profile_image_url;
-        if(this.profile_image_url!=null){
+        if (this.profile_image_url != null) {
             try {
                 URL url = new URL(profile_image_url);
                 imageToDisplay = BitmapFactory.decodeStream(url.openConnection().getInputStream());

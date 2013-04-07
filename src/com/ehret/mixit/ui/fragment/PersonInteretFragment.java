@@ -1,22 +1,30 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
-import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import com.ehret.mixit.R;
 import com.ehret.mixit.domain.people.Interet;
-import com.ehret.mixit.domain.people.Link;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.model.MembreFacade;
 import com.ehret.mixit.ui.utils.TextViewBuilder;
@@ -49,17 +57,16 @@ public class PersonInteretFragment extends Fragment {
         if (getActivity().getIntent().getExtras() != null) {
             idPerson = getActivity().getIntent().getExtras().getLong(UIUtils.MESSAGE);
             typePersonne = getActivity().getIntent().getExtras().getString(UIUtils.TYPE);
-        }
-        else{
+        } else {
             //On gere le cas ou on tourne l'écran en restorant les états de la vue
-            idPerson= savedInstanceState.getLong("ID_PERSON_LINK");
-            typePersonne= savedInstanceState.getString("TYPE_PERSON_LINK");
+            idPerson = savedInstanceState.getLong("ID_PERSON_LINK");
+            typePersonne = savedInstanceState.getString("TYPE_PERSON_LINK");
         }
         //On recupere la personne concernee
         Membre membre = MembreFacade.getInstance().getMembre(getActivity(), typePersonne, idPerson);
 
         //On affiche les liens que si on a recuperer des choses
-        if(membre.getInterests()!=null && !membre.getInterests().isEmpty()){
+        if (membre.getInterests() != null && !membre.getInterests().isEmpty()) {
             linearLayoutRoot = (LinearLayout) mInflater.inflate(R.layout.fragment_linear, mRootView, false);
             //On vide les éléments
             linearLayoutRoot.removeAllViews();
@@ -75,10 +82,10 @@ public class PersonInteretFragment extends Fragment {
                     .getView());
 
             StringBuffer interets = new StringBuffer();
-            for(final Long iidInteret : membre.getInterests()){
-                Interet interet = MembreFacade.getInstance().getInteret(getActivity(),iidInteret);
-                if(interet!=null){
-                    if(interets.length()>0){
+            for (final Long iidInteret : membre.getInterests()) {
+                Interet interet = MembreFacade.getInstance().getInteret(getActivity(), iidInteret);
+                if (interet != null) {
+                    if (interets.length() > 0) {
                         interets.append(", ");
                     }
                     interets.append(interet.getName());

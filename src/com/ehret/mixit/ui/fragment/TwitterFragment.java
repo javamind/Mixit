@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
@@ -106,11 +121,11 @@ public class TwitterFragment extends Fragment {
                 }
 
                 //On met à jour l'écran. Pour celà on doit se raccrocher avec le thread dédie à l'UI
-                if(searchTweet==null){
+                if (searchTweet == null) {
                     searchTweet = (TextView) fragment.getActivity().findViewById(R.id.searchTweet);
 
                 }
-                if(progress==null){
+                if (progress == null) {
                     progress = (ProgressBar) fragment.getActivity().findViewById(R.id.tweetprogressbar);
                 }
                 fragment.getActivity().runOnUiThread(new Runnable() {
@@ -140,9 +155,8 @@ public class TwitterFragment extends Fragment {
                 });
 
 
-            }
-            else if(isLoaded==null || !isLoaded.get()){
-                if(searchTweet==null){
+            } else if (isLoaded == null || !isLoaded.get()) {
+                if (searchTweet == null) {
                     searchTweet = (TextView) fragment.getActivity().findViewById(R.id.searchTweet);
                 }
                 mRootView.removeAllViews();

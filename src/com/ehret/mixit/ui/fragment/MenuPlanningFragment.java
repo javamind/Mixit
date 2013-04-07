@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
@@ -20,7 +35,7 @@ import com.ehret.mixit.ui.utils.UIUtils;
 /**
  * Fragment utilise sur la page daccueil pour afficher les talks
  */
-public class MenuPlanningFragment extends Fragment{
+public class MenuPlanningFragment extends Fragment {
 
     protected TableLayout menuTableLayout;
     protected TextView titleMenu;
@@ -40,32 +55,32 @@ public class MenuPlanningFragment extends Fragment{
     /**
      * Affiche les données à l'écran
      */
-    protected void dessinerMenu(){
+    protected void dessinerMenu() {
         Context context = getActivity().getBaseContext();
 
         //Mise a jour du titre
-        if(titleMenu == null){
+        if (titleMenu == null) {
             titleMenu = (TextView) getActivity().findViewById(R.id.menuFragmentTitle3);
         }
         titleMenu.setText(context.getText(R.string.description_planning));
 
         //deux tableaux juxtaposer
         //Un d'une colonne pour gérer l'heure
-        if(menuTableLayout==null){
-            menuTableLayout = (TableLayout) getActivity().findViewById( R.id.menuFragmentTableLayout3);
+        if (menuTableLayout == null) {
+            menuTableLayout = (TableLayout) getActivity().findViewById(R.id.menuFragmentTableLayout3);
         }
         menuTableLayout.removeAllViews();
 
-        createMenu(R.color.grey,R.color.grey,
+        createMenu(R.color.grey, R.color.grey,
                 context.getString(R.string.blank),
-                context.getString(R.string.calendrier_avril), false,true, null,1);
-        createMenu(R.color.grey,android.R.color.white,
+                context.getString(R.string.calendrier_avril), false, true, null, 1);
+        createMenu(R.color.grey, android.R.color.white,
                 context.getString(R.string.blank),
-                context.getString(R.string.calendrier_24), false,false, null,1);
+                context.getString(R.string.calendrier_24), false, false, null, 1);
 
         createMenu(R.color.grey, R.color.yellow3,
                 "\n" + context.getString(R.string.calendrier_jeudi) + "\n",
-                context.getString(R.string.calendrier_25) +"\n", false,false, new View.OnClickListener() {
+                context.getString(R.string.calendrier_25) + "\n", false, false, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UIUtils.startActivity(PlanningJ1Activity.class, getActivity());
@@ -73,20 +88,20 @@ public class MenuPlanningFragment extends Fragment{
         }, 3);
         createMenu(R.color.grey, R.color.yellow3,
                 "\n" + context.getString(R.string.calendrier_vendredi) + "\n",
-                context.getString(R.string.calendrier_26) +"\n", false,false, new View.OnClickListener() {
+                context.getString(R.string.calendrier_26) + "\n", false, false, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UIUtils.startActivity(PlanningJ2Activity.class, getActivity());
             }
         }, 3);
-        createMenu(R.color.grey,android.R.color.white,
+        createMenu(R.color.grey, android.R.color.white,
                 context.getString(R.string.blank),
-                context.getString(R.string.calendrier_27), true,false, null,1);
+                context.getString(R.string.calendrier_27), true, false, null, 1);
 
     }
 
-    protected void createMenu(int color1,int color2, String nom1,String nom2,
-                              boolean dernierligne,boolean upper, View.OnClickListener listener, int nbLigne) {
+    protected void createMenu(int color1, int color2, String nom1, String nom2,
+                              boolean dernierligne, boolean upper, View.OnClickListener listener, int nbLigne) {
         TableRow tableRow = new TableRowBuilder().buildTableRow(getActivity())
                 .addNbColonne(2)
                 .addBackground(getResources().getColor(R.color.grey)).getView();
@@ -119,7 +134,6 @@ public class MenuPlanningFragment extends Fragment{
         textView.setAllCaps(upper);
         textView.setOnClickListener(listener);
         tableRow.addView(textView);
-
 
 
         menuTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());

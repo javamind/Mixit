@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 Guilaume EHRET
+ * Copyright 2013 Guillaume EHRET
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package com.ehret.mixit.ui.utils;
 
 import android.content.Context;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.view.ViewGroup;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
@@ -128,8 +127,8 @@ public class TextViewBuilder {
      * @param size
      * @return
      */
-    public TextViewBuilder addSize(int unit,int size) {
-        textView.setTextSize(unit,size);
+    public TextViewBuilder addSize(int unit, int size) {
+        textView.setTextSize(unit, size);
         return this;
     }
 
@@ -226,16 +225,18 @@ public class TextViewBuilder {
     /**
      * Ajoute une couleur de fond a {@link #textView}
      * via un drawable
+     *
      * @param drawable
      * @return
      */
-    public TextViewBuilder addBackgroundDrawable(Drawable drawable) {
-        textView.setBackground(drawable);
+    public TextViewBuilder addBackgroundDrawable(int drawable) {
+        textView.setBackgroundResource(drawable);
         return this;
     }
 
     /**
      * Ajoute le nb de lignes acceptées
+     *
      * @param nb
      * @return
      */
@@ -246,6 +247,7 @@ public class TextViewBuilder {
 
     /**
      * Ajoute le nb max de lignes acceptées
+     *
      * @param nb
      * @return
      */
@@ -254,6 +256,7 @@ public class TextViewBuilder {
         textView.setMaxLines(nb);
         return this;
     }
+
     /**
      * Ajoute une couleur de texte a {@link #textView}
      *

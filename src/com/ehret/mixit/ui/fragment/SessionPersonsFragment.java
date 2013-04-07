@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
@@ -53,31 +68,30 @@ public class SessionPersonsFragment extends Fragment {
         if (getActivity().getIntent().getExtras() != null) {
             idSession = getActivity().getIntent().getExtras().getLong(UIUtils.MESSAGE);
             typeSession = getActivity().getIntent().getExtras().getString(UIUtils.TYPE);
-        }
-        else{
+        } else {
             //On gere le cas ou on tourne l'écran en restorant les états de la vue
-            idSession= savedInstanceState.getLong("ID_SESSION");;
-            typeSession= savedInstanceState.getString("TYPE_SESSION");
+            idSession = savedInstanceState.getLong("ID_SESSION");
+            ;
+            typeSession = savedInstanceState.getString("TYPE_SESSION");
         }
         Conference conference = null;
         //On recupere la session concernee
-        if(TypeFile.lightningtalks.name().equals(typeSession)){
+        if (TypeFile.lightningtalks.name().equals(typeSession)) {
             conference = ConferenceFacade.getInstance().getLightningtalk(getActivity(), idSession);
-        }
-        else{
+        } else {
             conference = ConferenceFacade.getInstance().getTalk(getActivity(), idSession);
         }
 
         List<Membre> speakers = new ArrayList<Membre>();
-        for(Long id : conference.getSpeakers()){
+        for (Long id : conference.getSpeakers()) {
             Membre membre = MembreFacade.getInstance().getMembre(getActivity(), TypeFile.members.name(), id);
-            if(membre!=null){
+            if (membre != null) {
                 speakers.add(membre);
             }
         }
 
         //On affiche les liens que si on a recuperer des choses
-        if(!speakers.isEmpty()){
+        if (!speakers.isEmpty()) {
             //On utilisait auparavant une liste pour afficher ces éléments dans la page mais cette liste
             //empêche d'avoir un ScrollView englobant pour toute la page. Nous utilisons donc un tableau
             linearLayoutRoot = (LinearLayout) mInflater.inflate(R.layout.fragment_linear, mRootView, false);
@@ -90,8 +104,8 @@ public class SessionPersonsFragment extends Fragment {
             TableLayout tableLayout = new TableLayout(getActivity().getBaseContext());
             tableLayout.setLayoutParams(tableParams);
 
-            for(final Membre membre : speakers){
-                RelativeLayout  row = (RelativeLayout ) mInflater.inflate(R.layout.person_item, null);
+            for (final Membre membre : speakers) {
+                RelativeLayout row = (RelativeLayout) mInflater.inflate(R.layout.person_item, null);
                 //Dans lequel nous allons ajouter le contenu que nous faisons mappé dans
                 userName = (TextView) row.findViewById(R.id.person_user_name);
                 descriptif = (TextView) row.findViewById(R.id.person_shortdesciptif);
@@ -99,12 +113,12 @@ public class SessionPersonsFragment extends Fragment {
 
                 userName.setText(membre.getFirstname() + " " + membre.getLastname());
 
-                if (membre.getShortdesc()!=null){
+                if (membre.getShortdesc() != null) {
                     descriptif.setText(membre.getShortdesc().trim());
                 }
 
-                if(membre.getLevel()!=null && !membre.getLevel().isEmpty()){
-                    level.setText("[" + membre.getLevel().trim() +"]");
+                if (membre.getLevel() != null && !membre.getLevel().isEmpty()) {
+                    level.setText("[" + membre.getLevel().trim() + "]");
                 }
 
                 row.setOnClickListener(new View.OnClickListener() {

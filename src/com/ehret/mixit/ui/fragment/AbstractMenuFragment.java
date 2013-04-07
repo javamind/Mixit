@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
@@ -36,18 +51,18 @@ public abstract class AbstractMenuFragment extends Fragment {
     /**
      * Affiche les données à l'écran
      */
-    protected void dessinerMenu(){
+    protected void dessinerMenu() {
         Context context = getActivity().getBaseContext();
 
         //Mise a jour du titre
-        if(titleMenu == null){
+        if (titleMenu == null) {
             titleMenu = (TextView) getActivity().findViewById(getIdTitle());
         }
         titleMenu.setText(context.getText(getNameMenu()));
 
         //deux tableaux juxtaposer
         //Un d'une colonne pour gérer l'heure
-        if(menuTableLayout==null){
+        if (menuTableLayout == null) {
             menuTableLayout = (TableLayout) getActivity().findViewById(getIdTable());
         }
         menuTableLayout.removeAllViews();
@@ -63,6 +78,7 @@ public abstract class AbstractMenuFragment extends Fragment {
 
     /**
      * Template methode pour que les classes filles indiquent le nom du menu
+     *
      * @return
      */
     public abstract int getNameMenu();
@@ -74,11 +90,12 @@ public abstract class AbstractMenuFragment extends Fragment {
 
     /**
      * Créé une ligne dans le tableau afichant les données
+     *
      * @param color
      * @param nom
      * @param dernierligne
      */
-    protected void createMenu(int color, String nom,  boolean dernierligne, View.OnClickListener listener) {
+    protected void createMenu(int color, String nom, boolean dernierligne, View.OnClickListener listener) {
         TableRow tableRow = new TableRowBuilder().buildTableRow(getActivity())
                 .addNbColonne(2)
                 .addBackground(getResources().getColor(R.color.grey)).getView();
@@ -107,7 +124,6 @@ public abstract class AbstractMenuFragment extends Fragment {
                 .getView();
         textView.setOnClickListener(listener);
         tableRow.addView(textView);
-
 
 
         menuTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());

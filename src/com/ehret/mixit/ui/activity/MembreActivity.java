@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.activity;
 
 import android.graphics.Bitmap;
@@ -11,6 +26,9 @@ import com.ehret.mixit.model.MembreFacade;
 import com.ehret.mixit.ui.utils.FileUtils;
 import com.ehret.mixit.ui.utils.UIUtils;
 
+/**
+ * Activity permettant d'afficher les informations sur une personne participant à Mix-IT
+ */
 public class MembreActivity extends AbstractActivity {
 
     private TextView temp;
@@ -22,6 +40,7 @@ public class MembreActivity extends AbstractActivity {
     private TextView personDesciptif;
     private TextView personShortDesciptif;
     private TextView membreEntreprise;
+
     /**
      * Called when the activity is first created.
      */
@@ -35,7 +54,7 @@ public class MembreActivity extends AbstractActivity {
         this.personDesciptif = (TextView) findViewById(R.id.membre_desciptif);
         this.personShortDesciptif = (TextView) findViewById(R.id.membre_shortdesciptif);
         this.membreEntreprise = (TextView) findViewById(R.id.membre_entreprise);
-        this.profileImage = (ImageView)findViewById(R.id.membre_image);
+        this.profileImage = (ImageView) findViewById(R.id.membre_image);
 
         if (getIntent().getExtras() != null) {
             id = getIntent().getExtras().getLong(UIUtils.MESSAGE);
@@ -49,25 +68,25 @@ public class MembreActivity extends AbstractActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        
+
         //On commence par recuperer le Membre que l'on sohaite afficher
-        Membre membre = MembreFacade.getInstance().getMembre(getBaseContext(),type,id);
+        Membre membre = MembreFacade.getInstance().getMembre(getBaseContext(), type, id);
         TypeFile typeFile = TypeFile.getTypeFile(type);
-        switch(typeFile){
+        switch (typeFile) {
             case staff:
-                this.membreTitle.setText(getText(R.string.membre_staff)+ " \n");
+                this.membreTitle.setText(getText(R.string.membre_staff) + " \n");
                 this.membreTitle.setBackgroundResource(R.color.orange);
                 break;
             case members:
-                this.membreTitle.setText(getText(R.string.membre_membre)+ " \n");
+                this.membreTitle.setText(getText(R.string.membre_membre) + " \n");
                 this.membreTitle.setBackgroundResource(R.color.violet1);
                 break;
             case sponsor:
-                this.membreTitle.setText(getText(R.string.membre_sponsor)+ " \n");
+                this.membreTitle.setText(getText(R.string.membre_sponsor) + " \n");
                 this.membreTitle.setBackgroundResource(R.color.pink1);
                 break;
             default:
-                this.membreTitle.setText(getText(R.string.membre_speaker)+ " \n");
+                this.membreTitle.setText(getText(R.string.membre_speaker) + " \n");
                 this.membreTitle.setBackgroundResource(R.color.green1);
         }
         this.membreTitle.setLines(2);
@@ -78,10 +97,9 @@ public class MembreActivity extends AbstractActivity {
 
         //Recuperation de l'mage liee au profil
         Bitmap image = FileUtils.getImage(getBaseContext(), membre);
-        if(image==null){
+        if (image == null) {
             profileImage.setImageDrawable(getResources().getDrawable(R.drawable.person_image_empty));
-        }
-        else{
+        } else {
             //On regarde dans les images embarquees
             profileImage.setImageBitmap(image);
         }
@@ -99,12 +117,12 @@ public class MembreActivity extends AbstractActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Long myId = savedInstanceState.getLong("ID_MEMBRE");
-        if(myId!=null){
-            id= myId;
+        if (myId != null) {
+            id = myId;
         }
         String myType = savedInstanceState.getString("TYPE_MEMBRE");
-        if(myType!=null){
-            type= myType;
+        if (myType != null) {
+            type = myType;
         }
     }
 }

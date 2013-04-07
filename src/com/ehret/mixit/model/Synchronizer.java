@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.model;
 
 import android.content.Context;
@@ -20,16 +35,17 @@ public class Synchronizer {
 
     /**
      * Permet de télécharger un fichier JSON distant
+     *
      * @param context
      * @param urlFile
      * @param typeFile
      * @return
      */
-    public static  boolean downloadJsonFile(Context context, String urlFile, TypeFile typeFile) {
+    public static boolean downloadJsonFile(Context context, String urlFile, TypeFile typeFile) {
         InputStream inputStream = null;
         FileOutputStream fileOutput = null;
         HttpURLConnection urlConnection = null;
-        try{
+        try {
             URL url = new URL(urlFile);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(60000);
@@ -40,23 +56,21 @@ public class Synchronizer {
             while ((bufferLength = inputStream.read(buffer)) > 0) {
                 fileOutput.write(buffer, 0, bufferLength);
             }
-        }
-        catch (IOException e){
-            Log.e(TAG,"Impossible de récupérer le fichier ", e);
+        } catch (IOException e) {
+            Log.e(TAG, "Impossible de récupérer le fichier ", e);
             return false;
-        }
-        finally {
-            if(urlConnection!=null){
+        } finally {
+            if (urlConnection != null) {
                 urlConnection.disconnect();
             }
-            if(inputStream!=null) {
+            if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException e) {
                     Log.e(TAG, "Impossible de fermer le fichier d'entree", e);
                 }
             }
-            if(fileOutput!=null) {
+            if (fileOutput != null) {
                 try {
                     fileOutput.close();
                 } catch (IOException e) {
@@ -69,18 +83,19 @@ public class Synchronizer {
 
     /**
      * Telechargement d'une image
+     *
      * @param mURL
      * @param ofile
      * @throws Exception
      */
-    public static void downloadImage(Context context, String mURL, String ofile ) {
+    public static void downloadImage(Context context, String mURL, String ofile) {
         InputStream in = null;
         FileOutputStream out = null;
         URLConnection urlConn = null;
         try {
             //Emplacement final
-            File emplacement = new File(context.getExternalFilesDir(Environment.DIRECTORY_DCIM), ofile+".jpg");
-            if(emplacement.exists()){
+            File emplacement = new File(context.getExternalFilesDir(Environment.DIRECTORY_DCIM), ofile + ".jpg");
+            if (emplacement.exists()) {
                 emplacement.delete();
             }
             emplacement.createNewFile();
@@ -92,22 +107,20 @@ public class Synchronizer {
             byte[] b = new byte[1024];
             while ((c = in.read(b)) != -1)
                 out.write(b, 0, c);
-        }
-        catch (IOException e){
-            Log.e(TAG,"Impossible de récupérer l'image  " + mURL, e);
-        }
-        finally {
+        } catch (IOException e) {
+            Log.e(TAG, "Impossible de récupérer l'image  " + mURL, e);
+        } finally {
             if (in != null)
                 try {
                     in.close();
                 } catch (IOException e) {
-                    Log.e(TAG,"Impossible de fermer l'image  " + mURL, e);
+                    Log.e(TAG, "Impossible de fermer l'image  " + mURL, e);
                 }
             if (out != null)
                 try {
                     out.close();
                 } catch (IOException e) {
-                    Log.e(TAG,"Impossible de fermer l'image  " + mURL, e);
+                    Log.e(TAG, "Impossible de fermer l'image  " + mURL, e);
                 }
         }
     }

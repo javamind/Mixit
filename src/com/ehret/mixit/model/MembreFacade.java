@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.model;
 
 import android.content.Context;
@@ -43,22 +58,28 @@ public class MembreFacade {
 
     private final static String TAG = "MembreFacade";
 
-    private static Map<Long, Membre> membres= new HashMap<Long, Membre>();;
-    private static Map<Long, Membre> speaker= new HashMap<Long, Membre>();;
-    private static Map<Long, Membre> staff= new HashMap<Long, Membre>();;
-    private static Map<Long, Membre> sponsors= new HashMap<Long, Membre>();;
-    private static Map<Long, Interet> interets= new HashMap<Long, Interet>();;
+    private static Map<Long, Membre> membres = new HashMap<Long, Membre>();
+    ;
+    private static Map<Long, Membre> speaker = new HashMap<Long, Membre>();
+    ;
+    private static Map<Long, Membre> staff = new HashMap<Long, Membre>();
+    ;
+    private static Map<Long, Membre> sponsors = new HashMap<Long, Membre>();
+    ;
+    private static Map<Long, Interet> interets = new HashMap<Long, Interet>();
+    ;
 
     /**
      * Permet de vider le cache de données
      */
-    public void viderCache(){
+    public void viderCache() {
         membres.clear();
         speaker.clear();
         staff.clear();
         sponsors.clear();
         interets.clear();
     }
+
     /**
      * Constructeur prive car singleton
      */
@@ -70,35 +91,32 @@ public class MembreFacade {
 
     /**
      * Retourne le singleton
+     *
      * @return
      */
-    public static  MembreFacade getInstance(){
-        if(membreFacade==null){
+    public static MembreFacade getInstance() {
+        if (membreFacade == null) {
             membreFacade = new MembreFacade();
         }
         return membreFacade;
     }
 
     /**
-     *
      * @param context
      * @param typeAppel
      * @return
      */
-    public List<Membre> getMembres(Context context, String typeAppel, String filtre){
-        if(TypeFile.members.name().equals(typeAppel)){
+    public List<Membre> getMembres(Context context, String typeAppel, String filtre) {
+        if (TypeFile.members.name().equals(typeAppel)) {
             getMapMembres(context, typeAppel, membres);
             return Ordering.from(getComparatorByName()).sortedCopy(filtrerMembre(membres, filtre));
-        }
-        else if(TypeFile.staff.name().equals(typeAppel)){
+        } else if (TypeFile.staff.name().equals(typeAppel)) {
             getMapMembres(context, typeAppel, staff);
             return Ordering.from(getComparatorByName()).sortedCopy(filtrerMembre(staff, filtre));
-        }
-        else if(TypeFile.sponsor.name().equals(typeAppel)){
+        } else if (TypeFile.sponsor.name().equals(typeAppel)) {
             getMapMembres(context, typeAppel, sponsors);
             return Ordering.from(getComparatorByLevel()).reverse().compound(getComparatorByName()).sortedCopy(filtrerMembre(sponsors, filtre));
-        }
-        else if(TypeFile.speaker.name().equals(typeAppel)){
+        } else if (TypeFile.speaker.name().equals(typeAppel)) {
             getMapMembres(context, typeAppel, speaker);
             return Ordering.from(getComparatorByName()).sortedCopy(filtrerMembre(speaker, filtre));
         }
@@ -107,26 +125,29 @@ public class MembreFacade {
 
     /**
      * Filtre la liste des membres
+     *
      * @param talks
      * @param filtre
      * @return
      */
-    private List<Membre> filtrerMembre(Map<Long, Membre> talks, final String filtre){
+    private List<Membre> filtrerMembre(Map<Long, Membre> talks, final String filtre) {
         return FluentIterable.from(talks.values()).filter(new Predicate<Membre>() {
             @Override
             public boolean apply(Membre input) {
-                return (filtre==null ||
-                        (input.getFirstname()!= null && input.getFirstname().toLowerCase().contains(filtre.toLowerCase()))  ||
-                        (input.getLastname()!= null && input.getLastname().toLowerCase().contains(filtre.toLowerCase()))  ||
-                        (input.getShortdesc()!= null && input.getShortdesc().toLowerCase().contains(filtre.toLowerCase())));
+                return (filtre == null ||
+                        (input.getFirstname() != null && input.getFirstname().toLowerCase().contains(filtre.toLowerCase())) ||
+                        (input.getLastname() != null && input.getLastname().toLowerCase().contains(filtre.toLowerCase())) ||
+                        (input.getShortdesc() != null && input.getShortdesc().toLowerCase().contains(filtre.toLowerCase())));
             }
         }).toImmutableList();
     }
+
     /**
      * Comparaison par nom
+     *
      * @return
      */
-    private Comparator<Membre> getComparatorByLevel(){
+    private Comparator<Membre> getComparatorByLevel() {
         return new Comparator<Membre>() {
             @Override
             public int compare(Membre m1, Membre m2) {
@@ -137,9 +158,10 @@ public class MembreFacade {
 
     /**
      * Comparaison par nom
+     *
      * @return
      */
-    private Comparator<Membre> getComparatorByName(){
+    private Comparator<Membre> getComparatorByName() {
         return new Comparator<Membre>() {
             @Override
             public int compare(Membre m1, Membre m2) {
@@ -147,35 +169,35 @@ public class MembreFacade {
             }
         };
     }
+
     /**
      * Permet de recuperer la liste des membres
+     *
      * @param context
      * @param type
      * @return
      */
     private void getMapMembres(Context context, String type, Map<Long, Membre> membres) {
-        if(membres.isEmpty()){
+        if (membres.isEmpty()) {
             InputStream is = null;
             List<Membre> membreListe = null;
             JsonParser jp = null;
-            try{
+            try {
                 //On regarde si fichier telecharge
-                File myFile = FileUtils.getFileJson(context,TypeFile.getTypeFile(type));
-                if(myFile==null){
+                File myFile = FileUtils.getFileJson(context, TypeFile.getTypeFile(type));
+                if (myFile == null) {
                     //On prend celui inclut dans l'archive
                     is = FileUtils.getRawFileJson(context, TypeFile.getTypeFile(type));
-                }
-                else{
+                } else {
                     is = new FileInputStream(myFile);
                 }
                 jp = this.jsonFactory.createJsonParser(is);
-                membreListe = this.objectMapper.readValue(jp, new TypeReference<List<Membre>>() {});
-            }
-            catch (IOException e) {
+                membreListe = this.objectMapper.readValue(jp, new TypeReference<List<Membre>>() {
+                });
+            } catch (IOException e) {
                 Log.e(TAG, "Erreur lors de la recuperation des " + type, e);
-            }
-            finally {
-                if(is!=null){
+            } finally {
+                if (is != null) {
                     try {
                         is.close();
                     } catch (IOException e) {
@@ -184,8 +206,8 @@ public class MembreFacade {
                 }
             }
             //On transforme la liste en Map
-            if(membreListe!=null){
-                for(Membre m : membreListe){
+            if (membreListe != null) {
+                for (Membre m : membreListe) {
                     membres.put(m.getId(), m);
                 }
             }
@@ -193,55 +215,49 @@ public class MembreFacade {
     }
 
     /**
-     *
      * @param context
      * @param typeAppel
      * @param key
      * @return
      */
     public Membre getMembre(Context context, String typeAppel, Long key) {
-        if(TypeFile.members.name().equals(typeAppel)){
+        if (TypeFile.members.name().equals(typeAppel)) {
             getMapMembres(context, typeAppel, membres);
             return membres.get(key);
-        }
-        else if(TypeFile.staff.name().equals(typeAppel)){
+        } else if (TypeFile.staff.name().equals(typeAppel)) {
             getMapMembres(context, typeAppel, staff);
             return staff.get(key);
-        }
-        else if(TypeFile.sponsor.name().equals(typeAppel)){
+        } else if (TypeFile.sponsor.name().equals(typeAppel)) {
             getMapMembres(context, typeAppel, sponsors);
             return sponsors.get(key);
-        }
-        else if(TypeFile.speaker.name().equals(typeAppel)){
+        } else if (TypeFile.speaker.name().equals(typeAppel)) {
             getMapMembres(context, typeAppel, speaker);
             return speaker.get(key);
         }
         return null;
     }
 
-    public Interet getInteret(Context context, Long id){
-        if(interets.isEmpty()){
+    public Interet getInteret(Context context, Long id) {
+        if (interets.isEmpty()) {
             InputStream is = null;
             List<Interet> interetListe = null;
             JsonParser jp = null;
-            try{
+            try {
                 //On regarde si fichier telecharge
-                File myFile = FileUtils.getFileJson(context,TypeFile.getTypeFile(TypeFile.interests.name()));
-                if(myFile==null){
+                File myFile = FileUtils.getFileJson(context, TypeFile.getTypeFile(TypeFile.interests.name()));
+                if (myFile == null) {
                     //On prend celui inclut dans l'archive
                     is = FileUtils.getRawFileJson(context, TypeFile.getTypeFile(TypeFile.interests.name()));
-                }
-                else{
+                } else {
                     is = new FileInputStream(myFile);
                 }
                 jp = this.jsonFactory.createJsonParser(is);
-                interetListe = this.objectMapper.readValue(jp, new TypeReference<List<Interet>>() {});
-            }
-            catch (IOException e) {
+                interetListe = this.objectMapper.readValue(jp, new TypeReference<List<Interet>>() {
+                });
+            } catch (IOException e) {
                 Log.e(TAG, "Erreur lors de la recuperation des interets", e);
-            }
-            finally {
-                if(is!=null){
+            } finally {
+                if (is != null) {
                     try {
                         is.close();
                     } catch (IOException e) {
@@ -250,8 +266,8 @@ public class MembreFacade {
                 }
             }
             //On transforme la liste en Map
-            if(interetListe!=null){
-                for(Interet m : interetListe){
+            if (interetListe != null) {
+                for (Interet m : interetListe) {
                     interets.put(m.getId(), m);
                 }
             }

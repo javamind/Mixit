@@ -1,3 +1,18 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.ehret.mixit.ui.fragment;
 
 import android.os.Bundle;
@@ -19,8 +34,9 @@ public class CalendarFragmentJ2 extends AbstractCalendarFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_calendar, container, false);
     }
+
     @Override
-    protected  void dessinerCalendrier() {
+    protected void dessinerCalendrier() {
         //deux tableaux juxtaposer
         //Un d'une colonne pour gérer l'heure
         heureTableLayout = (TableLayout) getActivity().findViewById(R.id.heureTableLayout);
@@ -73,12 +89,12 @@ public class CalendarFragmentJ2 extends AbstractCalendarFragment {
         addAtelierDebut(tableRow);
 
         //Conf + atelier 10H00->10H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(25,10 , false));
+        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(25, 10, false));
         addConferenceFin(tableRow);
         addAtelierIntermediaire(tableRow);
 
         //Pause  + pas pour atelier 10H30->11H
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(25,10 , true));
+        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(25, 10, true));
         addEvent(tableRow, getResources().getString(R.string.calendrier_pause));
         addAtelierFin(tableRow);
 
@@ -150,10 +166,8 @@ public class CalendarFragmentJ2 extends AbstractCalendarFragment {
         addAtelierFin(tableRow);
 
 
-
-
         //17H30->19H
-        addEventCommun(getResources().getString(R.string.blank), false, true, UIUtils.createPlageHoraire(25,17 , true));
+        addEventCommun(getResources().getString(R.string.blank), false, true, UIUtils.createPlageHoraire(25, 17, true));
         addEventCommun(getResources().getString(R.string.blank), false, false, UIUtils.createPlageHoraire(25, 18, false));
         addEventCommun(getResources().getString(R.string.blank), false, false, UIUtils.createPlageHoraire(25, 18, true));
         addEventCommun(getResources().getString(R.string.blank), false, false, UIUtils.createPlageHoraire(25, 19, false));

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2013 Guillaume EHRET
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.ehret.mixit.ui.adapter;
 
 import android.content.Context;
@@ -9,38 +25,36 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ehret.mixit.R;
-import com.ehret.mixit.domain.people.Link;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.ui.utils.FileUtils;
-import com.ehret.mixit.ui.utils.UIUtils;
 
-import java.io.File;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * Adapter permettant l'affichage des données dans la liste des membres
+ */
 public class ListMembreAdapter extends BaseAdapter {
     private List<Membre> datas;
     private Context context;
 
     public ListMembreAdapter(Context context, List<Membre> datas) {
         this.datas = datas;
-        this.context=context;
+        this.context = context;
     }
 
     @Override
     public int getCount() {
-	    return datas.size();
+        return datas.size();
     }
 
     @Override
     public Membre getItem(int position) {
-	    return datas.get(position);
+        return datas.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-	    return position;
+        return position;
     }
 
 
@@ -55,27 +69,25 @@ public class ListMembreAdapter extends BaseAdapter {
             holder.descriptif = (TextView) convertView.findViewById(R.id.person_shortdesciptif);
             holder.level = (TextView) convertView.findViewById(R.id.person_level);
             convertView.setTag(holder);
-        }
-        else {
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
         final Membre person = datas.get(position);
         holder.userName.setText(person.getFirstname() + " " + person.getLastname());
-        if (person.getShortdesc()!=null){
+        if (person.getShortdesc() != null) {
             holder.descriptif.setText(person.getShortdesc().trim());
         }
 
-        if(person.getLevel()!=null && !person.getLevel().isEmpty()){
-            holder.level.setText("[" + person.getLevel().trim() +"]");
+        if (person.getLevel() != null && !person.getLevel().isEmpty()) {
+            holder.level.setText("[" + person.getLevel().trim() + "]");
         }
 
         //Recuperation de l'mage liee au profil
         Bitmap image = FileUtils.getImage(context, person);
-        if(image==null){
+        if (image == null) {
             holder.profile_image.setImageDrawable(context.getResources().getDrawable(R.drawable.person_image_empty));
-        }
-        else{
+        } else {
             //On regarde dans les images embarquees
             holder.profile_image.setImageBitmap(image);
         }
