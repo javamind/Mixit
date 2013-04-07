@@ -127,7 +127,7 @@ public class ConferenceFacade {
                 }
             }
         }
-        return Ordering.from(getComparatorDate()).sortedCopy(filtrerConference(conferences, filtre));
+        return Ordering.from(getComparatorDate()).sortedCopy(filtrerConferenceParDate(filtrerConference(conferences, filtre)));
     }
 
     /**
@@ -455,6 +455,32 @@ public class ConferenceFacade {
                 return (filtre == null ||
                         (input.getTitle() != null && input.getTitle().toLowerCase().contains(filtre.toLowerCase())) ||
                         (input.getSummary() != null && input.getSummary().toLowerCase().contains(filtre.toLowerCase())));
+            }
+        }).toImmutableList();
+    }
+
+    /**
+     * Filtre la liste des favoris pour qu'ils disparaissent le jour de la conference
+     *
+     * @param talks
+     * @return
+     */
+    private List<Conference> filtrerConferenceParDate(List<Conference> talks) {
+        return FluentIterable.from(talks).filter(new Predicate<Conference>() {
+            @Override
+            public boolean apply(Conference input) {
+                //On verifie la date, si on est avant ou après la conf on garde tout
+                if(System.currentTimeMillis()>UIUtils.CONFERENCE_START_MILLIS &&
+                        System.currentTimeMillis()<UIUtils.CONFERENCE_END_MILLIS){
+                    //Si on est dedans on ne garde que les favoris qui ne sont pas passés
+                    if(input.getEnd()!=null && input.getEnd().getTime()<System.currentTimeMillis()){
+                        return false;
+                    }
+                    return true;
+                }
+                else{
+                    return true;
+                }
             }
         }).toImmutableList();
     }
