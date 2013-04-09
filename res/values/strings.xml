@@ -17,26 +17,26 @@
     <string name="app_name"> </string>
     <string name="blank"> </string>
     <string name="onload">Téléchargement en cours...</string>
-    <string name="welcome">Bienvenue sur l\'application mobile Mix-it qui vous donne accès à toute la programmation de cette conférence</string>
+    <string name="welcome">Bienvenue sur l\'application mobile Mix-IT qui vous donne accès à toute la programmation de cette conférence</string>
     <string name="about">A propos</string>
     <string name="search_hint">texte</string>
     <string name="mixit_url">http://www.mix-it.fr/infos/acces</string>
 
     <!-- Compteur -->
-    <string name="whats_on_countdown_title_0">Plus que <xliff:g id="remaining_time">%1$s</xliff:g>\navant Mix-It 2013</string>
+    <string name="whats_on_countdown_title_0">Plus que <xliff:g id="remaining_time">%1$s</xliff:g>\navant Mix-IT 2013</string>
     <plurals name="whats_on_countdown_title">
-        <item quantity="one"><xliff:g id="number_of_days">%1$s</xliff:g> jours, <xliff:g id="remaining_time">%2$s</xliff:g>\navant de nous retrouver à Mix-it</item>
-        <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> jours, <xliff:g id="remaining_time">%2$s</xliff:g>\navant de nous retrouver à Mix-it</item>
+        <item quantity="one"><xliff:g id="number_of_days">%1$s</xliff:g> jours, <xliff:g id="remaining_time">%2$s</xliff:g>\navant de nous retrouver à Mix-IT</item>
+        <item quantity="other"><xliff:g id="number_of_days">%1$s</xliff:g> jours, <xliff:g id="remaining_time">%2$s</xliff:g>\navant de nous retrouver à Mix-IT</item>
     </plurals>
     <string name="whats_on_thank_you_title">A l\'année prochaine!</string>
 
 
     <!-- Tweets -->
     <string name="tweetimage">Photo de profil twitter</string>
-    <string name="tweetnoreseau">Pas de connexion web... \nRéessayez plus tard pour visualiser les derniers tweets sur Mix-it</string>
-    <string name="tweetpres">Liste des derniers tweets sur Mix-it</string>
-    <string name="twitter">On parle de mix-it</string>
-    <string name="tweetincitation">Parlez de Mix-it sur Twitter ou Google+ en utilisant les raccourcis proposés dans la barre de bouton. Pour apparaître dans la liste rien de plus simple : Ecrivez un message en utilisant le hashtag #MixIT_lyon </string>
+    <string name="tweetnoreseau">Pas de connexion web... \nRéessayez plus tard pour visualiser les derniers tweets sur Mix-IT</string>
+    <string name="tweetpres">Liste des derniers tweets sur Mix-IT</string>
+    <string name="twitter">On parle de Mix-IT</string>
+    <string name="tweetincitation">Parlez de Mix-IT sur Twitter ou Google+ en utilisant les raccourcis proposés dans la barre de bouton. Pour apparaître dans la liste rien de plus simple : Ecrivez un message en utilisant le hashtag #MixIT_lyon </string>
 
     <!-- Menu -->
     <string name="description_refresh">Rafraîchir</string>
@@ -84,7 +84,7 @@
     <string name="calendrier_title25">Programme jeudi 25 avril</string>
     <string name="calendrier_title26">Programme vendredi 26 avril</string>
 
-    <string name="calendrier_explication">Cliquez sur une plage horaire pour voir la répartition par salle par salle</string>
+    <string name="calendrier_explication">Cliquez sur une plage horaire pour voir la répartition par salle</string>
     <string name="calendrier_legende">(T) conférence, (W) atelier, (K) keynote, (L) lightning talk</string>
     <string name="calendrier_salle_liste">Liste des salles</string>
     <string name="calendrier_avril">Avril</string>
@@ -140,10 +140,10 @@
     <string name="about_help">Si vous rencontrez des problèmes pour afficher les informations cliquez sur le bouton RAZ pour supprimer les fichiers téléchargés et revenir dans la configuration d\'origine</string>
 
     <!-- Synchronize -->
-    <string name="sync_erreur">Impossible de charger les données su site Mix-it : le stockage est inaccessible</string>
-    <string name="sync_erreur_reseau">Impossible de charger les données su site Mix-it : réseau inaccessible</string>
+    <string name="sync_erreur">Impossible de charger les données su site Mix-IT : le stockage est inaccessible</string>
+    <string name="sync_erreur_reseau">Impossible de charger les données su site Mix-IT : réseau inaccessible</string>
     <string name="sync_message_title">Synchronisation</string>
-    <string name="sync_message">Lancement de la récupération des données Mix-it</string>
+    <string name="sync_message">Lancement de la récupération des données Mix-IT</string>
     <string name="sync_progress">Progression de la tâche asynchrone:</string>
 
     <!--Dialogue-->
