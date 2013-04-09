@@ -77,7 +77,6 @@ public class FileUtils {
         //Suppression des données en cache
         ConferenceFacade.getInstance().viderCache();
         MembreFacade.getInstance().viderCache();
-        //TODO a commente
 //        SharedPreferences settings = context.getSharedPreferences(UIUtils.PREFS_FAVORITES_NAME, 0);
 //        SharedPreferences.Editor editor = settings.edit();
 //        editor.clear();
@@ -109,7 +108,6 @@ public class FileUtils {
      */
     public static Bitmap getImage(Context context, Membre membre) {
         if (membre.getUrlimage() != null) {
-            //String ext = membre.getUrlimage().endsWith(".png") ? ".png" : ".jpg";
             File myFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DCIM), "membre" + membre.getId() + ".jpg");
             if (myFile.exists()) {
                 try {
