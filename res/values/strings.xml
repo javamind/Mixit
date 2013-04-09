@@ -21,7 +21,7 @@
     <string name="about">A propos</string>
     <string name="search_hint">texte</string>
     <string name="mixit_url">http://www.mix-it.fr/infos/acces</string>
-
+    <string name="hastag">#mixit13</string>
     <!-- Compteur -->
     <string name="whats_on_countdown_title_0">Plus que <xliff:g id="remaining_time">%1$s</xliff:g>\navant Mix-IT 2013</string>
     <plurals name="whats_on_countdown_title">

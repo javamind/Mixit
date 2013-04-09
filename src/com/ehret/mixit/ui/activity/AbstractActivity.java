@@ -179,7 +179,7 @@ public abstract class AbstractActivity extends Activity {
     private void sendMessage(SendSocial type) {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("text/plain");
-        i.putExtra(Intent.EXTRA_TEXT, "#MixIT_lyon");
+        i.putExtra(Intent.EXTRA_TEXT, getString(R.string.hastag));
         if (!UIUtils.filterIntent(this, type.name(), i)) {
             Toast.makeText(getBaseContext(), SendSocial.plus.equals(type) ? R.string.description_no_google : R.string.description_no_twitter, Toast.LENGTH_SHORT).show();
         }
