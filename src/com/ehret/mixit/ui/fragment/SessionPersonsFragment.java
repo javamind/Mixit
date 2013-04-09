@@ -16,14 +16,12 @@
 package com.ehret.mixit.ui.fragment;
 
 import android.app.Fragment;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.TextView;
+import android.widget.*;
 import com.ehret.mixit.R;
 import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.domain.people.Membre;
@@ -31,6 +29,7 @@ import com.ehret.mixit.domain.talk.Conference;
 import com.ehret.mixit.model.ConferenceFacade;
 import com.ehret.mixit.model.MembreFacade;
 import com.ehret.mixit.ui.activity.MembreActivity;
+import com.ehret.mixit.ui.utils.FileUtils;
 import com.ehret.mixit.ui.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class SessionPersonsFragment extends Fragment {
     private TextView userName;
     private TextView descriptif;
     private TextView level;
-
+    private ImageView profileImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -106,10 +105,13 @@ public class SessionPersonsFragment extends Fragment {
 
             for (final Membre membre : speakers) {
                 RelativeLayout row = (RelativeLayout) mInflater.inflate(R.layout.person_item, null);
+                row.setBackgroundResource(R.drawable.row_transparent_background);
+
                 //Dans lequel nous allons ajouter le contenu que nous faisons mappé dans
                 userName = (TextView) row.findViewById(R.id.person_user_name);
                 descriptif = (TextView) row.findViewById(R.id.person_shortdesciptif);
                 level = (TextView) row.findViewById(R.id.person_level);
+                profileImage = (ImageView) row.findViewById(R.id.person_user_image);
 
                 userName.setText(membre.getFirstname() + " " + membre.getLastname());
 
@@ -119,6 +121,15 @@ public class SessionPersonsFragment extends Fragment {
 
                 if (membre.getLevel() != null && !membre.getLevel().isEmpty()) {
                     level.setText("[" + membre.getLevel().trim() + "]");
+                }
+
+                //Recuperation de l'mage liee au profil
+                Bitmap image = FileUtils.getImage(getActivity(), membre);
+                if (image == null) {
+                    profileImage.setImageDrawable(getResources().getDrawable(R.drawable.person_image_empty));
+                } else {
+                    //On regarde dans les images embarquees
+                    profileImage.setImageBitmap(image);
                 }
 
                 row.setOnClickListener(new View.OnClickListener() {

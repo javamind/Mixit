@@ -23,6 +23,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ import com.ehret.mixit.model.MembreFacade;
 import com.ehret.mixit.ui.activity.ParseListeActivity;
 import com.ehret.mixit.ui.activity.PlanningJ2Activity;
 import com.ehret.mixit.ui.activity.TalkActivity;
+import com.ehret.mixit.ui.utils.ButtonBuilder;
 import com.ehret.mixit.ui.utils.TableRowBuilder;
 import com.ehret.mixit.ui.utils.TextViewBuilder;
 import com.ehret.mixit.ui.utils.UIUtils;
@@ -89,6 +91,7 @@ public class PlanningHoraireFragment extends Fragment {
 
         //On affiche le planning 30min par 30min
         TableRow tableRow = createTableRow();
+
         tableRow.addView(new TextViewBuilder()
                 .buildTextView(getActivity())
                 .addText(String.format(getString(R.string.calendrier_planning),
@@ -191,7 +194,7 @@ public class PlanningHoraireFragment extends Fragment {
                 .getView();
         tableRow.addView(textView);
 
-        textView = new TextViewBuilder()
+        TextView button = new TextViewBuilder()
                 .buildTextView(getActivity())
                 .addAlignement(Gravity.CENTER)
                 .addText(nom + " \n ")
@@ -201,12 +204,12 @@ public class PlanningHoraireFragment extends Fragment {
                 .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
                 .addNbLines(2)
                 .addNbMaxLines(2)
-                .addBackground(getResources().getColor(android.R.color.white))
                 .addTextColor(getResources().getColor(android.R.color.black))
                 .getView();
+        button.setBackgroundResource(R.drawable.button_white_background);
 
         //textView.setMaxWidth(tableRow.getWidth()-4);
-        tableRow.addView(textView);
+        tableRow.addView(button);
         planningHoraireTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());
     }
 
@@ -263,7 +266,7 @@ public class PlanningHoraireFragment extends Fragment {
                 .addBackground(getResources().getColor(color))
                 .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
                 .getView());
-        tableRow.addView(new TextViewBuilder()
+        TextView button = new TextViewBuilder()
                 .buildTextView(getActivity())
                 .addAlignement(Gravity.CENTER)
                 .addText(nom)
@@ -272,7 +275,10 @@ public class PlanningHoraireFragment extends Fragment {
                 .addPadding(8, 8, 4)
                 .addBackground(getResources().getColor(android.R.color.white))
                 .addTextColor(getResources().getColor(R.color.grey_dark))
-                .getView());
+                .getView();
+        button.setBackgroundResource(R.drawable.button_white_background);
+        tableRow.addView(button);
+
         planningHoraireTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());
     }
 }

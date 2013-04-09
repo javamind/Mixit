@@ -112,6 +112,7 @@ public class PersonSessionsFragment extends Fragment {
 
             for (final Conference conf : conferences) {
                 LinearLayout row = (LinearLayout) mInflater.inflate(R.layout.talk_item, null);
+                row.setBackgroundResource(R.drawable.row_transparent_background);
                 //Dans lequel nous allons ajouter le contenu que nous faisons mappé dans
                 image = (ImageView) row.findViewById(R.id.talk_image);
                 name = (TextView) row.findViewById(R.id.talk_name);

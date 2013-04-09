@@ -24,6 +24,7 @@
     <dimen name="text_size_large">18sp</dimen>
     <dimen name="speaker_image_size">48dp</dimen>
     <dimen name="speaker_image_padding">8dp</dimen>
+    <dimen name="text_size_button_salle">24sp</dimen>
 
     <integer name="text_size_cal">14</integer>
     <integer name="text_size_cal_title">16</integer>

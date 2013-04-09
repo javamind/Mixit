@@ -55,34 +55,11 @@ public class MenuTalksFragment extends AbstractMenuFragment {
         Context context = getActivity().getBaseContext();
         final Map<String, Object> parameters = new HashMap<String, Object>(6);
 
-        createMenu(R.color.blue, context.getString(R.string.description_favorite), false, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parameters.put(UIUtils.MESSAGE, TypeFile.favorites.name());
-                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-            }
-        });
-        createMenu(R.color.yellow1, context.getString(R.string.description_talk), false, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parameters.put(UIUtils.MESSAGE, TypeFile.talks.name());
-                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-            }
-        });
-        createMenu(R.color.yellow2, context.getString(R.string.description_workshop), false, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parameters.put(UIUtils.MESSAGE, TypeFile.workshops.name());
-                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-            }
-        });
-        createMenu(R.color.red1, context.getString(R.string.description_ligtningtalk), true, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parameters.put(UIUtils.MESSAGE, TypeFile.lightningtalks.name());
-                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-            }
-        });
+        createMenu(R.color.blue3, context.getString(R.string.description_favorite), false,TypeFile.favorites);
+        createMenu(R.color.blue1, context.getString(R.string.description_talk), false,TypeFile.talks);
+        createMenu(R.color.yellow2, context.getString(R.string.description_workshop), false, TypeFile.workshops);
+        createMenu(R.color.blue2, context.getString(R.string.description_ligtningtalk),true, TypeFile.lightningtalks);
+
     }
 
 }

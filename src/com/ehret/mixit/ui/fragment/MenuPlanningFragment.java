@@ -22,12 +22,14 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import com.ehret.mixit.R;
 import com.ehret.mixit.ui.activity.PlanningJ1Activity;
 import com.ehret.mixit.ui.activity.PlanningJ2Activity;
+import com.ehret.mixit.ui.utils.ButtonBuilder;
 import com.ehret.mixit.ui.utils.TableRowBuilder;
 import com.ehret.mixit.ui.utils.TextViewBuilder;
 import com.ehret.mixit.ui.utils.UIUtils;
@@ -71,14 +73,14 @@ public class MenuPlanningFragment extends Fragment {
         }
         menuTableLayout.removeAllViews();
 
-        createMenu(R.color.grey, R.color.grey,
+        createMenu(R.color.grey_light, R.color.grey_light,
                 context.getString(R.string.blank),
                 context.getString(R.string.calendrier_avril), false, true, null, 1);
-        createMenu(R.color.grey, android.R.color.white,
+        createMenu(R.color.grey_light, android.R.color.white,
                 context.getString(R.string.blank),
                 context.getString(R.string.calendrier_24), false, false, null, 1);
 
-        createMenu(R.color.grey, R.color.yellow3,
+        createMenu(R.color.grey_light, R.color.yellow3,
                 "\n" + context.getString(R.string.calendrier_jeudi) + "\n",
                 context.getString(R.string.calendrier_25) + "\n", false, false, new View.OnClickListener() {
             @Override
@@ -86,7 +88,7 @@ public class MenuPlanningFragment extends Fragment {
                 UIUtils.startActivity(PlanningJ1Activity.class, getActivity());
             }
         }, 3);
-        createMenu(R.color.grey, R.color.yellow3,
+        createMenu(R.color.grey_light, R.color.yellow3,
                 "\n" + context.getString(R.string.calendrier_vendredi) + "\n",
                 context.getString(R.string.calendrier_26) + "\n", false, false, new View.OnClickListener() {
             @Override
@@ -94,7 +96,7 @@ public class MenuPlanningFragment extends Fragment {
                 UIUtils.startActivity(PlanningJ2Activity.class, getActivity());
             }
         }, 3);
-        createMenu(R.color.grey, android.R.color.white,
+        createMenu(R.color.grey_light, android.R.color.white,
                 context.getString(R.string.blank),
                 context.getString(R.string.calendrier_27), true, false, null, 1);
 
@@ -116,25 +118,47 @@ public class MenuPlanningFragment extends Fragment {
                 .addNbMaxLines(nbLigne)
                 .addTextColor(getResources().getColor(android.R.color.black))
                 .getView();
+
         tableRow.addView(colorView);
 
-        TextView textView = new TextViewBuilder()
-                .buildTextView(getActivity())
-                .addAlignement(Gravity.CENTER)
-                .addText(nom2)
-                .addBorders(true, true, dernierligne, true)
-                .addPadding(4, 0, 4)
-                .addNbLines(nbLigne)
-                .addNbMaxLines(nbLigne)
-                .addUpperCase()
-                .addBold(true)
-                .addBackground(getResources().getColor(color2))
-                .addTextColor(getResources().getColor(android.R.color.black))
-                .getView();
-        textView.setAllCaps(upper);
-        textView.setOnClickListener(listener);
-        tableRow.addView(textView);
-
+        if(listener!=null){
+            Button button = new ButtonBuilder()
+                    .buildButton(getActivity())
+                    .addAlignement(Gravity.CENTER)
+                    .addText(nom2)
+                    .addBorders(true, true, dernierligne, true)
+                    .addPadding(4, 0, 4)
+                    .addNbLines(nbLigne)
+                    .addNbMaxLines(nbLigne)
+                    .addUpperCase()
+                    .addBold(true)
+                    .addBackground(getResources().getColor(color2))
+                    .addTextColor(getResources().getColor(android.R.color.black))
+                    .getView();
+            button.setAllCaps(upper);
+            button.setOnClickListener(listener);
+            button.setBackgroundResource(R.drawable.button_yellow_background);
+            tableRow.addView(button);
+        }
+        else{
+            TextView textview = new TextViewBuilder()
+                    .buildTextView(getActivity())
+                    .addAlignement(Gravity.CENTER)
+                    .addText(nom2)
+                    .addBorders(true, true, dernierligne, true)
+                    .addPadding(4, 0, 4)
+                    .addNbLines(nbLigne)
+                    .addNbMaxLines(nbLigne)
+                    .addUpperCase()
+                    .addBold(true)
+                    .addBackground(getResources().getColor(color2))
+                    .addTextColor(getResources().getColor(android.R.color.black))
+                    .getView();
+            textview.setAllCaps(upper);
+            textview.setOnClickListener(listener);
+            textview.setBackgroundResource(R.drawable.button_white_background);
+            tableRow.addView(textview);
+        }
 
         menuTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());
     }

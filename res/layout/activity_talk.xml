@@ -94,10 +94,10 @@
                         android:paddingTop="4dp"
                         style="@style/myTextView"
                         android:textSize="@dimen/text_size_small"/>
-                <TextView
+                <Button
                         android:id="@+id/talk_salle"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/text_size_button_salle"
                         android:layout_alignWithParentIfMissing="true"
                         android:layout_below="@id/talk_name"
                         android:layout_toRightOf="@+id/talk_horaire"

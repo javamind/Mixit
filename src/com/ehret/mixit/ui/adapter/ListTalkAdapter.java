@@ -17,6 +17,7 @@ package com.ehret.mixit.ui.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +84,7 @@ public class ListTalkAdapter<T extends Conference> extends BaseAdapter {
 
         Conference conf = datas.get(position);
         holder.name.setText(conf.getTitle());
-        holder.descriptif.setText(conf.getSummary().trim());
+        holder.descriptif.setText(Html.fromHtml(conf.getSummary().trim()));
         SimpleDateFormat sdf = new SimpleDateFormat("EEE");
         if (conf.getStart() != null && conf.getEnd() != null) {
             holder.horaire.setText(String.format(context.getResources().getString(R.string.periode),

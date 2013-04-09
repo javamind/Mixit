@@ -86,6 +86,7 @@ public class SalleFragment extends Fragment {
                 .addBackground(getResources().getColor(color))
                 .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
                 .getView());
+
         tableRow.addView(new TextViewBuilder()
                 .buildTextView(getActivity())
                 .addAlignement(Gravity.CENTER)

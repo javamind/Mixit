@@ -105,7 +105,7 @@ public class ParseListeActivity extends AbstractActivity {
                 afficherMembre(false);
                 break;
             case talks:
-                handleFields(R.string.focus_talk, R.string.focus_talk_desc, R.color.yellow1);
+                handleFields(R.string.focus_talk, R.string.focus_talk_desc, R.color.blue1);
                 afficherConference();
                 break;
             case workshops:
@@ -113,11 +113,11 @@ public class ParseListeActivity extends AbstractActivity {
                 afficherConference();
                 break;
             case lightningtalks:
-                handleFields(R.string.focus_lightningtalk, R.string.focus_lightningtalk_desc, R.color.red1);
+                handleFields(R.string.focus_lightningtalk, R.string.focus_lightningtalk_desc, R.color.blue2);
                 afficherConference();
                 break;
             case favorites:
-                handleFields(R.string.focus_favorite, R.string.focus_favorite_desc, R.color.blue);
+                handleFields(R.string.focus_favorite, R.string.focus_favorite_desc, R.color.blue3);
                 afficherConference();
                 break;
             default:

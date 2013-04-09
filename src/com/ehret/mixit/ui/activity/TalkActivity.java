@@ -18,9 +18,11 @@ package com.ehret.mixit.ui.activity;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ehret.mixit.R;
@@ -48,7 +50,7 @@ public class TalkActivity extends AbstractActivity {
     private TextView name;
     private TextView summary;
     private TextView descriptif;
-    private TextView salle;
+    private Button salle;
     private Long id;
     private String type;
     private ImageView imageFavorite;
@@ -70,7 +72,7 @@ public class TalkActivity extends AbstractActivity {
         this.name = (TextView) findViewById(R.id.talk_name);
         this.summary = (TextView) findViewById(R.id.talk_summary);
         this.descriptif = (TextView) findViewById(R.id.talk_desciptif);
-        this.salle = (TextView) findViewById(R.id.talk_salle);
+        this.salle = (Button) findViewById(R.id.talk_salle);
 
         if (getIntent().getExtras() != null) {
             long id = getIntent().getExtras().getLong(UIUtils.MESSAGE);
@@ -87,7 +89,7 @@ public class TalkActivity extends AbstractActivity {
             if (TypeFile.lightningtalks.name().equals(type)) {
                 conference = ConferenceFacade.getInstance().getLightningtalk(getBaseContext(), id);
                 title.setText(getText(R.string.calendrier_ligthning) + " \n");
-                title.setBackgroundResource(R.color.red1);
+                title.setBackgroundResource(R.color.blue2);
                 image.setImageDrawable(getResources().getDrawable(R.drawable.lightning));
             } else if (TypeFile.workshops.name().equals(type)) {
                 conference = ConferenceFacade.getInstance().getTalk(getBaseContext(), id);
@@ -97,7 +99,7 @@ public class TalkActivity extends AbstractActivity {
             } else {
                 conference = ConferenceFacade.getInstance().getTalk(getBaseContext(), id);
                 title.setText(getText(R.string.calendrier_conf) + " \n");
-                title.setBackgroundResource(R.color.yellow1);
+                title.setBackgroundResource(R.color.blue1);
                 image.setImageDrawable(getResources().getDrawable(R.drawable.talk));
             }
             title.setLines(2);
@@ -122,8 +124,8 @@ public class TalkActivity extends AbstractActivity {
                 level.setText(""+((Lightningtalk) conference).getNbVotes());
             }
             name.setText(conference.getTitle());
-            summary.setText(conference.getSummary());
-            descriptif.setText(conference.getDescription());
+            summary.setText(Html.fromHtml(conference.getSummary().trim()));
+            descriptif.setText(Html.fromHtml(conference.getDescription().trim()), TextView.BufferType.SPANNABLE);
             Salle room = Salle.INCONNU;
             if (conference instanceof Talk) {
                 room = Salle.getSalle(((Talk) conference).getRoom());
@@ -131,7 +133,12 @@ public class TalkActivity extends AbstractActivity {
             final Activity talkActivity = this;
             if (Salle.INCONNU != room) {
                 salle.setText(String.format(getString(R.string.Salle), room.getNom()));
-                salle.setBackgroundColor(getBaseContext().getResources().getColor(room.getColor()));
+                if(room.getDrawable()!=0){
+                    salle.setBackgroundResource(room.getDrawable());
+                }
+                else{
+                    salle.setBackgroundColor(getBaseContext().getResources().getColor(room.getColor()));
+                }
                 salle.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

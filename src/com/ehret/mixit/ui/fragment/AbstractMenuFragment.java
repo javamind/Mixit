@@ -18,16 +18,21 @@ package com.ehret.mixit.ui.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import com.ehret.mixit.R;
+import com.ehret.mixit.domain.TypeFile;
+import com.ehret.mixit.ui.activity.ParseListeActivity;
+import com.ehret.mixit.ui.utils.ButtonBuilder;
 import com.ehret.mixit.ui.utils.TableRowBuilder;
 import com.ehret.mixit.ui.utils.TextViewBuilder;
+import com.ehret.mixit.ui.utils.UIUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Fragment utilise sur la page daccueil pour afficher les talks
@@ -95,7 +100,7 @@ public abstract class AbstractMenuFragment extends Fragment {
      * @param nom
      * @param dernierligne
      */
-    protected void createMenu(int color, String nom, boolean dernierligne, View.OnClickListener listener) {
+    protected void createMenu(int color, String nom, boolean dernierligne, final TypeFile typeFile) {
         TableRow tableRow = new TableRowBuilder().buildTableRow(getActivity())
                 .addNbColonne(2)
                 .addBackground(getResources().getColor(R.color.grey)).getView();
@@ -103,15 +108,16 @@ public abstract class AbstractMenuFragment extends Fragment {
         TextView colorView = new TextViewBuilder()
                 .buildTextView(getActivity())
                 .addText("   \n ")
-                .addPadding(4, 0, 4)
                 .addBackground(getResources().getColor(color))
                 .addNbLines(2)
                 .addNbMaxLines(2)
                 .getView();
+        colorView.setPadding(4, 6, 0, 4);
+
         tableRow.addView(colorView);
 
-        TextView textView = new TextViewBuilder()
-                .buildTextView(getActivity())
+        Button button = new ButtonBuilder()
+                .buildButton(getActivity())
                 .addAlignement(Gravity.CENTER)
                 .addText(nom + "\n ")
                 .addBorders(true, true, dernierligne, true)
@@ -119,15 +125,23 @@ public abstract class AbstractMenuFragment extends Fragment {
                 .addNbLines(2)
                 .addNbMaxLines(2)
                 .addBold(true)
-                .addBackground(getResources().getColor(android.R.color.white))
                 .addTextColor(getResources().getColor(android.R.color.black))
                 .getView();
-        textView.setOnClickListener(listener);
-        tableRow.addView(textView);
-
+        button.setClickable(true);
+        button.setBackgroundResource(R.drawable.button_white_background);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setBackgroundColor(getResources().getColor(R.color.yellow1));
+                Map<String, Object> parameters = new HashMap<String, Object>(6);
+                parameters.put(UIUtils.MESSAGE, typeFile.name());
+                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
+                v.setBackgroundColor(getResources().getColor(R.color.white));
+            }
+        });
+        tableRow.addView(button);
 
         menuTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());
     }
-
 
 }

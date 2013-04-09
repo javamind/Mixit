@@ -95,6 +95,7 @@ public class PersonLinkFragment extends Fragment {
 
             for (final Link link : membre.getSharedLinks()) {
                 RelativeLayout row = (RelativeLayout) mInflater.inflate(R.layout.link_item, null);
+                row.setBackgroundResource(R.drawable.row_transparent_background);
                 //Dans lequel nous allons ajouter le contenu que nous faisons mappé dans
                 link_text = (TextView) row.findViewById(R.id.link_text);
                 link_text.setText(Html.fromHtml(String.format("%s : <a href=\"%s\">%s</a>", link.getName(), link.getUrl(), link.getUrl())));

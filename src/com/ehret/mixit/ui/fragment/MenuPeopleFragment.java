@@ -52,37 +52,10 @@ public class MenuPeopleFragment extends AbstractMenuFragment {
 
     @Override
     public void createElementsMenu() {
-        Context context = getActivity().getBaseContext();
-        final Map<String, Object> parameters = new HashMap<String, Object>(6);
-
-        createMenu(R.color.green1, context.getString(R.string.description_speakers), false, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parameters.put(UIUtils.MESSAGE, TypeFile.speaker.name());
-                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-            }
-        });
-        createMenu(R.color.orange, context.getString(R.string.description_staff), false, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parameters.put(UIUtils.MESSAGE, TypeFile.staff.name());
-                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-            }
-        });
-        createMenu(R.color.pink1, context.getString(R.string.description_sponsor), false, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parameters.put(UIUtils.MESSAGE, TypeFile.sponsor.name());
-                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-            }
-        });
-        createMenu(R.color.violet1, context.getString(R.string.description_membres), true, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parameters.put(UIUtils.MESSAGE, TypeFile.members.name());
-                UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-            }
-        });
+        createMenu(R.color.green1, getActivity().getString(R.string.description_speakers), false, TypeFile.speaker);
+        createMenu(R.color.yellow1, getActivity().getString(R.string.description_staff), false,  TypeFile.staff);
+        createMenu(R.color.pink1, getActivity().getString(R.string.description_sponsor), false, TypeFile.sponsor);
+        createMenu(R.color.violet1, getActivity().getString(R.string.description_membres), true, TypeFile.members);
     }
 
 }

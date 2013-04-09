@@ -25,19 +25,22 @@ import com.ehret.mixit.R;
  * To change this template use File | Settings | File Templates.
  */
 public enum Salle {
-    SALLE1("1 (100p)", R.color.green1),
-    SALLE2("2 (100p)", R.color.violet1),
-    SALLE3("3 (80p)", R.color.red1),
-    SALLE4("4 (60p)", R.color.yellow1),
-    SALLE5("5 (25p)", R.color.pink1),
-    INCONNU("Inconnue", R.color.grey);
+    SALLE1("Gosling", R.color.salle1, R.drawable.salle1_background),
+    SALLE2("Eich", R.color.salle2, R.drawable.salle2_background),
+    SALLE3("Nonaka", R.color.salle3, R.drawable.salle3_background),
+    SALLE4("Dijkstra", R.color.salle4, R.drawable.salle4_background),
+    SALLE5("Turing", R.color.salle5, R.drawable.salle5_background),
+    INCONNU("Inconnue", R.color.grey, 0);
 
     private String nom;
     private int color;
+    private int drawable;
 
-    private Salle(String nom, int color) {
+
+    private Salle(String nom, int color,int drawable) {
         this.nom = nom;
         this.color = color;
+        this.drawable=drawable;
     }
 
     public String getNom() {
@@ -47,7 +50,9 @@ public enum Salle {
     public int getColor() {
         return color;
     }
-
+    public int getDrawable() {
+        return drawable;
+    }
     public static Salle getSalle(String nom) {
         if (nom != null) {
             for (Salle salle : values()) {

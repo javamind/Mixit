@@ -48,29 +48,29 @@ public abstract class AbstractCalendarFragment extends Fragment {
     protected abstract void dessinerCalendrier();
 
     protected void addConferenceDebut(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.blue, getResources().getColor(android.R.color.black), getResources().getString(R.string.calendrier_conf_small), true, false, false, true, 1);
+        createElementCalendarTableLayout(tableRow, R.color.blue1, getResources().getColor(android.R.color.black), getResources().getString(R.string.calendrier_conf_small), true, false, false, true, 1);
 
     }
 
     protected void addConferenceFin(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.blue, getResources().getColor(android.R.color.white), getResources().getString(R.string.calendrier_detail), true, false, false, false, 1);
+        createElementCalendarTableLayout(tableRow, R.color.blue1, getResources().getColor(android.R.color.white), getResources().getString(R.string.calendrier_detail), true, false, false, false, 1);
     }
 
     protected void addAtelierDebut(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.yellow1, getResources().getColor(android.R.color.black), getResources().getString(R.string.calendrier_atelier), true, true, false, true, 1);
+        createElementCalendarTableLayout(tableRow, R.color.yellow2, getResources().getColor(android.R.color.black), getResources().getString(R.string.calendrier_atelier), true, true, false, true, 1);
 
     }
 
     protected void addAtelierIntermediaire(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.yellow1, getResources().getColor(android.R.color.white), getResources().getString(R.string.calendrier_detail), false, true, false, false, 1);
+        createElementCalendarTableLayout(tableRow, R.color.yellow2, getResources().getColor(android.R.color.white), getResources().getString(R.string.calendrier_detail), false, true, false, false, 1);
     }
 
     protected void addAtelierBlankIntermediaire(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.yellow1, getResources().getColor(android.R.color.black), getResources().getString(R.string.blank), false, true, false, false, 1);
+        createElementCalendarTableLayout(tableRow, R.color.yellow2, getResources().getColor(android.R.color.black), getResources().getString(R.string.blank), false, true, false, false, 1);
     }
 
     protected void addAtelierFin(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.yellow1, getResources().getColor(android.R.color.black), getResources().getString(R.string.blank), true, true, false, false, 1);
+        createElementCalendarTableLayout(tableRow, R.color.yellow2, getResources().getColor(android.R.color.black), getResources().getString(R.string.blank), true, true, false, false, 1);
     }
 
     protected void addEvent(TableRow tableRow, String libelle) {
@@ -118,7 +118,6 @@ public abstract class AbstractCalendarFragment extends Fragment {
                 .addNbColonne(nbcolonne)
                 .getView();
 
-        tableRow.setClickable(true);
 
         //Sur un clic on va faire un zoom sur une session
         tableRow.setOnClickListener(new View.OnClickListener() {

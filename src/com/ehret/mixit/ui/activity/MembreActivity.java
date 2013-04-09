@@ -17,6 +17,7 @@ package com.ehret.mixit.ui.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ehret.mixit.R;
@@ -75,7 +76,7 @@ public class MembreActivity extends AbstractActivity {
         switch (typeFile) {
             case staff:
                 this.membreTitle.setText(getText(R.string.membre_staff) + " \n");
-                this.membreTitle.setBackgroundResource(R.color.orange);
+                this.membreTitle.setBackgroundResource(R.color.yellow1);
                 break;
             case members:
                 this.membreTitle.setText(getText(R.string.membre_membre) + " \n");
@@ -92,8 +93,8 @@ public class MembreActivity extends AbstractActivity {
         this.membreTitle.setLines(2);
         this.membreUserName.setText(membre.getFirstname() + " " + membre.getLastname());
         this.membreEntreprise.setText(membre.getCompany());
-        this.personDesciptif.setText(membre.getLongdesc().trim());
-        this.personShortDesciptif.setText(membre.getShortdesc().trim());
+        this.personDesciptif.setText(Html.fromHtml(membre.getLongdesc().trim()), TextView.BufferType.SPANNABLE);
+        this.personShortDesciptif.setText(Html.fromHtml(membre.getShortdesc().trim()));
 
         //Recuperation de l'mage liee au profil
         Bitmap image = FileUtils.getImage(getBaseContext(), membre);

@@ -244,7 +244,14 @@ public abstract class AbstractActivity extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            progressDialog.dismiss();
+            try{
+                progressDialog.dismiss();
+            }
+            catch (IllegalArgumentException e){
+                //Si la vue n'est plus attachée (changement d'orientation on évite de faire planter)
+                Log.w("AbstractActivity", "Erreur à la fin du chargement lors de la notification de la vue");
+
+            }
         }
     }
 
