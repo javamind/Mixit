@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                  android:background="@drawable/mapmenu_background"
                  android:layout_height="?android:listPreferredItemHeight"
+                 android:foregroundGravity="fill"
             >
         <ImageView android:layout_width="fill_parent"
                    android:layout_height="fill_parent"
@@ -42,9 +43,6 @@
                    android:scaleType="centerCrop"
                    android:padding="4dp"
                    android:contentDescription="@string/description_map"/>
-        <LinearLayout android:layout_width="fill_parent"
-                      android:layout_height="fill_parent"
-                >
         <TextView android:id="@+id/mapTextView"
                   android:textStyle="bold"
                   android:layout_width="fill_parent"
@@ -54,7 +52,7 @@
                   style="@style/myTextView"
                   android:text="@string/description_map"
                   android:textSize="@dimen/text_size_medium"/>
-        </LinearLayout>
+
     </FrameLayout>
 
     <LinearLayout android:layout_width="fill_parent"
