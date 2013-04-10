@@ -85,7 +85,7 @@ public abstract class AbstractActivity extends Activity {
         Intent i = null;
         switch (item.getItemId()) {
             case android.R.id.home:
-                return UIUtils.startActivity(HomeActivity.class, this);
+                return UIUtils.startActivity(MainActivity.class, this);
             case R.id.menu_about:
                 DialogAboutFragment dial = new DialogAboutFragment();
                 dial.show(getFragmentManager(), getResources().getString(R.string.about_titre));

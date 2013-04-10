@@ -40,7 +40,6 @@
                    android:layout_height="match_parent"
                    android:src="@drawable/map_background"
                    android:scaleType="centerCrop"
-                   android:padding="4dp"
                    android:foregroundGravity="fill"
                    android:contentDescription="@string/description_map" />
 
