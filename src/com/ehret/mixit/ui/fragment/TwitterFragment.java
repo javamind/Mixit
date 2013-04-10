@@ -71,8 +71,8 @@ public class TwitterFragment extends Fragment {
     public void onResume() {
         super.onResume();
         DownloadTweetsTask mTweetReaderRunnable = new DownloadTweetsTask(this);
-        mTweetReaderRunnable.execute("http://search.twitter.com/search.json?q=mixIT_lyon+OR+mixit13+OR+from%23AmixIT_lyon+OR+to%3AmixIT_lyon&src=typd");
-
+        //mTweetReaderRunnable.execute("http://search.twitter.com/search.json?q=mixIT_lyon+OR+mixit13+OR+from%23AmixIT_lyon+OR+to%3AmixIT_lyon&src=typd");
+        mTweetReaderRunnable.execute("http://search.twitter.com/search.json?q=mixIT_lyon+OR+mixit13&src=typd");
     }
 
     /**
