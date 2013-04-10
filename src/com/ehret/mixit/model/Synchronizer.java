@@ -19,7 +19,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 import com.ehret.mixit.domain.TypeFile;
-import com.ehret.mixit.ui.utils.FileUtils;
+import com.ehret.mixit.utils.FileUtils;
 
 import java.io.*;
 import java.net.HttpURLConnection;

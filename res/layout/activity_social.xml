@@ -44,7 +44,7 @@
             android:text="@string/blank"
             style="@style/myTextView"
             />
-    <fragment android:name="com.ehret.mixit.ui.fragment.TwitterFragment"
+    <fragment android:name="com.ehret.mixit.fragment.TwitterFragment"
               android:id="@+id/tweets"
               android:layout_width="match_parent"
               android:layout_height="fill_parent">

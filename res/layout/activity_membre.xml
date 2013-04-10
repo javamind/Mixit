@@ -103,7 +103,7 @@
                         android:textSize="@dimen/text_size_medium"/>
             </RelativeLayout>
 
-            <fragment android:name="com.ehret.mixit.ui.fragment.PersonSessionsFragment"
+            <fragment android:name="com.ehret.mixit.fragment.PersonSessionsFragment"
                       android:id="@+id/personSessionFragment"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                     >
             </fragment>
 
-            <fragment android:name="com.ehret.mixit.ui.fragment.PersonLinkFragment"
+            <fragment android:name="com.ehret.mixit.fragment.PersonLinkFragment"
                       android:id="@+id/personLinkFragment"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
                     >
             </fragment>
 
-            <fragment android:name="com.ehret.mixit.ui.fragment.PersonInteretFragment"
+            <fragment android:name="com.ehret.mixit.fragment.PersonInteretFragment"
                       android:id="@+id/personInteretFragment"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"

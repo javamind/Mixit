@@ -20,7 +20,7 @@ import android.util.Log;
 import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.domain.people.Interet;
 import com.ehret.mixit.domain.people.Membre;
-import com.ehret.mixit.ui.utils.FileUtils;
+import com.ehret.mixit.utils.FileUtils;
 import com.google.common.base.Predicate;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Ordering;

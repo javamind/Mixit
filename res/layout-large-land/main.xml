@@ -30,7 +30,7 @@
             style="@style/myTextView"
             />
 
-    <fragment android:name="com.ehret.mixit.ui.fragment.WhatsOnFragment"
+    <fragment android:name="com.ehret.mixit.fragment.WhatsOnFragment"
               android:id="@+id/fragment_whats_on"
               android:layout_width="match_parent"
               android:layout_height="@dimen/whats_on_height"/>
@@ -49,12 +49,12 @@
                       android:padding="5px"
                       android:layout_weight="0.5"
                 >
-        <fragment android:name="com.ehret.mixit.ui.fragment.MenuPlanningFragment"
+        <fragment android:name="com.ehret.mixit.fragment.MenuPlanningFragment"
                       android:id="@+id/fragment_menu_planning"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                     />
-        <fragment android:name="com.ehret.mixit.ui.fragment.MenuMapFragment"
+        <fragment android:name="com.ehret.mixit.fragment.MenuMapFragment"
                       android:id="@+id/fragment_menu_map"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -69,12 +69,12 @@
                       android:padding="5px"
                       android:layout_weight="0.5"
                 >
-        <fragment android:name="com.ehret.mixit.ui.fragment.MenuTalksFragment"
+        <fragment android:name="com.ehret.mixit.fragment.MenuTalksFragment"
                       android:id="@+id/fragment_menu_talk"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                     />
-        <fragment android:name="com.ehret.mixit.ui.fragment.MenuPeopleFragment"
+        <fragment android:name="com.ehret.mixit.fragment.MenuPeopleFragment"
                   android:id="@+id/fragment_menu_people"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"

@@ -156,7 +156,7 @@
                     style="@style/myCalendarTitleh2"
                     android:text="@string/description_speakers"/>
 
-            <fragment android:name="com.ehret.mixit.ui.fragment.SessionPersonsFragment"
+            <fragment android:name="com.ehret.mixit.fragment.SessionPersonsFragment"
                       android:id="@+id/sessionPersonFragment"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
