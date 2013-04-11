@@ -223,6 +223,14 @@ public abstract class AbstractActivity extends Activity {
                         publishProgress(progressStatus++);
                     }
                 }
+                //On charge les logos des sponsors
+                membres = MembreFacade.getInstance().getMembres(getBaseContext(), TypeFile.sponsor.name(), null);
+                for (Membre membre : membres) {
+                    if (membre.getLogo() != null) {
+                        Synchronizer.downloadImage(getBaseContext(), membre.getLogo(), "logo" + membre.getId());
+                        publishProgress(progressStatus++);
+                    }
+                }
             }
             return null;
         }

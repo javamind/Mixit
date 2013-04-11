@@ -18,6 +18,7 @@ package com.ehret.mixit.ui;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ehret.mixit.R;
@@ -37,6 +38,7 @@ public class MembreActivity extends AbstractActivity {
     private String type;
     private TextView membreTitle;
     private ImageView profileImage;
+    private ImageView logoImage;
     private TextView membreUserName;
     private TextView personDesciptif;
     private TextView personShortDesciptif;
@@ -56,6 +58,7 @@ public class MembreActivity extends AbstractActivity {
         this.personShortDesciptif = (TextView) findViewById(R.id.membre_shortdesciptif);
         this.membreEntreprise = (TextView) findViewById(R.id.membre_entreprise);
         this.profileImage = (ImageView) findViewById(R.id.membre_image);
+        this.logoImage = (ImageView) findViewById(R.id.membre_logo);
 
         if (getIntent().getExtras() != null) {
             id = getIntent().getExtras().getLong(UIUtils.MESSAGE);
@@ -96,14 +99,28 @@ public class MembreActivity extends AbstractActivity {
         this.personDesciptif.setText(Html.fromHtml(membre.getLongdesc().trim()), TextView.BufferType.SPANNABLE);
         this.personShortDesciptif.setText(Html.fromHtml(membre.getShortdesc().trim()));
 
-        //Recuperation de l'mage liee au profil
-        Bitmap image = FileUtils.getImage(getBaseContext(), membre);
+        Bitmap image = null;
+        //Si on est un sponsor on affiche le logo
+        if(membre.getLevel()!=null && membre.getLevel().length()>0){
+            image = FileUtils.getImageLogo(getBaseContext(), membre);
+            profileImage.setImageBitmap(image);
+            logoImage.setImageBitmap(image);
+            logoImage.setVisibility(View.VISIBLE);
+        }
+        else{
+            logoImage.setVisibility(View.INVISIBLE);
+        }
         if (image == null) {
-            profileImage.setImageDrawable(getResources().getDrawable(R.drawable.person_image_empty));
-        } else {
-            //On regarde dans les images embarquees
+            //Recuperation de l'mage liee au profil
+            image = FileUtils.getImageProfile(getBaseContext(), membre);
+            if (image == null) {
+                profileImage.setImageDrawable(getBaseContext().getResources().getDrawable(R.drawable.person_image_empty));
+            }
+        }
+        if(image!=null){
             profileImage.setImageBitmap(image);
         }
+
     }
 
 

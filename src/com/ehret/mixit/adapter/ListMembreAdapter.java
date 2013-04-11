@@ -83,16 +83,21 @@ public class ListMembreAdapter extends BaseAdapter {
             holder.level.setText("[" + person.getLevel().trim() + "]");
         }
 
-        //Recuperation de l'mage liee au profil
-        Bitmap image = FileUtils.getImage(context, person);
+        Bitmap image = null;
+        //Si on est un sponsor on affiche le logo
+        if(person.getLevel()!=null && person.getLevel().length()>0){
+            image = FileUtils.getImageLogo(context, person);
+        }
         if (image == null) {
-            holder.profile_image.setImageDrawable(context.getResources().getDrawable(R.drawable.person_image_empty));
-        } else {
-            //On regarde dans les images embarquees
+            //Recuperation de l'mage liee au profil
+            image = FileUtils.getImageProfile(context, person);
+            if (image == null) {
+                holder.profile_image.setImageDrawable(context.getResources().getDrawable(R.drawable.person_image_empty));
+            }
+        }
+        if(image!=null){
             holder.profile_image.setImageBitmap(image);
         }
-
-        //Pour le moment on ne
 
         return convertView;
     }

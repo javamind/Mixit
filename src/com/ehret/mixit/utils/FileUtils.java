@@ -106,9 +106,29 @@ public class FileUtils {
      * @param membre
      * @return
      */
-    public static Bitmap getImage(Context context, Membre membre) {
+    public static Bitmap getImageProfile(Context context, Membre membre) {
         if (membre.getUrlimage() != null) {
             File myFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DCIM), "membre" + membre.getId() + ".jpg");
+            if (myFile.exists()) {
+                try {
+                    return BitmapFactory.decodeStream(new FileInputStream(myFile));
+                } catch (IOException e) {
+                    return null;
+                }
+            }
+
+        }
+        return null;
+    }
+
+    /**
+     * @param context
+     * @param membre
+     * @return
+     */
+    public static Bitmap getImageLogo(Context context, Membre membre) {
+        if (membre.getLogo() != null) {
+            File myFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DCIM), "logo" + membre.getId() + ".jpg");
             if (myFile.exists()) {
                 try {
                     return BitmapFactory.decodeStream(new FileInputStream(myFile));

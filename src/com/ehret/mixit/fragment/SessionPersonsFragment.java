@@ -124,7 +124,7 @@ public class SessionPersonsFragment extends Fragment {
                 }
 
                 //Recuperation de l'mage liee au profil
-                Bitmap image = FileUtils.getImage(getActivity(), membre);
+                Bitmap image = FileUtils.getImageProfile(getActivity(), membre);
                 if (image == null) {
                     profileImage.setImageDrawable(getResources().getDrawable(R.drawable.person_image_empty));
                 } else {

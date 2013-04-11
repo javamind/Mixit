@@ -91,6 +91,8 @@
                         style="@style/myTextView"
                         android:textSize="@dimen/text_size_medium"/>
 
+
+
                 <TextView
                         android:id="@+id/membre_desciptif"
                         android:layout_width="match_parent"
@@ -126,6 +128,19 @@
                       android:paddingLeft="5px"
                     >
             </fragment>
+
+            <ImageView
+                    android:id="@+id/membre_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/speaker_image_padding"
+                    android:layout_below="@id/personInteretFragment"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="4dp"
+                    android:scaleType="fitCenter"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
