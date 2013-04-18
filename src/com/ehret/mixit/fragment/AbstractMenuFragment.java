@@ -26,9 +26,9 @@ import android.widget.TextView;
 import com.ehret.mixit.R;
 import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.ui.ParseListeActivity;
-import com.ehret.mixit.utils.ButtonBuilder;
+import com.ehret.mixit.utils.ButtonTableBuilder;
 import com.ehret.mixit.utils.TableRowBuilder;
-import com.ehret.mixit.utils.TextViewBuilder;
+import com.ehret.mixit.utils.TextViewTableBuilder;
 import com.ehret.mixit.utils.UIUtils;
 
 import java.util.HashMap;
@@ -105,8 +105,8 @@ public abstract class AbstractMenuFragment extends Fragment {
                 .addNbColonne(2)
                 .addBackground(getResources().getColor(R.color.grey)).getView();
 
-        TextView colorView = new TextViewBuilder()
-                .buildTextView(getActivity())
+        TextView colorView = new TextViewTableBuilder()
+                .buildView(getActivity())
                 .addText("   \n ")
                 .addBackground(getResources().getColor(color))
                 .addNbLines(2)
@@ -116,8 +116,8 @@ public abstract class AbstractMenuFragment extends Fragment {
 
         tableRow.addView(colorView);
 
-        Button button = new ButtonBuilder()
-                .buildButton(getActivity())
+        Button button = new ButtonTableBuilder()
+                .buildView(getActivity())
                 .addAlignement(Gravity.CENTER)
                 .addText(nom + "\n ")
                 .addBorders(true, true, dernierligne, true)
@@ -132,11 +132,11 @@ public abstract class AbstractMenuFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setBackgroundColor(getResources().getColor(R.color.yellow1));
+                //v.setBackgroundColor(getResources().getColor(R.color.yellow1));
                 Map<String, Object> parameters = new HashMap<String, Object>(6);
                 parameters.put(UIUtils.MESSAGE, typeFile.name());
                 UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
-                v.setBackgroundColor(getResources().getColor(R.color.white));
+                //v.setBackgroundColor(getResources().getColor(R.color.white));
             }
         });
         tableRow.addView(button);

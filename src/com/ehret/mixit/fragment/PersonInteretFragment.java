@@ -27,7 +27,7 @@ import com.ehret.mixit.R;
 import com.ehret.mixit.domain.people.Interet;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.model.MembreFacade;
-import com.ehret.mixit.utils.TextViewBuilder;
+import com.ehret.mixit.utils.TextViewTableBuilder;
 import com.ehret.mixit.utils.UIUtils;
 
 
@@ -71,8 +71,8 @@ public class PersonInteretFragment extends Fragment {
             //On vide les éléments
             linearLayoutRoot.removeAllViews();
 
-            linearLayoutRoot.addView(new TextViewBuilder()
-                    .buildTextView(getActivity())
+            linearLayoutRoot.addView(new TextViewTableBuilder()
+                    .buildView(getActivity())
                     .addText(getString(R.string.description_interet))
                     .addPadding(0, 10, 4)
                     .addBold(true)
@@ -91,8 +91,8 @@ public class PersonInteretFragment extends Fragment {
                     interets.append(interet.getName());
                 }
             }
-            TextView text = new TextViewBuilder()
-                    .buildTextView(getActivity())
+            TextView text = new TextViewTableBuilder()
+                    .buildView(getActivity())
                     .addText(interets.toString())
                     .addPadding(4, 10, 4)
                     .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))

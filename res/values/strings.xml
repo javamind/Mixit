@@ -70,12 +70,19 @@
 
     <!-- Calendrier -->
     <string name="calendrier_planning">De %1$s à %2$s</string>
+    <string name="calendrier_planninga">à %1$s</string>
     <string name="calendrier_detail">détail...</string>
     <string name="calendrier_confs">Talks</string>
     <string name="calendrier_ateliers">Ateliers</string>
     <string name="calendrier_conf">Conférence</string>
     <string name="calendrier_conf_small">Talk</string>
     <string name="calendrier_atelier">Atelier</string>
+    <string name="calendrier_accueil">Accueil</string>
+    <string name="calendrier_accueillg">Accueil et petit déjeuner</string>
+    <string name="calendrier_orga">Mot de l\'orga</string>
+    <string name="calendrier_orgalg">Le mot des organisateurs</string>
+    <string name="calendrier_presses">Pres. sessions</string>
+    <string name="calendrier_presseslg">Presentation des sessions du jour </string>
     <string name="calendrier_ligthning">Ligthning Talks</string>
     <string name="calendrier_ligthning_small">Ligh.Talk</string>
     <string name="calendrier_keynote">Keynote</string>

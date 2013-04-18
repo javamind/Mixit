@@ -28,7 +28,7 @@ import com.ehret.mixit.R;
 import com.ehret.mixit.domain.Salle;
 import com.ehret.mixit.ui.SalleActivity;
 import com.ehret.mixit.utils.TableRowBuilder;
-import com.ehret.mixit.utils.TextViewBuilder;
+import com.ehret.mixit.utils.TextViewTableBuilder;
 import com.ehret.mixit.utils.UIUtils;
 
 
@@ -78,8 +78,8 @@ public class SalleFragment extends Fragment {
     }
 
     private void createSalle(boolean dernierligne, TableRow tableRow, String nom, int color) {
-        tableRow.addView(new TextViewBuilder()
-                .buildTextView(getActivity())
+        tableRow.addView(new TextViewTableBuilder()
+                .buildView(getActivity())
                 .addText(" ")
                 .addBorders(true, false, dernierligne, true)
                 .addPadding(4, 0, 4)
@@ -87,8 +87,8 @@ public class SalleFragment extends Fragment {
                 .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
                 .getView());
 
-        tableRow.addView(new TextViewBuilder()
-                .buildTextView(getActivity())
+        tableRow.addView(new TextViewTableBuilder()
+                .buildView(getActivity())
                 .addAlignement(Gravity.CENTER)
                 .addText(nom)
                 .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))

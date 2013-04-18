@@ -19,160 +19,69 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.ehret.mixit.R;
 import com.ehret.mixit.utils.UIUtils;
 
 
 /**
- * Planning de la seconde journée
+ * Planning de la première journée
  */
 public class CalendarFragmentJ2 extends AbstractCalendarFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_calendar, container, false);
+        setConteneur((LinearLayout) inflater.inflate(R.layout.fragment_calendar2, container, false));
+        return getConteneur();
     }
 
-    @Override
     protected void dessinerCalendrier() {
-        //deux tableaux juxtaposer
-        //Un d'une colonne pour gérer l'heure
-        heureTableLayout = (TableLayout) getActivity().findViewById(R.id.heureTableLayout);
-        heureTableLayout.removeAllViews();
-        //Un deuxième pour le contenu
-        calendarTableLayout = (TableLayout) getActivity().findViewById(R.id.calendarTableLayout);
-        calendarTableLayout.removeAllViews();
-
-        TableRow tableRow = null;
-
-        //On commence par les heures
-        createRowHeure(" ", false, false);
-        createRowHeure(" 9      ", false, false);
-        createRowHeure(" ", false, false);
-        createRowHeure("10      ", false, true);
-        createRowHeure(" ", false, false);
-        createRowHeure("11      ", false, false);
-        createRowHeure(" ", false, true);
-        createRowHeure("12      ", false, false);
-        createRowHeure(" ", false, false);
-        createRowHeure("13      ", false, false);
-        createRowHeure(" ", false, false);
-        createRowHeure("14      ", false, true);
-        createRowHeure(" ", false, false);
-        createRowHeure("15      ", false, false);
-        createRowHeure(" ", false, true);
-        createRowHeure("16      ", false, false);
-        createRowHeure(" ", false, false);
-        createRowHeure("17      ", false, true);
-        createRowHeure(" ", false, false);
-        createRowHeure("18      ", false, false);
-        createRowHeure(" ", false, true);
-        createRowHeure("19      ", false, false);
-        createRowHeure(" ", true, true);
+        calendarGrid = (GridLayout) getActivity().findViewById(R.id.planningGrid);
+        calendarGrid.removeAllViews();
+        calendarGrid.setColumnCount(4);
+        calendarGrid.setRowCount(52);
 
 
-        //Une ligne d'entete
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 9, false));
-        addHeaderCalendarTableLayout(tableRow, getResources().getString(R.string.calendrier_confs), false);
-        addHeaderCalendarTableLayout(tableRow, getResources().getString(R.string.calendrier_ateliers), true);
+        //On peut fusionner les colonnes 1 et 2 pour un event
+        GridLayout.Spec colFusionne = GridLayout.spec(2,2, GridLayout.FILL);
+        GridLayout.Spec col1 = GridLayout.spec(0, GridLayout.FILL);
+        GridLayout.Spec col2 = GridLayout.spec(1, GridLayout.FILL);
+        GridLayout.Spec col3 = GridLayout.spec(2, GridLayout.FILL);
+        GridLayout.Spec col4 = GridLayout.spec(3, GridLayout.FILL);
 
-        //On construit le tableau demi-heure par demi-heure
+        TextView textView = null;
 
-        //On commence par la keynote 9H->9H30
-        addEventCommun(getResources().getString(R.string.calendrier_keynote), false, true, UIUtils.createPlageHoraire(26, 9, false));
+        addViewHeure();
+        addViewQuartHeure();
 
-        //Conf + atelier 9H->10H00
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 9, true));
-        addConferenceDebut(tableRow);
-        addAtelierDebut(tableRow);
+        addViewEventCommun(0, 3, getResources().getString(R.string.calendrier_accueil), UIUtils.createPlageHoraire(26, 8, 0),R.drawable.button_pause_background);
+        addViewEventCommun(3,1,getResources().getString(R.string.calendrier_orga), UIUtils.createPlageHoraire(26, 8, 45),R.drawable.button_pause_background);
+        addViewEventCommun(4,2,getResources().getString(R.string.calendrier_keynote), UIUtils.createPlageHoraire(26, 9, 0),R.drawable.button_ligtalk_background);
+        addViewEventCommun(6,1,getResources().getString(R.string.calendrier_presses), UIUtils.createPlageHoraire(26, 9, 20),R.drawable.button_pause_background);
+        addViewTalk(7, 4, getResources().getString(R.string.calendrier_conf_small), false, R.drawable.button_talk_background, UIUtils.createPlageHoraire(26, 9, 45));
+        addViewEventPalge1(11, 2, getString(R.string.calendrier_pause), false, UIUtils.createPlageHoraire(26, 10, 45));
+        addViewWorkshop(7, 6, getResources().getString(R.string.calendrier_atelier), false, UIUtils.createPlageHoraire(26, 9, 45));
+        addViewTalk(13, 4, getResources().getString(R.string.calendrier_conf_small), false, R.drawable.button_talk_background, UIUtils.createPlageHoraire(26, 11, 15));
+        addViewWorkshop(13, 6, getResources().getString(R.string.calendrier_atelier), false, UIUtils.createPlageHoraire(26, 11, 15));
+        addViewEventPalge1(17, 2, getString(R.string.calendrier_repas), false, UIUtils.createPlageHoraire(26, 12, 15));
+        addViewEventCommun(19, 1, getString(R.string.calendrier_repas), UIUtils.createPlageHoraire(26, 12, 45),R.drawable.button_pause_background);
 
-        //Conf + atelier 10H00->10H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 10, false));
-        addConferenceFin(tableRow);
-        addAtelierIntermediaire(tableRow);
+        addViewWorkshop(20, 6, getResources().getString(R.string.calendrier_atelier), false, UIUtils.createPlageHoraire(26, 13, 0));
+        addViewTalk(20, 2, getString(R.string.calendrier_ligthning_small), false, R.drawable.button_ligtalk_background, UIUtils.createPlageHoraire(26, 13, 0));
+        addViewTalk(22, 4, getResources().getString(R.string.calendrier_conf_small), false, R.drawable.button_talk_background, UIUtils.createPlageHoraire(26, 13, 30));
+        addViewWorkshop(26, 6, getResources().getString(R.string.calendrier_atelier), false, UIUtils.createPlageHoraire(26, 14, 30));
+        addViewEventPalge1(26, 2, getString(R.string.calendrier_pause), false, UIUtils.createPlageHoraire(26, 14, 30));
 
-        //Pause  + pas pour atelier 10H30->11H
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 10, true));
-        addEvent(tableRow, getResources().getString(R.string.calendrier_pause));
-        addAtelierFin(tableRow);
+        addViewTalk(28,4, getResources().getString(R.string.calendrier_conf_small),false, R.drawable.button_talk_background, UIUtils.createPlageHoraire(26, 15, 0));
+        addViewWorkshop(32, 8, getResources().getString(R.string.calendrier_atelier), false, UIUtils.createPlageHoraire(26, 14, 30));
+        addViewEventPalge1(32, 2, getString(R.string.calendrier_pause), false, UIUtils.createPlageHoraire(26, 14, 30));
+        addViewTalk(34,6, getResources().getString(R.string.calendrier_conf_small),false, R.drawable.button_talk_background, UIUtils.createPlageHoraire(26, 15, 0));
 
-        //Conf + atelier  11H->11H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 11, false));
-        addConferenceDebut(tableRow);
-        addAtelierDebut(tableRow);
-
-        //11H30->12H00
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 11, true));
-        addConferenceFin(tableRow);
-        addAtelierIntermediaire(tableRow);
-
-        //Repas  + pas pour atelier 12H->12H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 12, false));
-        addEvent(tableRow, getString(R.string.calendrier_repas));
-        addAtelierFin(tableRow);
-
-
-        //Repas  12H30->13H
-        addEventCommun(getResources().getString(R.string.calendrier_repas), false, true, UIUtils.createPlageHoraire(26, 12, true));
-
-        //Lightning  + Atelier  13H->13H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 13, false));
-        addEvent(tableRow, getString(R.string.calendrier_ligthning_small));
-        addAtelierDebut(tableRow);
-        ;
-
-        //Conf + atelier 13H30->14H
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 13, true));
-        addConferenceDebut(tableRow);
-        addAtelierIntermediaire(tableRow);
-
-        // 14H->14H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 14, false));
-        addConferenceFin(tableRow);
-        addAtelierFin(tableRow);
-
-        //14H30->15H Pause + nouveau atelier
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 14, true));
-        addEvent(tableRow, getString(R.string.calendrier_pause));
-        addAtelierDebut(tableRow);
-        ;
-
-        // 15H->15H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 15, false));
-        addConferenceDebut(tableRow);
-        addAtelierIntermediaire(tableRow);
-
-        //15H30->16H
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 15, true));
-        addConferenceFin(tableRow);
-        addAtelierFin(tableRow);
-
-        // 16H->16H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 16, false));
-        addEvent(tableRow, getString(R.string.calendrier_pause));
-        addAtelierDebut(tableRow);
-        ;
-
-        //16H30->17H Pause + nouveau atelier
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 16, true));
-        addConferenceDebut(tableRow);
-        addAtelierIntermediaire(tableRow);
-
-        // 17H->17H30
-        tableRow = createRowCalendar(2, UIUtils.createPlageHoraire(26, 17, false));
-        addConferenceFin(tableRow);
-        addAtelierFin(tableRow);
-
-
-        //17H30->19H
-        addEventCommun(getResources().getString(R.string.blank), false, true, UIUtils.createPlageHoraire(26, 17, true));
-        addEventCommun(getResources().getString(R.string.blank), false, false, UIUtils.createPlageHoraire(26, 18, false));
-        addEventCommun(getResources().getString(R.string.blank), false, false, UIUtils.createPlageHoraire(26, 18, true));
-        addEventCommun(getResources().getString(R.string.blank), false, false, UIUtils.createPlageHoraire(26, 19, false));
-        addEventCommun(getResources().getString(R.string.blank), true, false, UIUtils.createPlageHoraire(26, 19, true));
-
-
+        addViewEventCommun(40,2,getResources().getString(R.string.calendrier_keynote), UIUtils.createPlageHoraire(26, 18, 0),R.drawable.button_ligtalk_background);
+        addViewEventCommun(42, 6, " ", null,R.drawable.button_pause_background);
     }
+
+
 }

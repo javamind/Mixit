@@ -31,7 +31,7 @@ import com.ehret.mixit.domain.talk.Talk;
 import com.ehret.mixit.model.ConferenceFacade;
 import com.ehret.mixit.model.MembreFacade;
 import com.ehret.mixit.ui.TalkActivity;
-import com.ehret.mixit.utils.TextViewBuilder;
+import com.ehret.mixit.utils.TextViewTableBuilder;
 import com.ehret.mixit.utils.UIUtils;
 
 import java.text.DateFormat;
@@ -96,8 +96,8 @@ public class PersonSessionsFragment extends Fragment {
             //On vide les éléments
             linearLayoutRoot.removeAllViews();
 
-            linearLayoutRoot.addView(new TextViewBuilder()
-                    .buildTextView(getActivity())
+            linearLayoutRoot.addView(new TextViewTableBuilder()
+                    .buildView(getActivity())
                     .addText(getString(R.string.description_sessions))
                     .addPadding(0, 10, 4)
                     .addBold(true)

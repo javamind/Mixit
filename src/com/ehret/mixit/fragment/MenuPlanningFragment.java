@@ -29,9 +29,9 @@ import android.widget.TextView;
 import com.ehret.mixit.R;
 import com.ehret.mixit.ui.PlanningJ1Activity;
 import com.ehret.mixit.ui.PlanningJ2Activity;
-import com.ehret.mixit.utils.ButtonBuilder;
+import com.ehret.mixit.utils.ButtonTableBuilder;
 import com.ehret.mixit.utils.TableRowBuilder;
-import com.ehret.mixit.utils.TextViewBuilder;
+import com.ehret.mixit.utils.TextViewTableBuilder;
 import com.ehret.mixit.utils.UIUtils;
 
 /**
@@ -108,8 +108,8 @@ public class MenuPlanningFragment extends Fragment {
                 .addNbColonne(2)
                 .addBackground(getResources().getColor(R.color.grey)).getView();
 
-        TextView colorView = new TextViewBuilder()
-                .buildTextView(getActivity())
+        TextView colorView = new TextViewTableBuilder()
+                .buildView(getActivity())
                 .addText(nom1)
                 .addPadding(4, 0, 4)
                 .addBackground(getResources().getColor(color1))
@@ -122,8 +122,8 @@ public class MenuPlanningFragment extends Fragment {
         tableRow.addView(colorView);
 
         if(listener!=null){
-            Button button = new ButtonBuilder()
-                    .buildButton(getActivity())
+            Button button = new ButtonTableBuilder()
+                    .buildView(getActivity())
                     .addAlignement(Gravity.CENTER)
                     .addText(nom2)
                     .addBorders(true, true, dernierligne, true)
@@ -141,8 +141,8 @@ public class MenuPlanningFragment extends Fragment {
             tableRow.addView(button);
         }
         else{
-            TextView textview = new TextViewBuilder()
-                    .buildTextView(getActivity())
+            TextView textview = new TextViewTableBuilder()
+                    .buildView(getActivity())
                     .addAlignement(Gravity.CENTER)
                     .addText(nom2)
                     .addBorders(true, true, dernierligne, true)

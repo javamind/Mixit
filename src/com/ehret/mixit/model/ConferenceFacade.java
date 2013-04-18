@@ -17,6 +17,7 @@ package com.ehret.mixit.model;
 
 import android.content.Context;
 import android.util.Log;
+import com.ehret.mixit.R;
 import com.ehret.mixit.domain.TypeFile;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.domain.talk.Conference;
@@ -177,7 +178,7 @@ public class ConferenceFacade {
         //On decale la date de 1 minute pour ne pas avoir de souci de comparaison
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.set(Calendar.MINUTE, 1);
+        calendar.add(Calendar.MINUTE, 2);
         Date dateComparee = calendar.getTime();
 
         for (Talk talk : talks) {
@@ -187,7 +188,7 @@ public class ConferenceFacade {
         }
 
         //On ajoute ls events particuliers
-        Collection<Talk> talkSpeciaux = getEventsSpeciaux().values();
+        Collection<Talk> talkSpeciaux = getEventsSpeciaux(context).values();
         for (Talk talk : talkSpeciaux) {
             if (talk.getStart() != null && talk.getEnd() != null && (dateComparee.before(talk.getEnd()) && dateComparee.after(talk.getStart()))) {
                 confs.add(talk);
@@ -201,67 +202,83 @@ public class ConferenceFacade {
      *
      * @return
      */
-    public Map<Long, Talk> getEventsSpeciaux() {
+    public Map<Long, Talk> getEventsSpeciaux(Context context) {
         if (talksSpeciaux.isEmpty()) {
-            talksSpeciaux.put(90000L, createKeynoteTalk(25, 90000));
-            talksSpeciaux.put(90001L, createKeynoteTalk(26, 90001));
+
+            Talk event = null;
+            event = createTalkHorsConf(context.getString(R.string.calendrier_accueillg), 90000);
+            event.setStart(UIUtils.createPlageHoraire(25, 8, 0));
+            event.setEnd(UIUtils.createPlageHoraire(25, 8, 45));
+            talksSpeciaux.put(event.getId(), event);
+            event = createTalkHorsConf(context.getString(R.string.calendrier_orgalg), 90002);
+            event.setStart(UIUtils.createPlageHoraire(25, 8, 45));
+            event.setEnd(UIUtils.createPlageHoraire(25, 9, 0));
+            talksSpeciaux.put(event.getId(), event);
+            event = createTalkHorsConf(context.getString(R.string.calendrier_presseslg), 90003);
+            event.setStart(UIUtils.createPlageHoraire(25, 9, 20));
+            event.setEnd(UIUtils.createPlageHoraire(25, 9, 45));
+            talksSpeciaux.put(event.getId(), event);
+            event = createTalkHorsConf(context.getString(R.string.calendrier_accueillg), 90005);
+            event.setStart(UIUtils.createPlageHoraire(26, 8, 0));
+            event.setEnd(UIUtils.createPlageHoraire(26, 8, 45));
+            talksSpeciaux.put(event.getId(), event);
+            event = createTalkHorsConf(context.getString(R.string.calendrier_orgalg), 90006);
+            event.setStart(UIUtils.createPlageHoraire(26, 8, 45));
+            event.setEnd(UIUtils.createPlageHoraire(26, 9, 0));
+            talksSpeciaux.put(event.getId(), event);
+            event = createTalkHorsConf(context.getString(R.string.calendrier_presseslg), 90007);
+            event.setStart(UIUtils.createPlageHoraire(26, 9, 20));
+            event.setEnd(UIUtils.createPlageHoraire(26, 9, 45));
+            talksSpeciaux.put(event.getId(), event);
 
             Talk repas = null;
-            repas = createTalkHorsConf("Repas", 80000);
-            repas.setStart(UIUtils.createPlageHoraire(25, 12, false));
-            repas.setEnd(UIUtils.createPlageHoraire(25, 12, true));
+            repas = createTalkHorsConf(context.getString(R.string.calendrier_repas), 80000);
+            repas.setStart(UIUtils.createPlageHoraire(25, 12, 15));
+            repas.setEnd(UIUtils.createPlageHoraire(25, 13, 30));
             talksSpeciaux.put(repas.getId(), repas);
-            repas = createTalkHorsConf("Repas", 80001);
-            repas.setStart(UIUtils.createPlageHoraire(25, 12, true));
-            repas.setEnd(UIUtils.createPlageHoraire(25, 13, false));
-            talksSpeciaux.put(repas.getId(), repas);
-            repas = createTalkHorsConf("Repas", 80002);
-            repas.setStart(UIUtils.createPlageHoraire(26, 12, false));
-            repas.setEnd(UIUtils.createPlageHoraire(26, 12, true));
-            talksSpeciaux.put(repas.getId(), repas);
-            repas = createTalkHorsConf("Repas", 80003);
-            repas.setStart(UIUtils.createPlageHoraire(26, 12, true));
-            repas.setEnd(UIUtils.createPlageHoraire(26, 13, false));
+            repas = createTalkHorsConf(context.getString(R.string.calendrier_repas), 80002);
+            repas.setStart(UIUtils.createPlageHoraire(26, 12, 15));
+            repas.setEnd(UIUtils.createPlageHoraire(26, 13, 30));
             talksSpeciaux.put(repas.getId(), repas);
 
             Talk pause = null;
-            pause = createTalkHorsConf("Pause", 70000);
-            pause.setStart(UIUtils.createPlageHoraire(25, 10, true));
-            pause.setEnd(UIUtils.createPlageHoraire(25, 11, false));
+            pause = createTalkHorsConf(context.getString(R.string.calendrier_pause), 70000);
+            pause.setStart(UIUtils.createPlageHoraire(25, 10, 45));
+            pause.setEnd(UIUtils.createPlageHoraire(25, 11, 15));
             talksSpeciaux.put(pause.getId(), pause);
-            pause = createTalkHorsConf("Pause", 70001);
-            pause.setStart(UIUtils.createPlageHoraire(25, 14, false));
-            pause.setEnd(UIUtils.createPlageHoraire(25, 14, true));
+            pause = createTalkHorsConf(context.getString(R.string.calendrier_pause), 70001);
+            pause.setStart(UIUtils.createPlageHoraire(25, 14, 30));
+            pause.setEnd(UIUtils.createPlageHoraire(25, 15, 0));
             talksSpeciaux.put(pause.getId(), pause);
-            pause = createTalkHorsConf("Pause", 70002);
-            pause.setStart(UIUtils.createPlageHoraire(25, 16, false));
-            pause.setEnd(UIUtils.createPlageHoraire(25, 16, true));
+            pause = createTalkHorsConf(context.getString(R.string.calendrier_pause), 70002);
+            pause.setStart(UIUtils.createPlageHoraire(25, 16, 0));
+            pause.setEnd(UIUtils.createPlageHoraire(25, 16, 30));
             talksSpeciaux.put(pause.getId(), pause);
-            pause = createTalkHorsConf("Pause", 70003);
-            pause.setStart(UIUtils.createPlageHoraire(25, 17, true));
-            pause.setEnd(UIUtils.createPlageHoraire(25, 18, false));
+            pause = createTalkHorsConf(context.getString(R.string.calendrier_pause), 70003);
+            pause.setStart(UIUtils.createPlageHoraire(25, 17, 30));
+            pause.setEnd(UIUtils.createPlageHoraire(25, 18, 0));
             talksSpeciaux.put(pause.getId(), pause);
-            pause = createTalkHorsConf("Pause", 70004);
-            pause.setStart(UIUtils.createPlageHoraire(26, 10, true));
-            pause.setEnd(UIUtils.createPlageHoraire(26, 11, false));
+            pause = createTalkHorsConf(context.getString(R.string.calendrier_pause), 70004);
+            pause.setStart(UIUtils.createPlageHoraire(26, 10, 45));
+            pause.setEnd(UIUtils.createPlageHoraire(26, 11, 15));
             talksSpeciaux.put(pause.getId(), pause);
-            pause = createTalkHorsConf("Pause", 70005);
-            pause.setStart(UIUtils.createPlageHoraire(26, 14, false));
-            pause.setEnd(UIUtils.createPlageHoraire(26, 14, true));
+            pause = createTalkHorsConf(context.getString(R.string.calendrier_pause), 70005);
+            pause.setStart(UIUtils.createPlageHoraire(26, 14, 30));
+            pause.setEnd(UIUtils.createPlageHoraire(26, 15, 0));
             talksSpeciaux.put(pause.getId(), pause);
-            pause = createTalkHorsConf("Pause", 70006);
-            pause.setStart(UIUtils.createPlageHoraire(26, 16, false));
-            pause.setEnd(UIUtils.createPlageHoraire(26, 16, true));
+            pause = createTalkHorsConf(context.getString(R.string.calendrier_pause), 70006);
+            pause.setStart(UIUtils.createPlageHoraire(26, 16, 0));
+            pause.setEnd(UIUtils.createPlageHoraire(26, 16, 30));
             talksSpeciaux.put(pause.getId(), pause);
 
             Talk lit = null;
-            lit = createTalkHorsConf("Lightning Talks", 100000);
-            lit.setStart(UIUtils.createPlageHoraire(25, 13, false));
-            lit.setEnd(UIUtils.createPlageHoraire(25, 13, true));
+            lit = createTalkHorsConf(context.getString(R.string.calendrier_ligthning), 100000);
+            lit.setStart(UIUtils.createPlageHoraire(25, 13, 0));
+            lit.setEnd(UIUtils.createPlageHoraire(25, 13, 30));
             talksSpeciaux.put(lit.getId(), lit);
-            lit = createTalkHorsConf("Lightning Talks", 100001);
-            lit.setStart(UIUtils.createPlageHoraire(26, 13, false));
-            lit.setEnd(UIUtils.createPlageHoraire(26, 13, true));
+            lit = createTalkHorsConf(context.getString(R.string.calendrier_ligthning), 100001);
+            lit.setStart(UIUtils.createPlageHoraire(26, 13, 0));
+            lit.setEnd(UIUtils.createPlageHoraire(26, 13, 30));
             talksSpeciaux.put(lit.getId(), lit);
 
         }
@@ -277,13 +294,7 @@ public class ConferenceFacade {
         return repas;
     }
 
-    private Talk createKeynoteTalk(int jour, long id) {
-        Talk keynote;
-        keynote = createTalkHorsConf("Keynote", id);
-        keynote.setStart(UIUtils.createPlageHoraire(jour, 9, false));
-        keynote.setEnd(UIUtils.createPlageHoraire(jour, 9, true));
-        return keynote;
-    }
+
 
     /**
      * Permet de recuperer la liste des talks

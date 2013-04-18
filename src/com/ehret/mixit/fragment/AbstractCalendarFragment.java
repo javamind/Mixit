@@ -15,170 +15,254 @@
  */
 package com.ehret.mixit.fragment;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.view.*;
+import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.ehret.mixit.R;
 import com.ehret.mixit.ui.AbstractPlanningActivity;
-import com.ehret.mixit.utils.TableRowBuilder;
-import com.ehret.mixit.utils.TextViewBuilder;
+import com.ehret.mixit.utils.ButtonGridBuilder;
+import com.ehret.mixit.utils.TextViewGridBuilder;
+import com.ehret.mixit.utils.UIUtils;
 
 import java.util.Date;
 
 
 /**
- * Classe mère regroupant les fonctions communes permettant de construire le planning
- * d'une journée sous la forme d'un calendrier
+ * Planning de la première journée
  */
 public abstract class AbstractCalendarFragment extends Fragment {
-    protected TableLayout calendarTableLayout;
-    protected TableLayout heureTableLayout;
+    protected GridLayout calendarGrid;
+    private LinearLayout conteneur;
+
+    public LinearLayout getConteneur() {
+        return conteneur;
+    }
+
+    public void setConteneur(LinearLayout conteneur) {
+        this.conteneur = conteneur;
+    }
+
 
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        calendarGrid = (GridLayout) getActivity().findViewById(R.id.planningGrid);
+        calendarGrid.removeAllViews();
+        calendarGrid.setColumnCount(4);
+        calendarGrid.setRowCount(48);
+        calendarGrid.setUseDefaultMargins(true);
+        calendarGrid.setBackgroundColor(R.color.black);
         dessinerCalendrier();
+
+        //On rearange la largeur des colonnes
+        ViewTreeObserver vto = calendarGrid.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout(){
+                Double calcul = (calendarGrid.getWidth()- ((double)calendarGrid.getWidth())/4)*0.51;
+                for( int i=0; i< calendarGrid.getChildCount();i++){
+                    View view = calendarGrid.getChildAt(i);
+                    if(view instanceof Button){
+                        ((Button) view).setWidth(calcul.intValue());
+                    }
+                    else if(view instanceof TextView){
+                        //On ne regarde que les colonnes fusionnées
+                        if(((GridLayout.LayoutParams)view.getLayoutParams()).columnSpec.equals(GridLayout.spec(2,2, GridLayout.FILL))){
+                            ((TextView) view).setWidth(calcul.intValue()*2);
+                        }
+                    }
+                }
+                ViewTreeObserver obs = calendarGrid.getViewTreeObserver();
+                obs.removeGlobalOnLayoutListener(this);
+            }
+        });
     }
+
 
     protected abstract void dessinerCalendrier();
 
-    protected void addConferenceDebut(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.blue1, getResources().getColor(android.R.color.black), getResources().getString(R.string.calendrier_conf_small), true, false, false, true, 1);
-
+    /**
+     * Ajout de la colonne heure
+     */
+    protected void addViewHeure(){
+        for(int i=0 ; i<12 ; i++){
+            //Heure sur 4 lignes
+            TextView textView = new TextViewGridBuilder()
+                    .buildView(getActivity())
+                    .addAlignement(Gravity.CENTER)
+                    .addText(String.valueOf(i+8) +"H")
+                    .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
+                    .addBackgroundDrawable(R.drawable.calendar_title_background)
+                    .addTextColor(getResources().getColor(android.R.color.black))
+                    .getView();
+            setLayoutAndBorder(textView,
+                    new GridLayout.LayoutParams(GridLayout.spec(i * 4, 4, GridLayout.FILL), GridLayout.spec(0, GridLayout.FILL)),
+                    i == 11, true, true, false,0);
+            calendarGrid.addView(textView);
+        }
     }
 
-    protected void addConferenceFin(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.blue1, getResources().getColor(android.R.color.white), getResources().getString(R.string.calendrier_detail), true, false, false, false, 1);
+    private void setLayoutAndBorder(TextView textView, GridLayout.LayoutParams params, boolean borderBottom, boolean borderTop,
+                                    boolean borderLeft, boolean borderRight, int hauteurcalculee){
+        params.bottomMargin=borderBottom?1:0;
+        params.leftMargin=borderLeft?1:0;
+        params.rightMargin=borderRight?1:0;
+        params.topMargin=borderTop?1:0;
+        textView.setLayoutParams(params);
+        float facteur = 0;
+        switch (hauteurcalculee){
+            case 1:
+                facteur = 2;
+                break;
+            case 2 :
+            case 3 :
+                facteur = 1.5f;
+                break;
+            case 6 :
+                facteur = 2;
+                break;
+            case 99 :
+                facteur = 0.9f;
+                break;
+            default:
+                    facteur = 1;
+
+        }
+        textView.getLayoutParams().height=
+                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, getResources().getInteger(R.integer.text_size_cal)* facteur,
+                        getResources().getDisplayMetrics() );
     }
-
-    protected void addAtelierDebut(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.yellow2, getResources().getColor(android.R.color.black), getResources().getString(R.string.calendrier_atelier), true, true, false, true, 1);
-
-    }
-
-    protected void addAtelierIntermediaire(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.yellow2, getResources().getColor(android.R.color.white), getResources().getString(R.string.calendrier_detail), false, true, false, false, 1);
-    }
-
-    protected void addAtelierBlankIntermediaire(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.yellow2, getResources().getColor(android.R.color.black), getResources().getString(R.string.blank), false, true, false, false, 1);
-    }
-
-    protected void addAtelierFin(TableRow tableRow) {
-        createElementCalendarTableLayout(tableRow, R.color.yellow2, getResources().getColor(android.R.color.black), getResources().getString(R.string.blank), true, true, false, false, 1);
-    }
-
-    protected void addEvent(TableRow tableRow, String libelle) {
-        createElementCalendarTableLayout(tableRow, android.R.color.white, getResources().getColor(android.R.color.black), libelle, true, false, false, true, 1);
-    }
-
-    protected void addEventCommun(String libelle, boolean bottomBorder, boolean topBorder, Date heure) {
-        TableRow tableRow = createRowCalendar(2, heure);
-        createElementCalendarTableLayout(tableRow, android.R.color.white, getResources().getColor(android.R.color.black), libelle, true, true, bottomBorder, topBorder, 2);
+    /**
+     * Ajout de la colonne des quarts d'heure
+     */
+    protected void addViewQuartHeure(){
+        for(int i=0 ; i<48 ; i++){
+            //Quart d'heure affiche juste un repère
+            TextView textView = new TextViewGridBuilder()
+                    .buildView(getActivity())
+                    //.addPadding(0, 0, 0)
+                    .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal_mini))
+                    .addBackgroundDrawable(R.drawable.calendar_title_background)
+                    .addTextColor(getResources().getColor(android.R.color.black))
+                    .getView();
+            setLayoutAndBorder(textView,
+                    new GridLayout.LayoutParams(GridLayout.spec(i,GridLayout.FILL), GridLayout.spec(1, GridLayout.FILL)),
+                    i==47, true, true,false,99);
+            calendarGrid.addView(textView);
+        }
     }
 
     /**
-     * Permet d'ajouter une heure dans le tableau heureTableLayout
-     *
+     * Ajoute un moment commun
+     * @param row
+     * @param temps
+     * @param text
      * @param heure
-     * @param derniereligne
      */
-    protected void createRowHeure(String heure, boolean derniereligne, boolean intermediaire) {
-        TableRow tableRow = new TableRowBuilder().buildTableRow(getActivity())
-                .addNbColonne(1)
-                .addBackground(getResources().getColor(R.color.grey)).getView();
+    protected void addViewEventCommun(int row, int temps, String text, final Date heure, int background){
+        Button textView =  getButton(text,false,background, heure);
+        setLayoutAndBorder(textView,
+                new GridLayout.LayoutParams(GridLayout.spec(row,temps, GridLayout.FILL), GridLayout.spec(2,2, GridLayout.FILL)),
+                row>=42, true, true,true,temps);
+        calendarGrid.addView(textView);
+    }
 
-        tableRow.addView(new TextViewBuilder()
-                .buildTextView(getActivity())
-                .addAlignement(Gravity.CENTER)
-                .addText(heure)
-                .addBorders(true, false, derniereligne, !intermediaire)
-                .addPadding(4, 0, 4)
-                .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
-                .addBackground(getResources().getColor(R.color.grey_light))
-                .addTextColor(getResources().getColor(android.R.color.black))
-                .getView());
-        heureTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());
+
+    /**
+     * Ajoute une conf
+     * @param row
+     * @param temps
+     * @param text
+     * @param title
+     * @param background
+     * @param heure
+     */
+    protected void addViewTalk(int row, int temps, String text, boolean title, int background, final Date heure){
+        Button textView = getButton(text, title, background, heure);
+        setLayoutAndBorder(textView,
+                new GridLayout.LayoutParams(GridLayout.spec(row, temps, GridLayout.FILL), GridLayout.spec(2, GridLayout.FILL)),
+                false, true, true, false,temps);
+
+        calendarGrid.addView(textView);
+
     }
 
     /**
-     * Permet de creer une ligne dans calendarTableLayout
-     *
-     * @param nbcolonne
+     * Ajoute un event entre les talks
+     * @param row
+     * @param temps
+     * @param text
+     * @param title
+     * @param heure
      */
-    protected TableRow createRowCalendar(int nbcolonne, final Date heure) {
-        TableRow tableRow = new TableRowBuilder()
-                .buildTableRow(getActivity())
-                .addBackground(R.color.grey)
-                .addNbColonne(nbcolonne)
+    protected void addViewEventPalge1(int row, int temps, String text, boolean title, final Date heure){
+        Button textView = getButton(text, title, R.drawable.button_pause_background, heure);
+        setLayoutAndBorder(textView,
+                new GridLayout.LayoutParams(GridLayout.spec(row, temps, GridLayout.FILL), GridLayout.spec(2, GridLayout.FILL)),
+                false, true, true,false,temps);
+        textView.setContentDescription(text);
+        calendarGrid.addView(textView);
+    }
+
+    /**
+     * Ajoute un atlier
+     * @param row
+     * @param temps
+     * @param text
+     * @param title
+     * @param heure
+     */
+    protected void addViewWorkshop(int row, int temps, String text , boolean title, final Date heure){
+        Button textView = getButton(text, title, R.drawable.button_workshop_background, heure);
+        setLayoutAndBorder(textView,
+                new GridLayout.LayoutParams(GridLayout.spec(row, temps, GridLayout.FILL), GridLayout.spec(3, GridLayout.FILL)),
+                false, true, true,true,temps);
+        calendarGrid.addView(textView);
+    }
+
+    /**
+     * Ajoute un champ clickable
+     * @param text
+     * @param title
+     * @param background
+     * @param heure
+     * @return
+     */
+    protected Button getButton(String text, boolean title, int background, final Date heure) {
+         Button textView =  new ButtonGridBuilder()
+                .buildView(getActivity())
+                .addText(text)
+                .addAlignement(Gravity.CENTER)
+                .addBold(true)
+                .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
+                .addBackgroundDrawable(background)
+                .addTextColor(getResources().getColor(android.R.color.black))
                 .getView();
 
-
-        //Sur un clic on va faire un zoom sur une session
-        tableRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                afficherPlanningSalleSurPlageHoraire(heure);
-            }
-        });
-
-        calendarTableLayout.addView(tableRow, TableRowBuilder.getLayoutParams());
-        return tableRow;
-    }
-
-    /**
-     * Ajout d'un entête de colonne dans le tableau calendarTableLayout
-     *
-     * @param tableRow
-     * @param text
-     * @param derniereColonne
-     */
-    protected void addHeaderCalendarTableLayout(TableRow tableRow, String text, boolean derniereColonne) {
-        tableRow.addView(new TextViewBuilder()
-                .buildTextView(getActivity())
-                .addAlignement(Gravity.CENTER)
-                .addText(text)
-                .addPadding(4, 10, 4)
-                .addBorders(true, derniereColonne, false, true)
-                .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
-                .addBackground(getResources().getColor(R.color.grey_light))
-                .addTextColor(getResources().getColor(android.R.color.black))
-                .addUpperCase()
-                .getView());
-    }
-
-    /**
-     * Ajout d'un element de colonne dans le tableau calendarTableLayout
-     *
-     * @param tableRow
-     * @param text
-     * @param derniereColonne
-     */
-    protected void createElementCalendarTableLayout(TableRow tableRow, int color, int textcolor, String text,
-                                                    boolean bold, boolean derniereColonne, boolean bottomBorder, boolean topBorder, int nbcol) {
-        tableRow.addView(new TextViewBuilder()
-                .buildTextView(getActivity())
-                .addText(text)
-                .addAlignement(Gravity.CENTER)
-                .addPadding(4, 10, 4)
-                .addBold(bold)
-                .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
-                .addBorders(true, derniereColonne, bottomBorder, topBorder)
-                .addBackground(getResources().getColor(color))
-                .addTextColor(textcolor)
-                .addSpan(nbcol)
-                .getView());
-    }
-
-    protected void afficherPlanningSalleSurPlageHoraire(Date heure) {
-        if (getActivity() instanceof AbstractPlanningActivity) {
-            ((AbstractPlanningActivity) getActivity()).refreshPlanningHoraire(heure);
+        if(title){
+            textView.setAllCaps(true);
+            textView.setBackgroundResource(R.drawable.calendar_title_background);
         }
-
+        if(heure !=null){
+            //Sur un clic on va faire un zoom sur une session
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() instanceof AbstractPlanningActivity) {
+                        ((AbstractPlanningActivity) getActivity()).refreshPlanningHoraire(heure);
+                    }
+                }
+            });
+        }
+        return textView;
     }
+
 }

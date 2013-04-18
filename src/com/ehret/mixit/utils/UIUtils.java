@@ -23,10 +23,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.format.Time;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Classe utilitaire
@@ -147,12 +144,12 @@ public class UIUtils {
      *
      * @param jour
      * @param heure
-     * @param demiheure
+     * @param minute
      * @return
      */
-    public static Date createPlageHoraire(int jour, int heure, boolean demiheure) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2013, 3, jour, heure, demiheure ? 30 : 0, 0);
+    public static Date createPlageHoraire(int jour, int heure, int minute) {
+        Calendar calendar = Calendar.getInstance(Locale.FRANCE);
+        calendar.set(2013, 3, jour, heure, minute , 0);
         return calendar.getTime();
     }
 }

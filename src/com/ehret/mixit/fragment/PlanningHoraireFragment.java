@@ -39,7 +39,7 @@ import com.ehret.mixit.ui.ParseListeActivity;
 import com.ehret.mixit.ui.PlanningJ2Activity;
 import com.ehret.mixit.ui.TalkActivity;
 import com.ehret.mixit.utils.TableRowBuilder;
-import com.ehret.mixit.utils.TextViewBuilder;
+import com.ehret.mixit.utils.TextViewTableBuilder;
 import com.ehret.mixit.utils.UIUtils;
 
 import java.text.DateFormat;
@@ -63,9 +63,9 @@ public class PlanningHoraireFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         //Par defaut on affiche la premiere session de la journee de 9H
         if (getActivity() instanceof PlanningJ2Activity) {
-            refreshPlanningHoraire(UIUtils.createPlageHoraire(25, 9, false));
+            refreshPlanningHoraire(UIUtils.createPlageHoraire(25, 9, 0));
         } else {
-            refreshPlanningHoraire(UIUtils.createPlageHoraire(26, 9, false));
+            refreshPlanningHoraire(UIUtils.createPlageHoraire(26, 9, 0));
         }
     }
 
@@ -90,11 +90,9 @@ public class PlanningHoraireFragment extends Fragment {
         //On affiche le planning 30min par 30min
         TableRow tableRow = createTableRow();
 
-        tableRow.addView(new TextViewBuilder()
-                .buildTextView(getActivity())
-                .addText(String.format(getString(R.string.calendrier_planning),
-                        DateFormat.getTimeInstance(DateFormat.SHORT).format(heure),
-                        DateFormat.getTimeInstance(DateFormat.SHORT).format(heureFin)))
+        tableRow.addView(new TextViewTableBuilder()
+                .buildView(getActivity())
+                .addText(String.format(getString(R.string.calendrier_planninga),DateFormat.getTimeInstance(DateFormat.SHORT).format(heure)))
                 .addAlignement(Gravity.CENTER)
                 .addBorders(true, true, false, true)
                 .addPadding(4, 0, 4)
@@ -119,7 +117,6 @@ public class PlanningHoraireFragment extends Fragment {
 
     }
 
-    private final static String CODECONF = "TKWL";
 
 
     private void createPlage(List<Conference> confs, int size, int index, Resources resource) {
@@ -131,8 +128,7 @@ public class PlanningHoraireFragment extends Fragment {
                 salle = Salle.getSalle(((Talk) c).getRoom());
             }
             char code = ((Talk) c).getFormat().charAt(0);
-            boolean colored = CODECONF.contains(String.valueOf(code));
-            createPlanningSalle("(" + code + ") " + c.getTitle(), colored ? salle.getColor() : android.R.color.white, c);
+            createPlanningSalle("(" + code + ") " + c.getTitle(), salle.getColor(), c);
 
             StringBuffer buf = new StringBuffer();
             if (c.getSpeakers() != null) {
@@ -147,7 +143,7 @@ public class PlanningHoraireFragment extends Fragment {
 
                 }
             }
-            createPresentateurSalle(true, buf.toString(), colored ? salle.getColor() : android.R.color.white, c);
+            createPresentateurSalle(true, buf.toString(), salle.getColor(), c);
 
         }
 
@@ -182,8 +178,8 @@ public class PlanningHoraireFragment extends Fragment {
     private void createPlanningSalle(String nom, int color, final Conference conf) {
         TableRow tableRow = createTableRow();
         addEventOnTableRow(conf, tableRow);
-        TextView textView = new TextViewBuilder()
-                .buildTextView(getActivity())
+        TextView textView = new TextViewTableBuilder()
+                .buildView(getActivity())
                 .addText(" \n ")
                 .addNbLines(2)
                 .addNbMaxLines(2)
@@ -192,8 +188,8 @@ public class PlanningHoraireFragment extends Fragment {
                 .getView();
         tableRow.addView(textView);
 
-        TextView button = new TextViewBuilder()
-                .buildTextView(getActivity())
+        TextView button = new TextViewTableBuilder()
+                .buildView(getActivity())
                 .addAlignement(Gravity.CENTER)
                 .addText(nom + " \n ")
                 .addBorders(true, true, false, true)
@@ -233,7 +229,7 @@ public class PlanningHoraireFragment extends Fragment {
         } else {
             //Pour les talks on ne retient que les talks et workshop
             char code = ((Talk) conf).getFormat().charAt(0);
-            if (code == 'T' || code == 'W') {
+            if (code == 'T' || code == 'W' || code == 'K') {
                 tableRow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -242,6 +238,16 @@ public class PlanningHoraireFragment extends Fragment {
                         parameters.put(UIUtils.TYPE, ((Talk) conf).getFormat().charAt(0) == 'W' ? TypeFile.workshops.name() :
                                 TypeFile.talks.name());
                         UIUtils.startActivity(TalkActivity.class, getActivity(), parameters);
+                    }
+                });
+            }
+            else if(code == 'L'){
+                tableRow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Map<String, Object> parameters = new HashMap<String, Object>(6);
+                        parameters.put(UIUtils.MESSAGE, TypeFile.lightningtalks);
+                        UIUtils.startActivity(ParseListeActivity.class, getActivity(), parameters);
                     }
                 });
             }
@@ -258,14 +264,14 @@ public class PlanningHoraireFragment extends Fragment {
     private void createPresentateurSalle(boolean dernierligne, String nom, int color, final Conference conf) {
         TableRow tableRow = createTableRow();
         addEventOnTableRow(conf, tableRow);
-        tableRow.addView(new TextViewBuilder()
-                .buildTextView(getActivity())
+        tableRow.addView(new TextViewTableBuilder()
+                .buildView(getActivity())
                 .addText(" ")
                 .addBackground(getResources().getColor(color))
                 .addSize(TypedValue.COMPLEX_UNIT_SP, getResources().getInteger(R.integer.text_size_cal))
                 .getView());
-        TextView button = new TextViewBuilder()
-                .buildTextView(getActivity())
+        TextView button = new TextViewTableBuilder()
+                .buildView(getActivity())
                 .addAlignement(Gravity.CENTER)
                 .addText(nom)
                 .addBorders(true, true, dernierligne, false)

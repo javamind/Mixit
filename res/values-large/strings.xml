@@ -19,6 +19,7 @@
     <string name="calendrier_confs">Conférences</string>
     <string name="calendrier_detail">Voir le détail...</string>
     <string name="calendrier_planning">Planning de %1$s à %2$s</string>
+    <string name="calendrier_planninga">Planning à %1$s</string>
     <string name="calendrier_conf_small">Conférence</string>
     <string name="calendrier_ligthning_small">Ligthning Talks</string>
 

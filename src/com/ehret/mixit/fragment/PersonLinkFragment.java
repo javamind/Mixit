@@ -33,7 +33,7 @@ import com.ehret.mixit.R;
 import com.ehret.mixit.domain.people.Link;
 import com.ehret.mixit.domain.people.Membre;
 import com.ehret.mixit.model.MembreFacade;
-import com.ehret.mixit.utils.TextViewBuilder;
+import com.ehret.mixit.utils.TextViewTableBuilder;
 import com.ehret.mixit.utils.UIUtils;
 
 
@@ -78,8 +78,8 @@ public class PersonLinkFragment extends Fragment {
             //On vide les éléments
             linearLayoutRoot.removeAllViews();
 
-            linearLayoutRoot.addView(new TextViewBuilder()
-                    .buildTextView(getActivity())
+            linearLayoutRoot.addView(new TextViewTableBuilder()
+                    .buildView(getActivity())
                     .addText(getString(R.string.description_liens))
                     .addPadding(0, 10, 4)
                     .addBold(true)
