@@ -182,8 +182,15 @@ public class ConferenceFacade {
         Date dateComparee = calendar.getTime();
 
         for (Talk talk : talks) {
-            if (talk.getStart() != null && talk.getEnd() != null && (dateComparee.before(talk.getEnd()) && dateComparee.after(talk.getStart()))) {
-                confs.add(talk);
+            if (talk.getStart() != null && talk.getEnd() != null){
+                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+                cal.setTime(talk.getEnd());
+                if(dateComparee.before(cal.getTime())){
+                    cal.setTime(talk.getStart());
+                    if(dateComparee.after(cal.getTime())){
+                        confs.add(talk);
+                    }
+                }
             }
         }
 

@@ -32,6 +32,7 @@ public class Conference {
     private List<Long> interests;
     private List<Long> speakers;
     private Date start;
+    private Date end;
 
     public Date getEnd() {
         return end;
@@ -49,7 +50,7 @@ public class Conference {
         this.start = start;
     }
 
-    private Date end;
+
 
 
     public long getId() {
