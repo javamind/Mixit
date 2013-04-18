@@ -176,7 +176,7 @@ public class ConferenceFacade {
         Collection<Talk> talks = getTalkAndWorkshops(context).values();
 
         //On decale la date de 1 minute pour ne pas avoir de souci de comparaison
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance(Locale.FRANCE);
         calendar.setTime(date);
         calendar.add(Calendar.MINUTE, 2);
         Date dateComparee = calendar.getTime();

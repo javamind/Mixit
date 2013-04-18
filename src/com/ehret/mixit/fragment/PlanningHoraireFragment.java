@@ -81,7 +81,7 @@ public class PlanningHoraireFragment extends Fragment {
         planningHoraireTableLayout = (TableLayout) getActivity().findViewById(R.id.planningHoraireTableLayout);
         planningHoraireTableLayout.removeAllViews();
 
-        Calendar c = Calendar.getInstance();
+        Calendar c = Calendar.getInstance(Locale.FRANCE);
         c.setTime(heure);
         c.add(Calendar.MINUTE, 30);
         Date heureFin = c.getTime();
